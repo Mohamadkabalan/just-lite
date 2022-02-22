@@ -1,0 +1,1349 @@
+body {
+  text-align: right;
+}
+
+.form-control {
+  text-align: right;
+}
+
+.pl-20 {
+  padding-left: unset;
+  padding-right: 20px;
+}
+
+.pr-20 {
+  padding-left: 20px;
+  padding-right: unset;
+}
+
+.ml-20 {
+  margin-left: unset;
+  margin-right: 20px;
+}
+
+/*=================================
+Top Header Area 
+====================================*/
+.header-left {
+  float: right;
+}
+
+.header-right {
+  float: left;
+}
+
+.header-right .header-item {
+  margin-left: 30px;
+  margin-right: unset;
+}
+
+.header-right .header-item:last-child {
+  margin-left: 0;
+}
+
+.header-right .header-item ul li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: unset;
+}
+
+.header-right .header-item ul li:last-child {
+  margin-left: 0;
+}
+
+.header-right .header-item .header-language .dropdown-toggle:after {
+  margin-right: 8px;
+  margin-left: unset;
+}
+
+.header-right .header-item .header-language .dropdown-toggle i {
+  margin-left: 8px;
+  margin-right: unset;
+}
+
+.header-right .header-item .header-language .dropdown-menu {
+  left: 0;
+  right: auto;
+}
+
+.header-right .header-item .header-language .dropdown-menu a img {
+  margin-left: 10px;
+  margin-right: unset;
+}
+
+.header-right .header-item .header-language .dropdown-menu[style] {
+  right: 0 !important;
+  left: auto !important;
+}
+
+/*=================================
+Top Header Area End
+====================================*/
+/*=================================
+Navbar Area 
+====================================*/
+.desktop-nav .navbar .navbar-nav .nav-item:last-child a {
+  margin-right: 0;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item:first-child a {
+  margin-left: 0;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu li a i {
+  float: left;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
+  right: 245px;
+  left: auto;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu {
+  right: 245px;
+  left: auto;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+  right: -250px;
+  left: auto;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+  right: -250px;
+  left: auto;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+  right: -250px;
+  left: auto;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+  right: -250px;
+  left: auto;
+}
+
+.mobile-nav-area {
+  left: 50px;
+  right: auto;
+}
+
+.mobile-nav {
+  left: 50px;
+  right: auto;
+}
+
+.mobile-nav .mobile-other .optional-item {
+  margin-left: 10px;
+  margin-right: unset;
+}
+
+.mobile-nav .mobile-other .optional-item:last-child {
+  margin-left: 0;
+}
+
+.others-options .optional-item {
+  margin-left: 30px;
+  margin-right: unset;
+}
+
+.others-options .optional-item:last-child {
+  margin-left: 0;
+}
+
+.modal-search-form button {
+  left: 10px;
+  right: auto;
+}
+
+.modal-header button.close {
+  left: 25px;
+  right: auto;
+}
+
+/*=================================
+Navbar Area End
+====================================*/
+/*=================================
+Main Banner Area 
+====================================*/
+.banner-content {
+  margin-left: unset;
+  margin-right: auto;
+}
+
+.banner-shape img:nth-child(1) {
+  left: 40px;
+  right: auto;
+}
+
+.banner-shape img:nth-child(2) {
+  left: 30px;
+  right: auto;
+}
+
+.banner-shape img:nth-child(3) {
+  left: 50%;
+  right: auto;
+}
+
+.banner-item-content .banner-btn .two {
+  margin-right: 20px;
+  margin-left: unset;
+}
+
+.banner-item-img {
+  padding-right: 30px;
+  padding-left: unset;
+}
+
+.banner-item-img img {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 30px;
+}
+
+.owl-item.active .banner-item-img img {
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: fadeInLeft;
+          animation-name: fadeInLeft;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+.banner-shape-two img:nth-child(1) {
+  right: 40%;
+  left: auto;
+}
+
+.banner-shape-two img:nth-child(2) {
+  right: 0;
+  left: auto;
+}
+
+.banner-shape-two img:nth-child(3) {
+  right: 3%;
+  left: auto;
+}
+
+.banner-content-two .banner-btn .two {
+  margin-right: 20px;
+  margin-left: unset;
+}
+
+.banner-content-two .banner-content-shape img:nth-child(1) {
+  right: 55px;
+  left: auto;
+}
+
+.banner-content-two .banner-content-shape img:nth-child(2) {
+  right: 30px;
+  left: auto;
+}
+
+.banner-content-two .banner-content-shape img:nth-child(3) {
+  left: 45px;
+  right: auto;
+}
+
+/*=================================
+Main Banner Area End
+====================================*/
+/*=================================
+Inner Banner Area
+====================================*/
+.inner-banner .inner-title ul li {
+  margin-left: 25px;
+  margin-right: unset;
+}
+
+.inner-banner .inner-title ul li:last-child {
+  margin-left: 0;
+}
+
+.inner-banner .inner-title ul li::before {
+  left: -15px;
+  right: auto;
+}
+
+/*=================================
+Inner Banner Area End
+====================================*/
+/*=================================
+About Area
+====================================*/
+.about-area::before {
+  left: 0;
+  right: auto;
+}
+
+.about-content .about-list ul li i {
+  margin-left: 5px;
+  margin-right: unset;
+}
+
+.about-shape img:nth-child(1) {
+  right: 0;
+  left: auto;
+}
+
+.about-shape img:nth-child(2) {
+  right: 40px;
+  left: auto;
+}
+
+.about-shape img:nth-child(3) {
+  right: 20px;
+  left: auto;
+}
+
+.about-shape img:nth-child(4) {
+  right: 10%;
+  left: auto;
+}
+
+.about-content-two .about-content-item {
+  padding-right: 65px;
+  padding-left: unset;
+}
+
+.about-content-two .about-content-item i {
+  right: 0;
+  left: auto;
+}
+
+.about-shape-two img:nth-child(1) {
+  right: 40px;
+  left: auto;
+}
+
+.about-shape-two img:nth-child(2) {
+  right: 0;
+  left: auto;
+}
+
+/*=================================
+About Area End
+====================================*/
+.diet-tab .tabs li {
+  margin-left: 25px;
+  margin-right: unset;
+}
+
+.diet-tab .tabs li:last-child {
+  margin-left: 0;
+}
+
+.banner-bottom-item .top-shape img:nth-child(1) {
+  left: 25px;
+  right: auto;
+}
+
+.banner-bottom-item .top-shape img:nth-child(2) {
+  left: 25px;
+  right: auto;
+}
+
+/*=================================
+Event Area 
+====================================*/
+.event-content .content {
+  padding-right: 160px;
+  padding-left: unset;
+}
+
+.event-content .content .event-date {
+  right: 0;
+  left: auto;
+}
+
+.event-content .content a i {
+  margin-left: 5px;
+  margin-right: unset;
+}
+
+.event-img {
+  margin-right: unset;
+  margin-left: 40px;
+}
+
+.event-img .sub-img {
+  right: auto;
+  left: -45px;
+}
+
+/*=================================
+Event Area End
+====================================*/
+/*=================================
+Recipe Area
+====================================*/
+.recipe-slider.owl-theme {
+  right: calc((100% - 1300px)/2);
+  left: auto;
+}
+
+.recent-recipe-item .content ul li {
+  margin-left: 10px;
+  margin-right: unset;
+}
+
+.recent-recipe-item .content ul li:last-child {
+  margin-left: 0;
+}
+
+/*=================================
+Recipe Area End
+====================================*/
+/*=================================
+Recipe Video Area
+====================================*/
+.recipe-video-list a img {
+  margin-left: 10px;
+  margin-right: unset;
+}
+
+.recipe-video-list .content ul li {
+  margin-left: 10px;
+  margin-right: unset;
+}
+
+.recipe-video-list .content ul li i {
+  margin-left: 5px;
+  margin-right: unset;
+}
+
+.recipe-video-list .content ul li:last-child {
+  margin-left: 0;
+}
+
+.recipe-video-card .content ul li {
+  margin-left: 10px;
+  margin-right: unset;
+}
+
+.recipe-video-card .content ul li i {
+  margin-left: 5px;
+  margin-right: unset;
+}
+
+.recipe-video-card .content ul li:last-child {
+  margin-left: 0;
+}
+
+.recipe-side-bar-categories ul li a span {
+  float: left;
+}
+
+.recipe-details-content .tag-list li {
+  margin-left: 15px;
+  margin-right: unset;
+}
+
+.recipe-details-content .tag-list li:last-child {
+  margin-left: 0;
+}
+
+.recipe-details-content .tag-list li i {
+  margin-left: 5px;
+  margin-right: unset;
+}
+
+.recipe-details-content .recipe-details-share .article-tag ul li {
+  margin-right: unset;
+  margin-left: 5px;
+}
+
+.recipe-details-content .recipe-details-share .article-social-icon {
+  float: left;
+}
+
+.recipe-details-content .recipe-details-share .article-social-icon .social-icon li {
+  margin-right: unset;
+  margin-left: 10px;
+}
+
+.recipe-details-content .recipe-details-share .article-social-icon .social-icon li:last-child {
+  margin-left: 0;
+}
+
+.recipe-details-content .comments-wrap .comment-form li {
+  padding-right: 80px;
+  padding-left: unset;
+}
+
+.recipe-details-content .comments-wrap .comment-form li.pl-80 {
+  padding-right: 125px;
+  padding-left: unset;
+}
+
+.recipe-details-content .comments-wrap .comment-form li.pl-80 img {
+  right: 40px;
+  left: auto;
+}
+
+.recipe-details-content .comments-wrap .comment-form li img {
+  right: 0;
+  left: auto;
+}
+
+.recipe-details-content .recipe-tag-list li {
+  padding: 6px 50px 5px 0;
+  margin-left: 15px;
+  margin-right: unset;
+}
+
+.recipe-details-content .recipe-tag-list li:last-child {
+  margin-left: 0;
+}
+
+.recipe-details-content .recipe-tag-list li i {
+  right: 0;
+  left: auto;
+}
+
+/*=================================
+Recipe Video Area End
+====================================*/
+.cart-totals {
+  margin-left: unset;
+  margin-right: 30px;
+}
+
+.cart-totals ul li span {
+  float: left;
+}
+
+.cart-wraps-area .cart-wraps {
+  margin-bottom: 30px;
+}
+
+.cart-wraps-area .cart-table table {
+  margin-bottom: 0;
+}
+
+.cart-wraps-area .cart-table table thead tr th {
+  border-bottom-width: 0px;
+  vertical-align: middle;
+  padding: 15px 0;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.cart-wraps-area .cart-table table tbody tr td.product-subtotal .remove {
+  float: left;
+}
+
+/*=================================
+Checkout Area
+===================================*/
+.checkout-user {
+  border-right: 2px solid var(--greenColor);
+  border-left: none;
+}
+
+.payment-box .payment-method p [type="radio"]:checked + label {
+  padding-right: 27px;
+  padding-left: unset;
+}
+
+.payment-box .payment-method p [type="radio"]:checked + label::before {
+  right: 0;
+  left: auto;
+}
+
+.payment-box .payment-method p [type="radio"]:checked + label::after {
+  right: 3px;
+  left: auto;
+}
+
+.payment-box .payment-method p [type="radio"]:not(:checked) + label {
+  padding-right: 27px;
+  padding-left: unset;
+}
+
+.payment-box .payment-method p [type="radio"]:not(:checked) + label::before {
+  left: auto;
+  right: 0;
+}
+
+.payment-box .payment-method p [type="radio"]:not(:checked) + label::after {
+  right: 3px;
+  left: auto;
+}
+
+.billing-totals ul li span {
+  float: left;
+}
+
+/*=================================
+Checkout Area End
+===================================*/
+/*=================================
+Pricing Area
+====================================*/
+.pricing-card ul li i {
+  margin-left: 5px;
+  margin-right: unset;
+}
+
+/*=================================
+Pricing Area End
+====================================*/
+/*=================================
+Team Area End
+====================================*/
+.team-card .content .team-social {
+  padding-right: 0;
+  padding-left: unset;
+}
+
+.team-card .content .team-social li {
+  margin-left: 10px;
+  margin-right: unset;
+}
+
+.team-card .content .team-social li:last-child {
+  margin-left: 0;
+}
+
+/*=================================
+Team Area End
+====================================*/
+/*================================
+Choose Area
+===================================*/
+.choose-content .content {
+  padding-right: 55px;
+  padding-left: unset;
+}
+
+.choose-content .content .number {
+  right: 0;
+  left: auto;
+}
+
+/*================================
+Choose Area End
+===================================*/
+.calculate-chart ul li span {
+  right: auto;
+  left: 20px;
+}
+
+/*=================================
+Blog Area
+====================================*/
+.blog-card .blog-img .tag {
+  left: auto;
+  right: 20px;
+}
+
+.blog-side-content {
+  padding: 17px 220px 17px 25px;
+}
+
+.blog-side-content .blog-side-img {
+  right: 0;
+  left: auto;
+}
+
+.blog-item .blog-img .tag {
+  left: auto;
+  right: 20px;
+}
+
+.blog-details-content .tag-list li {
+  margin-left: 15px;
+  margin-right: unset;
+}
+
+.blog-details-content .tag-list li::before {
+  right: 0;
+  left: auto;
+}
+
+.blog-details-content .tag-list li:last-child {
+  margin-left: 0;
+}
+
+.blog-details-content .tag-list li i {
+  margin-left: 5px;
+  margin-right: unset;
+}
+
+.blog-details-content .blockquote::before {
+  right: 0;
+  left: auto;
+}
+
+.blog-details-content .blockquote i {
+  left: 30px;
+  right: auto;
+}
+
+.blog-details-content .blog-article-content ul li {
+  padding-right: 23px;
+  padding-left: unset;
+}
+
+.blog-details-content .blog-article-content ul li::before {
+  right: 0;
+  left: auto;
+}
+
+.blog-details-content .article-share .article-tag ul li {
+  margin-right: unset;
+  margin-left: 5px;
+}
+
+.blog-details-content .article-share .article-social-icon {
+  float: left;
+}
+
+.blog-details-content .article-share .article-social-icon .social-icon li {
+  margin-right: unset;
+  margin-left: 10px;
+}
+
+.blog-details-content .article-share .article-social-icon .social-icon li:last-child {
+  margin-left: 0;
+}
+
+.blog-details-content .comments-wrap .comment-form li {
+  padding-right: 80px;
+  padding-left: unset;
+}
+
+.blog-details-content .comments-wrap .comment-form li.pl-80 {
+  padding-right: 125px;
+  padding-left: unset;
+}
+
+.blog-details-content .comments-wrap .comment-form li.pl-80 img {
+  right: 40px;
+  left: auto;
+}
+
+.blog-details-content .comments-wrap .comment-form li img {
+  right: 0;
+  left: auto;
+}
+
+.search-widget .search-form button {
+  left: 0;
+  right: auto;
+}
+
+.side-bar-categories ul li a i {
+  float: left;
+}
+
+.side-bar-widget .widget-popular-post .item .thumb {
+  float: right;
+  margin-left: 15px;
+  margin-right: unset;
+}
+
+.side-bar-widget .contact-sidebar-list li {
+  padding-right: 60px;
+  padding-left: unset;
+}
+
+.side-bar-widget .contact-sidebar-list li i {
+  right: 0;
+  left: auto;
+}
+
+/*=================================
+Blog Area End
+====================================*/
+.services-content-list ul li i {
+  margin-left: 5px;
+  margin-right: unset;
+}
+
+.product-card .content .rating {
+  left: 0;
+  right: auto;
+}
+
+.product-card .product-img .product-item-action {
+  padding-left: unset;
+  padding-right: unset;
+  left: 20px;
+  right: auto;
+}
+
+.product-topper .product-list {
+  float: left;
+}
+
+/*==================================
+Shop Details 
+====================================*/
+.shop-desc .price .old-price {
+  margin-right: 10px;
+  margin-left: unset;
+}
+
+.shop-desc .shop-review .rating-count {
+  margin-right: 5px;
+  margin-left: unset;
+}
+
+.shop-desc .input-count-area h3 {
+  margin-left: 15px;
+  margin-right: unset;
+}
+
+.shop-desc .shop-add .default-btn {
+  margin-left: 15px;
+  margin-right: unset;
+}
+
+.shop-detls-tab .tabs li {
+  margin-left: 30px;
+  margin-right: unset;
+}
+
+.shop-detls-tab .tabs li:last-child {
+  margin-left: 0;
+}
+
+.shop-detls-tab-content .additional-information {
+  padding-right: 0;
+  padding-left: unset;
+  text-align: right;
+}
+
+.shop-detls-tab-content .shop-review-form .review-title .btn-right {
+  left: 0;
+  right: auto;
+}
+
+.shop-detls-tab-content .shop-review-form .review-comments .review-item {
+  padding-left: 200px;
+  padding-right: unset;
+}
+
+.shop-detls-tab-content .shop-review-form .review-comments .review-item .review-report-link {
+  left: 0;
+  right: auto;
+}
+
+.shop-detls-tab-content .shop-review-form .review-comments .review-item .content {
+  padding: 3px 80px 3px 0;
+}
+
+.shop-detls-tab-content .shop-review-form .review-comments .review-item .content img {
+  right: 0;
+  left: auto;
+}
+
+/*==================================
+Shop Details End
+====================================*/
+/*================================
+Contact Area
+===================================*/
+.contact-form .form-group.checkbox-option #chb2 {
+  right: 0;
+  left: auto;
+}
+
+.contact-form .form-group.checkbox-option p {
+  padding-right: 25px;
+  padding-left: unset;
+}
+
+.contact-form .agree-label #chb1 {
+  right: 0;
+  left: auto;
+}
+
+.contact-form .agree-label label {
+  margin-left: unset;
+  margin-right: 25px;
+}
+
+.contact-form .agree-label label a.forget {
+  left: 0;
+  right: auto;
+}
+
+.contact-form .with-errors {
+  float: right;
+}
+
+.contact-info {
+  margin-left: 20px;
+  margin-right: unset;
+}
+
+.contact-info ul li {
+  padding-right: 60px;
+  padding-left: unset;
+}
+
+.contact-info ul li .content i {
+  right: 0;
+  left: auto;
+}
+
+/*================================
+Contact Area End
+===================================*/
+/*=================================
+Footer Area
+====================================*/
+.footer-widget .social-link li {
+  margin-left: 10px;
+  margin-right: unset;
+}
+
+.footer-widget .social-link li:last-child {
+  margin-left: 0;
+}
+
+.footer-widget .footer-contact li span {
+  left: auto;
+  right: 90px;
+}
+
+.go-top {
+  left: 3%;
+  right: auto;
+}
+
+/*=================================
+Footer Area End
+====================================*/
+.faq-accordion .accordion {
+  padding-right: 0;
+  padding-left: unset;
+}
+
+.faq-accordion .accordion .accordion-title {
+  padding: 15px 20px 12px 60px;
+}
+
+.faq-accordion .accordion .accordion-title i {
+  left: 15px;
+  right: auto;
+}
+
+.testimonial-card .content {
+  padding-right: 80px;
+  padding-left: unset;
+}
+
+.testimonial-card .content img {
+  right: 0;
+  left: auto;
+}
+
+/*=================================
+Responsive Css 
+====================================*/
+@media only screen and (max-width: 767px) {
+  .pl-20 {
+    padding-left: unset;
+    padding-right: 0;
+  }
+  .pr-20 {
+    padding-left: 0;
+    padding-right: unset;
+  }
+  .ml-20 {
+    margin-right: 0;
+    margin-left: unset;
+  }
+  .ps-2 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .ps-3 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .ps-5 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .header-left {
+    float: none;
+    margin-bottom: 7px;
+  }
+  .header-right {
+    float: none;
+  }
+  .header-right .header-item {
+    margin: 3px 5px;
+  }
+  .header-right .header-item:last-child {
+    margin-left: 5px;
+  }
+  .header-right .header-item ul li {
+    margin-left: 5px;
+  }
+  .banner-slider-area {
+    padding: 50px 0 80px;
+  }
+  .banner-slider-area .owl-dots {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: absolute;
+    top: auto;
+    display: inline-block;
+    -webkit-transform: translateX(0%) translateY(0%) !important;
+            transform: translateX(0%) translateY(0%) !important;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+  }
+  .banner-slider-area .owl-dots .owl-dot span {
+    margin: 7px;
+    text-align: center;
+  }
+  .banner-item-img {
+    padding-right: 0;
+    padding-left: 15px;
+  }
+  .banner-item-img img {
+    border-bottom-right-radius: 0;
+  }
+  .banner-content-two .banner-btn .two {
+    margin-right: 10px;
+    margin-left: unset;
+  }
+  .about-content-two .about-content-item {
+    padding-right: 55px;
+    padding-left: unset;
+  }
+  .choose-content .content {
+    padding-right: 50px;
+    padding-left: unset;
+  }
+  .recipe-slider.owl-theme {
+    right: 0;
+    left: auto;
+  }
+  .event-content .content {
+    padding-right: 0;
+    padding-left: unset;
+  }
+  .event-img {
+    margin-right: unset;
+    margin-left: 0;
+  }
+  .cart-totals {
+    margin-left: unset;
+    margin-right: 0;
+  }
+  .blog-side-content {
+    padding: 0 115px 0 0;
+  }
+  .blog-details-content .article-share .article-social-icon {
+    float: none;
+  }
+  .blog-details-content .comments-wrap .comment-form li {
+    padding-right: 0;
+  }
+  .blog-details-content .comments-wrap .comment-form li.pl-80 {
+    padding-right: 0;
+  }
+  .blog-details-content .comments-wrap .comment-form li.pl-80 img {
+    right: 0;
+  }
+  .contact-info {
+    margin-left: 0;
+    margin-right: unset;
+  }
+  .shop-detls-tab .tabs li {
+    margin-left: 10px;
+    margin-right: unset;
+  }
+  .shop-detls-tab-content .shop-review-form .review-comments .review-item {
+    padding-left: 0;
+    padding-right: unset;
+  }
+  .shop-detls-tab-content .shop-review-form .review-comments .review-item .content {
+    padding: 0;
+  }
+  .cart-wraps-area .cart-table table thead tr th {
+    border-bottom-width: 0px;
+    vertical-align: middle;
+    padding: 15px 36px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .recipe-details-content .tag-list li {
+    margin-left: 0;
+    margin-right: unset;
+  }
+  .recipe-details-content .tag-list li:last-child {
+    margin-left: 0;
+  }
+  .recipe-details-content .tag-list li i {
+    margin-left: 5px;
+    margin-right: unset;
+  }
+  .recipe-details-content .recipe-details-share .article-social-icon {
+    float: none;
+  }
+  .recipe-details-content .comments-wrap .comment-form li {
+    padding-right: 0;
+    padding-left: unset;
+  }
+  .recipe-details-content .comments-wrap .comment-form li.pl-80 {
+    padding-right: 0;
+    padding-left: unset;
+  }
+  .recipe-details-content .comments-wrap .comment-form li.pl-80 img {
+    right: 0;
+    left: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .pl-20 {
+    padding-left: unset;
+    padding-right: 0;
+  }
+  .pr-20 {
+    padding-left: 0;
+    padding-right: unset;
+  }
+  .ml-20 {
+    margin-right: 0;
+    margin-left: unset;
+  }
+  .ps-2 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .ps-3 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .ps-5 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .event-content .content {
+    padding-right: 125px;
+    padding-left: unset;
+  }
+  .event-img {
+    margin-right: unset;
+    margin-left: 0;
+  }
+  .banner-slider-area {
+    padding: 50px 0 80px;
+  }
+  .banner-slider-area .owl-dots {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: absolute;
+    top: auto;
+    display: inline-block;
+    -webkit-transform: translateX(0%) translateY(0%) !important;
+            transform: translateX(0%) translateY(0%) !important;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+  }
+  .banner-slider-area .owl-dots .owl-dot span {
+    margin: 7px;
+    text-align: center;
+  }
+  .banner-item-img {
+    padding-right: 0;
+    padding-left: 15px;
+  }
+  .banner-item-img img {
+    border-bottom-right-radius: 0;
+  }
+  .recipe-slider.owl-theme {
+    right: 0;
+    left: auto;
+  }
+  .contact-info {
+    margin-left: 0;
+    margin-right: unset;
+  }
+  .contact-info ul li {
+    margin-right: unset;
+    margin-left: 20px;
+  }
+  .contact-info ul li:last-child {
+    margin-left: 0;
+  }
+  .cart-totals {
+    margin-left: unset;
+    margin-right: 0;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .ps-2 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .ps-3 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .ps-5 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .others-options .optional-item {
+    margin-left: 5px;
+  }
+  .others-options .optional-item:last-child {
+    margin-left: 0;
+  }
+  .others-options .optional-item .search-btn {
+    margin-right: 15px;
+  }
+  .event-content .content {
+    padding-right: 125px;
+    padding-left: unset;
+  }
+  .recipe-slider.owl-theme {
+    right: calc((100% - 940px)/2);
+    left: auto;
+  }
+  .recipe-video-list a img {
+    margin-left: 5px;
+    margin-right: unset;
+  }
+  .recipe-video-list .content ul li {
+    margin-left: 3px;
+    margin-right: unset;
+  }
+  .recipe-video-list .content ul li i {
+    margin-left: 0;
+    margin-right: unset;
+  }
+  .recipe-video-list .content ul li:last-child {
+    margin-left: 0;
+  }
+  .blog-side-content {
+    padding: 0 110px 0 0;
+  }
+  .contact-info {
+    margin-left: 0;
+    margin-right: unset;
+    padding: 30px 10px 0px;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1299px) {
+  .ps-2 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .ps-3 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .ps-5 {
+    padding-right: 0 !important;
+    padding-left: unset;
+  }
+  .about-content-two .about-content-item {
+    padding-right: 50px;
+    padding-left: unset;
+  }
+  .recipe-slider.owl-theme {
+    right: calc((100% - 1140px)/2);
+    left: auto;
+  }
+  .event-content .content {
+    padding-right: 125px;
+    padding-left: unset;
+  }
+  .recipe-video-list a img {
+    margin-left: 5px;
+    margin-right: unset;
+  }
+  .recipe-video-list .content ul li {
+    margin-left: 3px;
+    margin-right: unset;
+  }
+  .recipe-video-list .content ul li i {
+    margin-left: 0;
+    margin-right: unset;
+  }
+  .recipe-video-list .content ul li:last-child {
+    margin-left: 0;
+  }
+  .blog-side-content {
+    padding: 0 145px 0 0;
+  }
+  .contact-info {
+    margin-left: 0;
+    margin-right: unset;
+    padding: 35px 10px 5px;
+  }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1350px) {
+  .about-content-two .about-content-item {
+    padding-right: 60px;
+    padding-left: unset;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .mobile-responsive-nav {
+    display: block;
+  }
+  .mobile-responsive-nav .mobile-responsive-menu {
+    position: relative;
+  }
+  .mobile-responsive-nav .mobile-responsive-menu.mean-container .mean-nav ul li a {
+    float: right;
+    text-align: right;
+  }
+  .mobile-responsive-nav .mobile-responsive-menu.mean-container .mean-nav ul li a.mean-expand {
+    text-align: left;
+    left: 0;
+    right: auto;
+  }
+  .mobile-responsive-nav .mean-container a.meanmenu-reveal {
+    left: 0 !important;
+    right: auto !important;
+    padding-top: 10px;
+  }
+  .mobile-responsive-nav .mean-container a.meanmenu-reveal span {
+    height: 4px;
+    margin-top: -6px;
+    border-radius: 3px;
+    position: relative;
+    top: 8px;
+  }
+  .mobile-responsive-nav .mean-container .mean-bar {
+    background: transparent;
+    position: absolute;
+    z-index: 999;
+    padding: 0;
+  }
+  .diet-tab .tabs li {
+    margin-left: 5px;
+  }
+}
+/*# sourceMappingURL=rtl.css.map */

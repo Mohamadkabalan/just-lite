@@ -1,0 +1,138 @@
+@php $lang=app()->getLocale(); @endphp
+<!DOCTYPE html>
+<html   @if($lang == 'ar') lang="ar" dir="rtl" @else lang="en"  @endif>
+
+    <head>
+
+        <!-- Required Meta Tags -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap RTL CSS -->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.rtl.min.css') }}">
+        <!-- Animate Min CSS -->
+        <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+        <!-- Flaticon CSS -->
+        <link rel="stylesheet" href="{{ asset('fonts/flaticon.css')  }}">
+        <!-- BoxIcons Min CSS -->
+        <link rel="stylesheet" href="{{ asset('css/boxicons.min.css') }}">
+        <!-- Owl Carousel Min CSS -->
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css')  }}">
+        <!-- Jquery Ui CSS -->
+        <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css')  }}">
+        <!-- Magnific Popup CSS -->
+        <link rel="stylesheet" href="{{ asset('css/magnific-popup.min.css')  }}">
+        <!-- Odometer CSS -->
+        <link rel="stylesheet" href="{{ asset('css/odometer.min.css')  }}">
+        <!-- Meanmenu CSS -->
+        <link rel="stylesheet" href="{{ asset('css/meanmenu.min.css')  }}">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="{{ asset('css/responsive.css')  }}">
+
+        @if(app()->getLocale() == 'ar')
+        <!-- RTL CSS -->
+        <link rel="stylesheet" href="{{ asset('css/rtl.css')  }}">
+        @endif
+
+        <title>Just Lite |
+        @hasSection('page_title')
+        @yield('page_title')
+        @endif
+        </title>
+
+        @yield('head')
+
+        @section('seo')
+
+        @show
+
+        @stack('css')
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="{{ asset('images/favicon.png')  }}">
+
+        <!-- Google Tag Manager -->
+        <!-- End Google Tag Manager -->
+
+    </head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+    @include('layouts.header.index')
+    <div id="app">
+        @yield('content-wrapper')
+    </div>
+
+    @section('footer')
+
+    @include('layouts.footer.index')
+
+    <!-- Modal Start -->
+    <div class="modal fade fade-scale searchmodal" id="searchmodal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal">
+                        <i class='bx bx-x'></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="modal-search-form">
+                        <input type="search" class="search-field" placeholder="Search...">
+                        <button type="submit"><i class='bx bx-search-alt'></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+
+    <!-- Jquery Min JS -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <!-- Bootstrap Bundle Min JS -->
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Magnific Popup JS -->
+    <script src="{{ asset('js/magnific-popup.min.js') }}"></script>
+    <!-- Odometer JS -->
+    <script src="{{ asset('js/odometer.min.js') }}"></script>
+    <!-- Appear Min JS -->
+    <script src="{{ asset('js/appear.min.js') }}"></script>
+    <!-- Meanmenu JS -->
+    <script src="{{ asset('js/meanmenu.min.js') }}"></script>
+    <!-- Owl Carousel JS -->
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <!-- Wow Min JS -->
+    <script src="{{ asset('js/wow.min.js') }}"></script>
+    <!-- Jquery Ui JS -->
+    <script src="{{ asset('js/jquery-ui.min.js') }} "></script>
+    <!-- Ajaxchimp Min JS -->
+    <script src="{{ asset('js/ajaxchimp.min.js') }}"></script>
+    <!-- Form Validator Min JS -->
+    <script src="{{ asset('js/form-validator.min.js') }} "></script>
+    <!-- Contact Form JS -->
+    <script src="{{ asset('js/contact-form-script.js') }} "></script>
+    <!-- Custom  JS -->
+    <script src="{{ asset('js/custom.js') }} "></script>
+
+    @show
+
+    @stack('scripts')
+
+
+</body>
+
+</html>

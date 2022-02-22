@@ -1,0 +1,2673 @@
+@media only screen and (max-width: 767px) {
+    /* Default CSS */
+    body {
+        font-size: 15px;
+    }
+    .ptb-100 {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .pt-100 {
+        padding-top: 50px;
+    }
+    .ptb-70 {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+    .pb-100 {
+        padding-bottom: 50px !important;
+    }
+    .pt-70 {
+        padding-top: 50px;
+    }
+    .pb-70 {
+        padding-bottom: 20px;
+    }
+    .pt-45 {
+        padding-top: 30px;
+    }
+    .pb-10 {
+        padding-bottom: 0;
+    }
+    .pl-20 {
+        padding-left: 0;
+    }
+    .pr-20 {
+        padding-right: 0;
+    }
+    .ml-20 {
+        margin-left: 0;
+    }
+    .default-btn {
+        padding: 8px  20px;
+    }
+    .section-title {
+        span {
+            font-size: 13px;
+        }
+        h2 {
+            font-size: 25px;
+        }
+        p {
+            padding-top: 10px;
+        }
+    }
+
+    .ps-2 {
+        padding-left: 0 !important;
+    }
+    .ps-3 {
+        padding-left: 0 !important;
+    }
+    .ps-5 {
+        padding-left: 0 !important;
+    }
+    .ps-0 {
+        padding-left: 15px !important;
+    }
+    .pe-0 {
+        padding-right: 15px !important;
+    }
+    .p-0 {
+        padding-left: 15px !important; 
+        padding-right: 15px !important;
+    }
+    /* Default CSS End */
+
+    /* Top Header CSS */
+    .header-left {
+        padding-top: 5px;
+        float: none;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    .header-right {
+        float: none;
+        text-align: center;
+        &.d-flex {
+            display: inline-block !important;
+        }
+        .header-item {
+            margin: 3px 5px; 
+            display: inline-block;
+            &:last-child {
+                margin-right: 5px;
+            }
+            ul {
+                li {
+                    margin-right: 5px;
+                    a {
+                        i {
+                            font-size: 16px;
+                            width: 28px;
+                            height: 28px;
+                            line-height: 28px;
+                        }
+                    }
+                }
+            }
+            .cart-top-btn {
+                font-size: 21px;
+                top: 0;
+            }
+            .header-language {
+                .dropdown-toggle {
+                    i {
+                        font-size: 18px;
+                    }
+                }
+            }
+            
+        }
+    }
+
+    .top-inner-bg {
+        text-align: center;
+    }
+    .top-header-bg-two {
+        text-align: center;
+    }
+    /* Top Header CSS End */
+
+    /* Main Banner CSS */
+    .banner-area {
+        padding: 50px 0;
+    }
+    .banner-content {
+        padding: 30px 20px;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+    }
+    .banner-shape {
+        display: none;
+    }
+
+    .banner-slider-area {
+        padding: 50px 0 35px;
+        &::before {
+            height: 100%;
+        }
+        .owl-dots {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            position: inherit;
+            top: auto;
+            display: inline-block;
+            transform: translateX(-50%), translateY(0);
+            .owl-dot {
+                span {
+                    margin: 7px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .banner-item-content {
+        margin-bottom: 25px;
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+    }
+    .banner-shape-two {
+        display: none;
+    }
+    .banner-item-img {
+        padding-left: 0;
+        margin-bottom: 30px;
+        img {
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    .banner-content-two {
+        max-width: 100%;
+        padding: 30px 20px;
+        border-radius: 0;
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .banner-btn {
+            .two {
+                margin-left: 10px;
+            }
+        }
+        .banner-content-shape {
+            display: none;
+        }
+    }
+    /* Main Banner CSS End */
+
+    /* Inner Banner CSS */
+    .inner-banner {
+        .inner-title {
+            padding-top: 70px;
+            padding-bottom: 70px;
+            h3 {
+                font-size: 30px;
+            }
+        }
+    }
+    /* Inner Banner CSS End */
+
+    /* Banner Bottom Area CSS */
+    .banner-bottom-card {
+        padding: 20px 15px;
+        i {
+            width: 60px;
+            height: 60px;
+            line-height: 72px;
+            font-size: 30px;
+        }
+    }
+
+    .banner-bottom-item {
+        padding: 20px 15px;
+    }
+
+    /* Banner Bottom Area CSS End */
+
+    /* About Area CSS */
+    .about-area {
+       padding-top: 50px;
+       padding-bottom: 20px;
+        &::before {
+           display: none;
+        }
+    }
+
+    .about-img {
+        animation: none;
+    }
+    
+    .about-play-btn {
+        text-align: center;
+        margin-bottom: 30px;
+        .play-btn {
+            i {
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                background-color: var(--greenColor);
+                color: var(--whiteColor);
+                font-size: 24px;
+                &::after {
+                    border: 1px solid var(--greenColor);
+                }
+                &:hover {
+                    background-color: var(--titleColor);
+                    color: var(--whiteColor);
+                    &::after {
+                        border-color: var(--titleColor);
+                    }
+                }
+            }
+        }
+    }
+    .about-shape {
+        display: none;
+    }
+
+    .about-content-two {
+        .section-title {
+            margin-bottom: 20px;
+        }
+        .about-content-item {
+            padding-left: 55px;
+            margin-bottom: 20px;
+            i {
+                width: 45px;
+                height: 45px;
+                line-height: 52px;
+                font-size: 18px;
+            }
+        }
+    }
+    
+    .about-shape-two {
+        display: none;
+    }
+    /* About Area CSS End */
+
+    /* Diet Plan Area */
+    .diet-tab {
+        .tabs {
+            li {
+                margin: 5px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    }
+    /* Diet Plan Area End */
+
+    /* Appointment Area */
+    .appointment-form {
+        padding: 30px 20px;
+        margin-left: auto;
+        margin-right: auto;
+        h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+    }
+    /* Appointment Area End */
+
+    /* Event Area  */
+    .event-content {
+        .section-title {
+            margin-bottom: 20px;
+        }
+        .content {
+            padding-left: 0;
+            position: relative;
+            .event-date {
+                position: inherit;
+                width: 110px;
+                h2 {
+                    font-size: 21px;
+                    padding: 22px;
+                }
+            }
+            h3 {
+                margin-top: 10px;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .event-img {
+        margin-right: 0;
+        .sub-img {
+            display: none;
+        }
+    }
+    /* Event Area End */
+
+    /* Team Area */
+    .team-card {
+        &.active {
+            transform: translateY(-0px);
+            .team-img {
+                padding: 10px 10px 0;
+                &::before {
+                    width: 100%;
+                    opacity: 1;
+                }
+                &::after {
+                    height: 90%;
+                    opacity: 1;
+                }
+            }
+            .content {
+                background-color: transparent;
+                h3 {
+                    a {
+                        color: var(--titleColor);
+                    }
+                }
+                span {
+                    color: var(--greenColor);
+                }
+                .team-social {
+                    bottom: 0;
+                    li {
+                        transform: translateY(0);
+                        opacity: 1;
+                        visibility: visible;
+                    }  
+                }
+            }
+        }
+    }
+    /* Team Area End */
+
+    /* Services Area */
+    .services-card {
+        .content {
+            padding: 25px 15px;
+            .learn-btn {
+                padding: 7px 15px;
+                font-size: 14px;
+            }
+        }
+    }
+    .service-preview-slider {
+        margin-bottom: 20px;
+        .owl-nav {
+            margin-top: 0;
+            .owl-prev, .owl-next {
+                position: inherit;
+                top: 0;
+                transform: translateY(-0);
+                font-size: 18px !important;
+                width: 35px;
+                height: 35px;
+                line-height: 35px !important;
+            }
+        }
+    }
+
+    .service-details-content {
+        h1 {
+            font-size: 28px;
+        }
+        h2 {
+            font-size: 26px;
+        }
+        h3 {
+            font-size: 23px;
+        }
+        h4 {
+            font-size: 21px;
+        }
+        h5 {
+            font-size: 20px;
+        }
+    }
+    
+    /* Services Area End */
+
+    /* Choose Area End */
+    .choose-area {
+        border-top: 1px solid #f1f1f1;
+        border-bottom: 1px solid #f1f1f1;
+        &::before {
+            width: 100%;
+            opacity: 1;
+        }
+        &::after {
+            width: 100%;
+            opacity: 1;
+        }
+    }
+    .choose-content {
+        margin-bottom: 30px;
+        .section-title {
+            margin-bottom: 20px;
+        }
+        .content {
+            margin-bottom: 15px;
+            padding-left: 50px;
+        }
+    }
+
+    .choose-slider-area {
+        padding-bottom: 35px;
+    }
+
+    .choose-slider {
+        position: relative;
+        .owl-nav {
+            margin-top: 0;
+            .owl-prev, .owl-next {
+                font-size: 18px !important;
+                width: 35px;
+                height: 35px;
+                line-height: 35px !important;
+            }
+        }
+    }
+    /* Choose Area End */
+
+    /* Recipe Area */
+    .recipe-slider {
+        &.owl-theme {
+            left: 0;
+        }
+    }
+
+    .recipe-card {
+        h3 {
+            font-size: 18px;
+        }
+        span {
+            font-size: 16px;
+        }
+    }
+
+    .recipe-details-content {
+        h1 {
+            font-size: 28px;
+        }
+        h2 {
+            font-size: 26px;
+        }
+        h3 {
+            font-size: 23px;
+        }
+        h4 {
+            font-size: 21px;
+        }
+        h5 {
+            font-size: 20px;
+        }
+        .tag-list {
+            li {
+                font-size: 14px;
+                margin-right: 10px;
+                i {
+                    font-size: 16px;
+                    margin-right: 3px;
+                }
+            }
+        }
+        .recipe-tag-list {
+            li {
+                display: block;
+                margin-bottom: 10px;
+                margin-right: 0;
+                &:last-child {
+                    margin-right: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .recipe-details-share {
+            .article-tag {
+                margin-bottom: 15px;
+            }
+            .article-social-icon {
+                float: none;
+            }
+        }
+        .comments-wrap {
+            .comment-form {
+                li {
+                    padding-left: 0;
+                    &.pl-80 {
+                        padding-left: 0;
+                        img {
+                            left: 0;
+                        }
+                    }
+                    img {
+                        position: inherit;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    .recipe-card {
+        text-align: center;
+    }
+    /* Recipe Area End */
+
+    /* Recipe Video Area */
+    .recipe-video-card {
+        margin-bottom: 30px;
+        margin-right: 0;
+        .content {
+            padding: 20px 10px;
+            height: 92px;
+            h3 {
+                font-size: 18px;
+            }
+        }
+    }
+    
+    .recipe-video-list {
+        margin-bottom: 30px;
+        a {
+            img {
+                max-width: 90px;
+            }
+        }
+    }
+    /* Recipe Video Area End */
+
+    /* Pricing Area End */
+    .pricing-shape {
+        display: none;
+    }
+    /* Pricing Area End */
+
+
+    .video-btn-ara {
+        &::before {
+            display: none;
+        }
+        .video-btn {
+            padding: 100px 0;
+            i {
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 30px;
+            }
+        }
+    }
+
+    /* Calculate Area */
+    .calculate-form {
+        padding: 30px 20px;
+        h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .calculate-chart {
+        padding: 30px 20px;
+        h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+    }
+    /* Calculate Area End */
+
+    .portfolio-card {
+        .content {
+            padding: 20px 10px;
+            text-align: center;
+            h3 {
+                font-size: 18px;
+            }
+        }
+    }
+    
+
+    /* Testimonials Area */
+    .testimonials-item {
+        margin-bottom: 20px;
+        text-align: center;
+        .section-title {
+            margin-bottom: 15px;
+        }
+        i {
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    }
+    /* Testimonials Area End */
+
+    /* Blog Area */
+    .blog-side-content {
+        margin-bottom: 30px;
+        padding: 0 0 0 115px;
+        max-width: 300px;
+        .blog-side-img {
+            width: 100px;
+            height: 175px;
+        }
+        .content {
+            vertical-align: middle;
+            h3 {
+               font-size: 16px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .blog-details-content {
+        h1 {
+            font-size: 28px;
+        }
+        h2 {
+            font-size: 26px;
+        }
+        h3 {
+            font-size: 23px;
+        }
+        h4 {
+            font-size: 21px;
+        }
+        h5 {
+            font-size: 20px;
+        }
+        .tag-list {
+            li {
+                font-size: 14px;
+                i {
+                    font-size: 16px;
+                }
+            }
+        }
+        .blockquote {
+            padding: 20px 20px 25px;
+            p {
+                font-size: 16px;
+            }
+            i {
+                bottom: 15px;
+                right: 20px;
+                font-size: 28px;
+            }
+        }
+        .blog-article-content {
+            ul {
+                li {
+                    font-size: 15px;
+                }
+            }
+        }
+        .article-share {
+            .article-tag {
+                margin-bottom: 15px;
+            }
+            .article-social-icon {
+                float: none;
+            }
+        }
+        .comments-wrap {
+            .comment-form {
+                li {
+                    padding-left: 0;
+                    &.pl-80 {
+                        padding-left: 0;
+                        img {
+                            left: 0;
+                        }
+                    }
+                    img {
+                        position: inherit;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+    }
+    /* Blog Area End */
+
+    /* Single Content */
+    .single-content {
+        h1 {
+            font-size: 28px;
+        }
+        h2 {
+            font-size: 26px;
+        }
+        h3 {
+            font-size: 23px;
+        }
+        h4 {
+            font-size: 21px;
+        }
+        h5 {
+            font-size: 20px;
+        }
+    }
+    /* Single Content End */
+
+    /* Product Area */
+    .product-topper {
+        padding: 20px;
+        .product-list {
+            margin-top: 15px;
+            width: 100%;
+            float: none;
+        }
+    }
+
+    .product-card {
+        .product-img {
+            .product-item-action {
+                li {
+                    transform: translateY(20px);
+                    opacity: 1;
+                    visibility: inherit;
+                }
+            } 
+        }
+    }
+    /* Product Area End */
+
+    /* Shop Details Area */
+    .shop-detls-tab {
+        .tabs {
+            padding: 0 0 5px;
+            li {
+                margin-right: 10px;
+                margin-bottom: 10px;
+                font-size: 17px;
+                &:last-child {
+                    margin-right: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .shop-detls-tab-content {
+        h3 {
+            font-size: 22px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .shop-review-form {
+            .review-title {
+                .btn-right {
+                    position: inherit;
+                    right: 0;
+                    bottom: 0;
+                }   
+            }
+            .review-comments {
+                margin-top: 25px;
+                .review-item {
+                    padding-right: 0;
+                    .content {
+                        padding: 0;
+                        img {
+                            position: inherit;
+                            margin-bottom: 10px;
+                        }
+                    }
+                    .review-report-link {
+                        margin-top: 8px;
+                        position: inherit;
+                        top: 0;                      
+                    }      
+                }                          
+            }
+        } 
+    }
+    /* Shop Details Area End */
+
+    /* Cart Wraps Area */
+    .cart-wraps-area {
+        .cart-table {
+            text-align: center;
+            table  {
+                thead {
+                    tr {
+                        th {
+                            padding: 10px 40px;
+                            white-space: nowrap;
+                            font-size: 16px;
+                            &:first-child {
+                                text-align: left;
+                                padding-left: 0;
+                            }
+                        }
+                        td {
+                            white-space: nowrap;
+                            &:first-child {
+                                text-align: left;
+                                padding-left: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .cart-buttons {
+            text-align: center;
+            .continue-shopping-box {
+                margin-bottom: 20px;
+            }
+            .default-btn {
+                display: block;
+                text-align: center;
+                width: 100%;
+            }
+        }
+    }
+
+    .cart-totals {
+        padding: 30px 20px;
+        margin-left: 0;
+    }
+    /* Cart Wraps Area End */
+
+    /* Checkout Area */
+    .billing-details {
+        padding: 30px 20px 5px 20px;
+    }
+    .payment-box {
+        padding: 25px 20px 25px;
+        .default-btn {
+            margin-top: 5px;
+        }
+    }
+    .billing-totals {
+        padding: 25px 20px 30px;
+    }
+    /* Checkout Area End */
+    
+    /* Contact Area */
+    .contact-info {
+        padding: 30px 20px 10px;
+        margin-right: 0;
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            li {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    .contact-form {
+        padding: 30px 20px;
+        h3 {
+            font-size: 24px;
+        }
+        .agree-label {
+            label {
+                a {
+                    &.forget {
+                        position: inherit;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Contact Area End */
+
+    /* Error Area */
+    .error-area {
+        .error-content {
+            h1 {
+                font-size: 70px;
+            }
+            h3 {
+                margin-top: 20px;
+                font-size: 26px;
+            }
+            p {
+                font-size: 15px;
+                margin-top: 10px;
+                padding: 0 15px;
+            }
+        }
+    }
+    /* Error Area End */
+
+    /* Coming Soon Area */
+    .coming-soon-area {
+        .coming-soon-content {
+            padding-top: 30px;
+            padding-bottom: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 0;
+            animation: none;
+            h1 {
+                font-size: 30px;
+                line-height: 1.1;
+                margin-top: 0;
+            }
+            p {
+                font-size: 14px;
+                margin-top: 15px;
+            }
+            #timer {
+                margin-top: 30px;
+                div {
+                    font-size: 30px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    margin-bottom: 15px;
+                    span {
+                        font-size: 14px;
+                        margin-top: -5px;
+                    }
+                    &::before {
+                        display: none;
+                    }
+                }
+            }
+            .newsletter-form {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                .input-newsletter {
+                    height: 55px;
+                    padding-left: 13px;
+                    font-size: 15px;
+                }
+                .default-btn  {
+                    position: relative;
+                    font-size: 14px;
+                    margin-top: 15px;
+                    width: 100%;
+                    height: 50px;
+                }
+            }
+        }
+    }
+    /* Coming Soon Area End */
+
+    /* Footer Area */
+    .footer-widget {
+        margin-bottom: 30px;
+        .footer-logo {
+            margin-bottom: 10px;
+            img {
+                max-width: 120px;
+            }
+        }
+        h3 {
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .social-link {
+            li {
+                margin-right: 5px;
+                a {
+                    i {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+        .footer-list {
+            li {
+                margin-bottom:  10px;
+            }
+        }
+        .footer-contact {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                position: relative;
+                color: var(--greenColor);
+                padding-bottom: 35px;
+                &:last-child {
+                    padding-bottom: 20px;
+                }
+            }
+        }
+    }
+    /* Footer Area End */
+    .go-top {
+        font-size: 18px;
+        width: 35px;
+        height: 35px;
+        line-height: 32px;
+        .active {
+            top: 85%;
+        }
+    }
+
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    /* Banner Bottom Area CSS */
+    .banner-bottom-card {
+        padding: 20px 10px;
+    }
+    .banner-bottom-item {
+        padding: 20px 10px;
+        .top-shape {
+            img {
+                width: 50px;
+                &:nth-child(1) {
+                    right: 15px;
+                }
+                &:nth-child(2) {
+                    right: 15px;
+                }
+            }
+        }
+    }
+    /* Banner Bottom Area CSS End */
+
+    /* Work Area CSS */
+    .work-card {
+        .content {
+            padding: 20px;
+        }
+        &:hover {
+            padding: 10px;
+            .content {
+                padding: 10px;
+            }
+        }
+    }
+    /* Work Area CSS End */
+
+    /* Blog Area */
+    .blog-side-content {
+        padding: 0 0 0 115px;
+        max-width: 100%;
+        .blog-side-img {
+            width: 100px;
+            height: 110px;
+        }
+    }
+    /* Blog Area End */
+
+    .recipe-details-content {
+        .recipe-tag-list {
+            li {
+                display: inline-block;
+                margin-bottom: 0;
+                margin-right: 7px;
+                padding: 6px 0 5px 45px;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    /* Cart Wraps Area */
+    .cart-wraps-area {
+        .cart-buttons {
+            text-align: center;
+            .continue-shopping-box {
+                margin-bottom: 0;
+            }
+        }
+    }
+    /* Cart Wraps Area End */
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+     /* Default CSS */
+     body {
+        font-size: 15px;
+    }
+    .ptb-100 {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .pt-100 {
+        padding-top: 50px;
+    }
+    .ptb-70 {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+    .pb-100 {
+        padding-bottom: 50px !important;
+    }
+    .pt-70 {
+        padding-top: 50px;
+    }
+    .pb-70 {
+        padding-bottom: 20px;
+    }
+    .pt-45 {
+        padding-top: 30px;
+    }
+    .pb-10 {
+        padding-bottom: 0;
+    }
+    .pl-20 {
+        padding-left: 0;
+    }
+    .pr-20 {
+        padding-right: 0;
+    }
+    .ml-20 {
+        margin-left: 0;
+    }
+    .default-btn {
+        padding: 8px  20px;
+    }
+    .section-title {
+        span {
+            font-size: 12px;
+        }
+        h2 {
+            font-size: 25px;
+        }
+        p {
+            padding-top: 10px;
+        }
+    }
+
+    .ps-2 {
+        padding-left: 0 !important;
+    }
+    .ps-3 {
+        padding-left: 0 !important;
+    }
+    .ps-5 {
+        padding-left: 0 !important;
+    }
+    .ps-0 {
+        padding-left: 15px !important;
+    }
+    .pe-0 {
+        padding-right: 15px !important;
+    }
+    .p-0 {
+        padding-left: 15px !important; 
+        padding-right: 15px !important;
+    }
+    /* Default CSS End */
+
+    /* Top Header CSS */
+    .top-inner-bg {
+        padding: 7px 10px;
+    }
+    /* Top Header CSS End */
+
+    .mobile-nav {
+        .mobile-other {
+            .optional-item {
+                .default-btn {
+                    padding: 8px 16px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    /* Main Banner CSS */
+    .banner-area {
+        padding: 50px 0;
+    }
+    .banner-content {
+        padding: 30px 20px;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+    }
+    .banner-shape {
+        display: none;
+    }
+
+    .banner-slider-area {
+        padding: 50px 0 35px;
+        &::before {
+            height: 100%;
+        }
+        .owl-dots {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            position: inherit;
+            top: auto;
+            display: inline-block;
+            transform: translateX(-50%), translateY(0);
+            .owl-dot {
+                span {
+                    margin: 7px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .banner-item-content {
+        margin-bottom: 25px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+    }
+    .banner-shape-two {
+        display: none;
+    }
+    .banner-item-img {
+        padding-left: 0;
+        margin-bottom: 30px;
+        img {
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    .banner-content-two {
+        max-width: 100%;
+        padding: 30px 20px;
+        border-radius: 0;
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .banner-btn {
+            .two {
+                margin-left: 10px;
+            }
+        }
+        .banner-content-shape {
+            display: none;
+        }
+    }
+    /* Main Banner CSS End */
+
+    /* Inner Banner CSS */
+    .inner-banner {
+        .inner-title {
+            padding-top: 70px;
+            padding-bottom: 70px;
+            h3 {
+                font-size: 30px;
+            }
+        }
+    }
+    /* Inner Banner CSS End */
+
+    /* Banner Bottom Area CSS */
+    .banner-bottom-card {
+        padding: 20px 15px;
+        i {
+            width: 60px;
+            height: 60px;
+            line-height: 72px;
+            font-size: 30px;
+        }
+    }
+
+    .banner-bottom-item {
+        padding: 20px 15px;
+    }
+    /* Banner Bottom Area CSS End */
+
+    /* About Area CSS */
+    .about-area {
+       padding-top: 50px;
+       padding-bottom: 20px;
+        &::before {
+           display: none;
+        }
+    }
+
+    .about-img {
+        animation: none;
+    }
+    
+    .about-play-btn {
+        text-align: center;
+        margin-bottom: 30px;
+        .play-btn {
+            i {
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                background-color: var(--greenColor);
+                color: var(--whiteColor);
+                font-size: 24px;
+                &::after {
+                    border: 1px solid var(--greenColor);
+                }
+                &:hover {
+                    background-color: var(--titleColor);
+                    color: var(--whiteColor);
+                    &::after {
+                        border-color: var(--titleColor);
+                    }
+                }
+            }
+        }
+    }
+    .about-shape {
+        display: none;
+    }
+
+    .about-area-two  {
+        .container-fluid {
+            width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    .about-content-two {
+        .about-content-item {
+            p {
+                max-width: 500px;
+            }
+        }
+    }
+    /* About Area CSS End */
+
+    /* Diet Plan Area */
+    .diet-tab {
+        .tabs {
+            li {
+                margin: 7px;
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .diet-plan-card {
+        h3 {
+            font-size: 19px;
+            max-width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    /* Diet Plan Area End */
+
+    /* Work Area CSS */
+    .work-card {
+        .content {
+            padding: 20px;
+        }
+        &:hover {
+            padding: 10px;
+            .content {
+                padding: 10px;
+            }
+        }
+    }
+    /* Work Area CSS End */
+
+    /* Choose Area CSS End */
+    .choose-area {
+        border-top: 1px solid #f1f1f1;
+        border-bottom: 1px solid #f1f1f1;
+        &::before {
+            width: 100%;
+            opacity: 1;
+        }
+        &::after {
+            width: 100%;
+            opacity: 1;
+        }
+    }
+
+    .choose-slider-area {
+        padding-bottom: 35px;
+    }
+    .choose-slider {
+        position: relative;
+        .owl-nav {
+            margin-top: 0;
+            .owl-prev, .owl-next {
+                font-size: 18px !important;
+                width: 35px;
+                height: 35px;
+                line-height: 35px !important;
+            }
+        }
+    }
+    /* Choose Area CSS End */
+
+    /* Appointment Area */
+    .appointment-form {
+        padding: 30px 20px;
+        margin-left: auto;
+        margin-right: auto;
+        h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+    }
+    /* Appointment Area End */
+
+    /* Event Area  */
+    .event-content {
+        .section-title {
+            margin-bottom: 20px;
+        }
+        .content {
+            padding-left: 125px;
+            .event-date {
+                width: 110px;
+                h2 {
+                    font-size: 21px;
+                    padding: 22px;
+                }
+            }
+            h3 {
+                margin-top: 10px;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .event-img {
+        margin-right: 0;
+        .sub-img {
+            display: none;
+        }
+    }
+    /* Event Area End */
+
+    /* Pricing Area End */
+    .pricing-shape {
+        display: none;
+    }
+
+    .pricing-card {
+        padding: 30px 20px;
+    }
+
+    /* Pricing Area End */
+
+    /* Recipe Area */
+    .recipe-slider {
+        &.owl-theme {
+            left: 0;
+            position: relative;
+        }
+    }
+
+    .recipe-details-content {
+        h1 {
+            font-size: 28px;
+        }
+        h2 {
+            font-size: 26px;
+        }
+        h3 {
+            font-size: 23px;
+        }
+        h4 {
+            font-size: 21px;
+        }
+        h5 {
+            font-size: 20px;
+        }
+    }
+    /*  Recipe Area End */
+
+     /* Recipe Video Area */
+     .recipe-video-card {
+        margin-bottom: 30px;
+        margin-right: 0;
+        .content {
+            height: 92px;
+            h3 {
+                font-size: 18px;
+            }
+        }
+    }
+    
+    .recipe-video-list {
+        margin-bottom: 30px;
+        a {
+            img {
+                max-width: 90px;
+            }
+        }
+    }
+    /* Recipe Video Area End */
+
+    /* Video Area */
+    .video-btn-ara {
+        &::before {
+            display: none;
+        }
+        .video-btn {
+            padding: 100px 0;
+            i {
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 30px;
+            }
+        }
+    }
+    /* Video Area End */
+    
+
+    /* Calculate Area */
+    .calculate-form {
+        padding: 30px 20px;
+        h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .calculate-chart {
+        padding: 30px 20px;
+        h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+    }
+    /* Calculate Area End */
+
+    /* Testimonials Area */
+    .testimonials-item {
+        margin-bottom: 20px;
+        text-align: center;
+        .section-title {
+            margin-bottom: 15px;
+        }
+        i {
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            max-width: 540px;
+        }
+    }
+    /* Testimonials Area End */
+
+    /* Services Area End */
+    .service-details-content {
+        h1 {
+            font-size: 28px;
+        }
+        h2 {
+            font-size: 26px;
+        }
+        h3 {
+            font-size: 23px;
+        }
+        h4 {
+            font-size: 21px;
+        }
+        h5 {
+            font-size: 20px;
+        }
+    }
+    /* Services Area End */
+
+    /* Contact Area */
+    .contact-info {
+        padding: 30px 25px 10px;
+        margin-right: 0;
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            li {
+                margin-bottom: 20px;
+                display: inline-block;
+                margin-right: 30px;
+                &:last-child {
+                    margin-right: none;
+                }
+            }
+        }
+    }
+
+    .contact-form {
+        padding: 30px 20px;
+    }
+
+    /* Contact Area End */
+
+    /* Blog Area */
+    .blog-details-content {
+        h1 {
+            font-size: 28px;
+        }
+        h2 {
+            font-size: 26px;
+        }
+        h3 {
+            font-size: 23px;
+        }
+        h4 {
+            font-size: 21px;
+        }
+        h5 {
+            font-size: 20px;
+        }
+    }
+    /* Blog Area End */
+
+    /* Single Content */
+    .single-content {
+        h1 {
+            font-size: 28px;
+        }
+        h2 {
+            font-size: 26px;
+        }
+        h3 {
+            font-size: 23px;
+        }
+        h4 {
+            font-size: 21px;
+        }
+        h5 {
+            font-size: 20px;
+        }
+    }
+    /* Single Content End */
+
+    /* Cart Wraps Area */
+    .cart-totals {
+        padding: 30px 20px;
+        margin-left: 0;
+    }
+    /* Cart Wraps Area End */
+
+    /* Checkout Area */
+    .billing-details {
+        padding: 30px 20px 5px 20px;
+    }
+    .payment-box {
+        padding: 25px 20px 25px;
+        .default-btn {
+            margin-top: 5px;
+        }
+    }
+    .billing-totals {
+        padding: 25px 20px 30px;
+    }
+    /* Checkout Area End */
+
+    /* Error Area */
+    .error-area {
+        .error-content {
+            h1 {
+                font-size: 120px;
+            }
+            h3 {
+                margin-top: 20px;
+                font-size: 30px;
+            }
+            p {
+                font-size: 15px;
+                margin-top: 10px;
+                padding: 0 15px;
+            }
+        }
+    }
+    /* Error Area End */
+
+    /* Coming Soon Area */
+    .coming-soon-area {
+        .coming-soon-content {
+            padding-top: 30px;
+            padding-bottom: 50px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 0;
+            animation: none;
+            h1 {
+                font-size: 45px;
+                line-height: 1.1;
+                margin-top: 0;
+            }
+            p {
+                font-size: 16px;
+                margin-top: 15px;
+            }
+        }
+    }
+    /* Coming Soon Area End */
+
+    /* Footer Area */
+    .footer-widget {
+        margin-bottom: 30px;
+        .footer-logo {
+            margin-bottom: 10px;
+            img {
+                max-width: 120px;
+            }
+        }
+        h3 {
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .social-link {
+            li {
+                margin-right: 5px;
+                a {
+                    i {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+        .footer-list {
+            li {
+                margin-bottom:  10px;
+            }
+        }
+        .footer-contact {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                position: relative;
+                color: var(--greenColor);
+                padding-bottom: 35px;
+                &:last-child {
+                    padding-bottom: 20px;
+                }
+            }
+        }
+    }
+    /* Footer Area End */
+    .go-top {
+        font-size: 18px;
+        width: 35px;
+        height: 35px;
+        line-height: 32px;
+        .active {
+            top: 85%;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .ps-2 {
+        padding-left: 0 !important;
+    }
+    .ps-3 {
+        padding-left: 0 !important;
+    }
+    .ps-5 {
+        padding-left: 0 !important;
+    }
+
+    .section-title {
+        h2 {
+            font-size: 32px;
+        }
+    }
+
+    /* Navbar Area */
+    .desktop-nav {
+        .navbar {
+            .navbar-nav {
+                .nav-item {
+                    a {
+                        margin-left: 10px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .others-options {
+        .optional-item {
+            margin-right: 15px;
+            .default-btn {
+                padding: 10px 20px;
+            }
+            .search-btn {
+                margin-left: 15px;
+            }
+        }
+    }
+    /* Navbar Area End */
+
+    /* Main Banner Area */
+    .banner-area {
+        padding: 60px 0;
+    }
+    .banner-content {
+        padding: 40px 30px;
+        h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            max-width: 430px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+    }
+
+    .banner-item-content {
+        h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+    }
+
+    .banner-content-two {
+        max-width: 650px;
+        padding: 100px 110px;
+        h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+    }
+    /* Main Banner Area End */
+
+    /* About Area */
+    .about-content {
+        .about-list {
+            ul {
+                li {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+    .about-content-two {
+        .about-content-item {
+            padding-left: 55px;
+            margin-bottom: 20px;
+            i {
+                width: 45px;
+                height: 45px;
+                line-height: 52px;
+                font-size: 18px;
+            }
+        }
+    }
+    /* About Area End */
+
+    /* Diet Plan Area */
+    .diet-tab {
+        .tabs {
+            li {
+                margin: 0 7px;
+                padding: 15px 20px;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .diet-plan-card {
+        h3 {
+            font-size: 18px;
+        }
+    }
+    /* Diet Plan Area End */
+
+    /* Recipe Area */
+    
+    .recipe-slider {
+        &.owl-theme {
+            left: calc((100% - 940px)/2);
+        }
+    }
+    
+
+    .recipe-card {
+        h3 {
+            font-size: 18px;
+            max-width: 160px;
+        }
+        span {
+            font-size: 16px;
+        }
+    }
+    /* Recipe Area End */
+
+    /* Recipe Video Area */
+    .recipe-video-card {
+        margin-bottom: 30px;
+        margin-right: 0;
+        .content {
+            padding: 20px 10px;
+            height: 92px;
+            h3 {
+                font-size: 18px;
+            }
+        }
+    }
+    
+    .recipe-video-list {
+        margin-bottom: 30px;
+        a {
+            img {
+                max-width: 50px;
+                margin-right: 5px;
+            }
+        }
+        .content {
+            h3 {
+                font-size: 16px;
+            }
+            ul {
+                li {
+                    font-size: 13px;
+                    margin-right: 3px;
+                    i {
+                        margin-right: 0;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    /* Recipe Video Area End */
+
+    /* Video Area */
+    .video-btn-ara {
+        .video-btn {
+            padding: 200px 0;
+        }
+    }
+    /* Video Area End */
+
+    .portfolio-card {
+        .content {
+            padding: 20px 15px;
+            h3 {
+                font-size: 18px;
+            }
+        }
+    }
+    
+    /* Team Area */
+    .team-card {
+        .content {
+            padding: 20px 10px;
+            h3 {
+                font-size: 18px;
+            }
+            span {
+                font-size: 14px;
+            }
+            .team-social {
+                li {
+                    margin-right: 5px;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    a {
+                        i {
+                            width: 30px;
+                            height: 30px;
+                            line-height: 30px;
+                            font-size: 16px;
+                        }
+                    }  
+                }
+            } 
+        }
+    }
+    /* Team Area End */
+
+    /* Services Area */
+    .services-card {
+        .content {
+            padding: 25px 15px;
+            font-size: 15px;
+        }
+    }
+    /* Services Area End */
+
+    /* Event Area  */
+    .event-content {
+        .section-title {
+            margin-bottom: 20px;
+        }
+        .content {
+            padding-left: 125px;
+            .event-date {
+                width: 110px;
+                h2 {
+                    font-size: 21px;
+                    padding: 22px;
+                }
+            }
+            h3 {
+                margin-top: 10px;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .event-img {
+        .sub-img {
+            bottom: -185px;
+        }
+    }
+    /* Event Area End */
+
+    /* Work Area CSS */
+    .work-card {
+        .content {
+            padding: 20px;
+        }
+        &:hover {
+            padding: 10px;
+            .content {
+                padding: 10px;
+            }
+        }
+    }
+    /* Work Area CSS End */
+
+    /* Choose Area CSS End */
+    .choose-area {
+        border-top: 1px solid #f1f1f1;
+        border-bottom: 1px solid #f1f1f1;
+        &::before {
+            width: 60%;
+        }
+        &::after {
+            width: 60%;
+        }
+    }
+    /* Choose Area CSS End */
+
+    /* Calculate Area */
+    .calculate-form {
+        padding: 30px 20px;
+        h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .calculate-chart {
+        padding: 30px 20px;
+        h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+    }
+    /* Calculate Area End */
+
+    /* Testimonials Area */
+    .testimonials-item {
+        margin-bottom: 20px;
+        text-align: center;
+        .section-title {
+            margin-bottom: 15px;
+        }
+        i {
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            max-width: 540px;
+        }
+    }
+    /* Testimonials Area End */
+
+     /* Cart Wraps Area */
+     .cart-totals {
+        padding: 30px 20px;
+        margin-left: 20px;
+    }
+    /* Cart Wraps Area End */
+
+    /* Blog Area */
+    .blog-side-content {
+        margin-bottom: 30px;
+        padding: 0 0 0 110px;
+        .blog-side-img {
+            width: 90px;
+            height: 112px;
+        }
+        .content {
+            vertical-align: middle;
+            h3 {
+               font-size: 19px;
+            }
+            p {
+                font-size: 15px;
+            }
+        }
+    }
+    /* Blog Area End */
+
+    /* Product Area */
+    .product-card {
+        .content {
+            h3 {
+               font-size: 17px;
+            }
+            span {
+                font-size: 15px;
+            }
+            .rating {
+                font-size: 12px;
+                top: 5px;
+            }
+        }
+    }
+    /* Product Area End */
+
+    .contact-info {
+        padding: 30px 20px 10px;
+        margin-right: 0;
+        p {
+            margin-bottom: 20px;
+        }
+        ul {
+            li {
+                margin-bottom: 18px;
+            }
+        }
+    }
+
+    /* Footer Area */
+    .footer-widget {
+        margin-bottom: 30px;
+        .footer-logo {
+            margin-bottom: 10px;
+            img {
+                max-width: 120px;
+            }
+        }
+        h3 {
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        .social-link {
+            li {
+                margin-right: 5px;
+                a {
+                    i {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+        .footer-list {
+            li {
+                margin-bottom:  10px;
+                font-size: 15px;
+            }
+        }
+        .footer-contact {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                position: relative;
+                color: var(--greenColor);
+                padding-bottom: 35px;
+                font-size: 15px;
+                &:last-child {
+                    padding-bottom: 20px;
+                }
+                span {
+                    left: 75px;
+                }
+            }
+        }
+    }
+    /* Footer Area End */
+
+    .banner-bottom-card-two {
+        padding: 20px 15px;
+        h3 {
+            font-size: 18px !important;
+        }
+    }
+
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1299px) {
+    .ps-2 {
+        padding-left: 0 !important;
+    }
+    .ps-3 {
+        padding-left: 0 !important;
+    }
+    .ps-5 {
+        padding-left: 0 !important;
+    }
+
+    .banner-item-content {
+        h1 {
+            font-size: 45px;
+        }
+    }
+
+    /* About Area */
+    .about-content-two {
+        .about-content-item {
+            padding-left: 50px;
+            margin-bottom: 20px;
+            i {
+                width: 40px;
+                height: 40px;
+                line-height: 47px;
+                font-size: 18px;
+            }
+            h3 {
+                font-size: 17px;
+            }
+            font-size: 15px;
+        }
+    }
+    /* About Area End */
+
+    /* Event Area  */
+    .event-content {
+        .section-title {
+            margin-bottom: 20px;
+        }
+        .content {
+            padding-left: 125px;
+            .event-date {
+                width: 110px;
+                h2 {
+                    font-size: 21px;
+                    padding: 22px;
+                }
+            }
+            h3 {
+                margin-top: 10px;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .event-img {
+        .sub-img {
+            bottom: -100px;
+        }
+    }
+    /* Event Area End */
+
+    /* Work Area CSS */
+    .work-card {
+        .content {
+            padding: 20px;
+        }
+        &:hover {
+            padding: 10px;
+            .content {
+                padding: 10px;
+            }
+        }
+    }
+    /* Work Area CSS End */
+
+    /* Recipe Area */
+    .recipe-slider {
+        &.owl-theme {
+            left: calc((100% - 1140px)/2);
+        }
+    }
+    
+
+    .recipe-card {
+        h3 {
+            font-size: 19px;
+        }
+        span {
+            font-size: 17px;
+        }
+    }
+    /* Recipe Area End */
+
+    /* Recipe Video Area */
+    .recipe-video-card {
+        margin-bottom: 30px;
+        margin-right: 0;
+        .content {
+            padding: 20px 10px;
+            height: 92px;
+            h3 {
+                font-size: 18px;
+            }
+        }
+    }
+    
+    .recipe-video-list {
+        a {
+            img {
+                max-width: 90px;
+                margin-right: 5px;
+            }
+        }
+        .content {
+            h3 {
+                font-size: 17px;
+            }
+            ul {
+                li {
+                    font-size: 13px;
+                    margin-right: 3px;
+                    i {
+                        margin-right: 0;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+    /* Recipe Video Area End */
+
+    /* Blog Area */
+    .blog-side-content {
+        margin-bottom: 35px;
+        padding: 0 0 0 145px;
+        .blog-side-img {
+            width: 130px;
+            height: 115px;
+        }
+        .content {
+            vertical-align: middle;
+            h3 {
+               font-size: 19px;
+            }
+            p {
+                font-size: 15px;
+            }
+        }
+    }
+    /* Blog Area End */
+
+    /* Product Area */
+    .product-card {
+        .content {
+            .rating {
+                font-size: 13px;
+                top: 5px;
+            }
+        }
+    }
+    /* Product Area End */
+
+    .contact-info {
+        padding: 60px 20px 32px;
+        margin-right: 0;
+        p {
+            margin-bottom: 20px;
+        }
+        ul {
+            li {
+                margin-bottom: 25px;
+            }
+        }
+    }
+
+
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1350px) {
+    .recipe-video-list {
+        a {
+            img {
+                max-width: 100px;
+                margin-right: 10px;
+            }
+        }
+        .content {
+            h3 {
+                font-size: 18px;
+            }
+            ul {
+                li {
+                    font-size: 14px;
+                    margin-right: 5px;
+                    i {
+                        margin-right: 3px;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+
+    .recipe-slider {
+        &.owl-theme {
+            left: calc((100% - 1270px)/2);
+            position: relative;
+        }
+    }
+}
+
+
+@media only screen and (min-width : 1300px)  {
+    .container {
+        max-width: 1320px !important;
+    } 
+    .container-fluid {
+        max-width: 1320px !important;
+    } 
+}
+
+@media only screen and (min-width : 1350px) and (max-width: 1469px)  {
+    .container-fluid {
+        max-width: 1360px !important;
+    } 
+}
+
+@media only screen and (min-width: 1470px) and (max-width: 1799px) {
+    .container-fluid {
+        max-width: 1460px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+@media only screen and (min-width : 1800px)  {
+    .container-fluid {
+        max-width: 1640px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .about-area-two  {
+        .container-fluid {
+            max-width: 1440px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    }
+}
+
+
+// Mobile and iPad Navbar
+@media only screen and (max-width: 991px) {
+    .nav-sidebar {
+        display: none;
+    }
+    .mobile-nav {
+        display: inline-block;
+    }
+    .navbar-area {
+        padding: {
+            top: 20px;
+            bottom: 20px;
+        };
+        &.is-sticky {
+            padding: {
+                top: 20px;
+                bottom: 20px;
+            };
+        }
+    }
+    .mobile-responsive-nav {
+        display: block;
+        .mobile-responsive-menu {
+            position: relative;
+            &.mean-container {
+                .mean-nav {
+                    margin-top: 55px;
+                    background-color: #ffffff;
+
+                    ul {
+                        font-size: 15px;
+                        border: none !important;
+
+                        li {
+                            a {
+                                color: #000000;
+                                border-top-color: #DBEEFD;
+                                text-transform: capitalize;
+
+                                i {
+                                    display: none;
+                                }
+                                &.mean-expand {
+                                    width: 50%;
+                                    height: 28px;
+                                    text-align: right;
+                                    padding: 11px!important;
+                                    background: transparent !important;
+                                    border: {
+                                        left: none !important;
+                                        bottom: none !important;
+                                    };
+                                }
+                                &.active {
+                                    color: var(--greenColor);
+                                }
+                            }
+                            li {
+                                a {
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .navbar-nav {
+                    max-height: 50vh;
+                    overflow-y: scroll;
+                    box-shadow: 0 7px 13px 0 rgba(0, 0, 0, .1);
+                    /* width */
+                    &::-webkit-scrollbar {
+                        width: 7px;
+                    }
+                    /* Track */
+                    &::-webkit-scrollbar-track {
+                        background: #f1f1f1;
+                    }
+                    /* Handle */
+                    &::-webkit-scrollbar-thumb {
+                        background: #888;
+                    }
+                    /* Handle on hover */
+                    &::-webkit-scrollbar-thumb:hover {  
+                        background: #555;
+                    }
+                }
+            }
+        }
+        .mean-container {
+            a {
+                &.meanmenu-reveal {
+                    top: -2px;
+                    padding: 0;
+                    width: 35px;
+                    height: 30px;
+                    padding-top: 6px;
+                    color:  var(--greenColor);
+                    span {
+                        background:  var(--greenColor);
+                        height: 4px;
+                        margin-top: -6px;
+                        border-radius: 3px;
+                        position: relative;
+                        top: 8px;
+                    }
+                }
+            }
+            .mean-bar {
+                background: transparent;
+                position: absolute;
+                z-index: 999;
+                padding: 0;
+            }
+        }
+        .others-options {
+            display: none !important;
+        }
+        .logo {
+            position: relative;
+            width: 120px;
+            z-index: 999;
+        }
+    }
+    .desktop-nav {
+        display: none;
+    }
+    .banner-bottom-card-two {
+        padding: 20px 15px;
+        h3 {
+            font-size: 18px !important;
+        }
+    }
+}
