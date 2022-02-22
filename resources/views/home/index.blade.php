@@ -15,6 +15,7 @@
 @stop
 
 @section('content-wrapper')
+    test
     @include('home.navbar')
     @include('home.banner')
     {{--@include('home.banner-bottom-area')--}}
