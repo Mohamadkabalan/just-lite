@@ -23,6 +23,7 @@
     {{--    @include('home.diet-plan-area')--}}
     @include('home.appointment')
     @include('home.testimonial')
+    @include('home.bad-habits')
 
 
 @endsection

@@ -56,6 +56,7 @@ return [
     "pricing-plan" => "خطة التسعير",
     "choose-your-best-plan" => "اختر أفضل خطة لديك",
     "book-now" =>  "احجز الآن",
-    "nutrition-special-feature" => "ميزة التغذية الخاصة"
+    "nutrition-special-feature" => "ميزة التغذية الخاصة",
+    "bad-habits" => "عادات سيئة"
 
 ];

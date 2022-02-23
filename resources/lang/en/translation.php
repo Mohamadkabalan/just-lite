@@ -56,6 +56,7 @@ return [
     "pricing-plan" => "Pricing Plan",
     "choose-your-best-plan" => "Choose Your Best Plan",
     "book-now" =>  "Book Now",
-    "nutrition-special-feature" => "Nutrition Special Feature"
+    "nutrition-special-feature" => "Nutrition Special Feature",
+    "bad-habits" => "Bad Habits"
 
 ];
