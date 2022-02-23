@@ -24,6 +24,7 @@
     @include('home.appointment')
     @include('home.testimonial')
     @include('home.bad-habits')
+    @include('home.results')
 
 
 @endsection

@@ -57,6 +57,9 @@ return [
     "choose-your-best-plan" => "Choose Your Best Plan",
     "book-now" =>  "Book Now",
     "nutrition-special-feature" => "Nutrition Special Feature",
-    "bad-habits" => "Bad Habits"
+    "bad-habits" => "Bad Habits",
+    "results" => "Results",
+    "before-after" => "Before &amp; After",
+    "results-description" => "Check out these amazing before-and-after weight loss pictures to give you the motivation you need to take the first step for a healthier you."
 
 ];

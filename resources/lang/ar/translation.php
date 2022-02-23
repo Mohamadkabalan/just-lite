@@ -57,6 +57,9 @@ return [
     "choose-your-best-plan" => "اختر أفضل خطة لديك",
     "book-now" =>  "احجز الآن",
     "nutrition-special-feature" => "ميزة التغذية الخاصة",
-    "bad-habits" => "عادات سيئة"
+    "bad-habits" => "عادات سيئة",
+    "results" => "نتائج",
+    "before-after" => "قبل وبعد",
+    "results-description" => "تحقق من هذه الصور المذهلة قبل وبعد فقدان الوزن لتعطيك الدافع الذي تحتاجه لاتخاذ الخطوة الأولى من أجل صحتك."
 
 ];
