@@ -13,7 +13,7 @@
                 <div class="pricing-card">
                     <div class="pricing-title">
                         <h3>{{$package->price}} $</h3>
-                        <span>@if($lang=='en') {{$package->title_en}} @else {{$package->title_ar}}  @endif</span>
+                        <span>@if($lang=='en') {{$package->name_en}} @else {{$package->name_ar}}  @endif</span>
                     </div>
                     <ul class="pt-4">
                         @if($lang=='en') {!! $package->features_en !!} @else {!! $package->features_ar !!}  @endif
