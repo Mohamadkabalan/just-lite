@@ -83,3 +83,9 @@ Route::get('/storage-link', function() {
     \Artisan::call('storage:link', $output);
     dd($output);
 });
+
+Route::get('/migrate', function() {
+    $output = [];
+    \Artisan::call('migrate', $output);
+    dd($output);
+});
