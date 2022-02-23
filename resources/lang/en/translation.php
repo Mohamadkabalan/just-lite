@@ -54,6 +54,7 @@ return [
     "your-subject" => "Your Subject",
     "send-message" => "Send Message",
     "pricing-plan" => "Pricing Plan",
-    "choose-your-best-plan" => "Choose Your Best Plan"
+    "choose-your-best-plan" => "Choose Your Best Plan",
+    "book-now" =>  "Book Now"
 
 ];

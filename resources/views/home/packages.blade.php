@@ -4,7 +4,7 @@
     <div class="container">
         <div class="section-title text-center">
             <span>{{ __('translation.pricing-plan')  }}</span>
-            <h2>Choose Your Best Plan</h2>
+            <h2>{{ __('translation.choose-your-best-plan')  }}</h2>
         </div>
 
         <div class="row justify-content-center pt-45">
@@ -19,7 +19,7 @@
                         @if($lang=='en') {!! $package->features_en !!} @else {!! $package->features_ar !!}  @endif
                     </ul>
                     <div class="price-btn-area text-center">
-                        <a href="pricing.html" class="default-btn">Book Now</a>
+                        <a href="javascript:;" class="default-btn">{{ __('translation.pricing-plan')  }}</a>
                     </div>
                 </div>
             </div>
