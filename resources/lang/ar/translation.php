@@ -55,6 +55,7 @@ return [
     "send-message" => "أرسل رسالة",
     "pricing-plan" => "خطة التسعير",
     "choose-your-best-plan" => "اختر أفضل خطة لديك",
-    "book-now" =>  "احجز الآن"
+    "book-now" =>  "احجز الآن",
+    "nutrition-special-feature" => "ميزة التغذية الخاصة"
 
 ];

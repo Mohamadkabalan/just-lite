@@ -11,14 +11,14 @@
             <div class="col-lg-6">
                 <div class="about-content">
                     <div class="section-title">
-                        <span>About Us</span>
+                        <span>{{ __('translation.about-us')  }}</span>
                         <h2>@if($lang=='en') {{$about->title_en}} @else {{$about->title_ar}}  @endif</h2>
                         <p>
                             @if($lang=='en') {{$about->text_en}} @else {{$about->text_ar}}  @endif
                         </p>
                     </div>
 
-                    <h3>Nutrition Special Features</h3>
+                    <h3><span>{{ __('translation.nutrition-special-feature')  }}</span></h3>
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
                             <div class="about-list">

@@ -6,7 +6,6 @@
             <span>{{ __('translation.pricing-plan')  }}</span>
             <h2>{{ __('translation.choose-your-best-plan')  }}</h2>
         </div>
-
         <div class="row justify-content-center pt-45">
             @foreach($packages as $key => $package)
             <div class="col-lg-4 col-md-6">
