@@ -19,7 +19,8 @@
     @include('home.banner')
     {{--@include('home.banner-bottom-area')--}}
     @include('home.about')
-    @include('home.diet-plan-area')
+    @include('home.packages')
+    {{--    @include('home.diet-plan-area')--}}
     @include('home.appointment')
     @include('home.testimonial')
 
