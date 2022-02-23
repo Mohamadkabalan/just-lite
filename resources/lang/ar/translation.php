@@ -37,7 +37,7 @@ return [
     "informations" => "معلومات",
     "address" => "العنوان",
     "address-info" => "شارع مار الياس ، شمال لبنان ، لبنان",
-    "phone-info" => "٩٦١٧٩٧٧٩١٠٠+",
+    "phone-info" => "٩٦١٧٠٧٧٩١٠٠+",
     "copy-right" => "حقوق الطبع والنشر © ٢٠٢٢. جميع الحقوق محفوظة",
     "how-it-works" => "كيف تعمل",
     "easy-steps-for-happy-life" => "٤ خطوات سهلة لحياة سعيدة",
