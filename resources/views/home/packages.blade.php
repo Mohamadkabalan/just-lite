@@ -19,7 +19,7 @@
                         @if($lang=='en') {!! $package->features_en !!} @else {!! $package->features_ar !!}  @endif
                     </ul>
                     <div class="price-btn-area text-center">
-                        <a href="javascript:;" class="default-btn">{{ __('translation.pricing-plan')  }}</a>
+                        <a href="javascript:;" class="default-btn">{{ __('translation.book-now')  }}</a>
                     </div>
                 </div>
             </div>

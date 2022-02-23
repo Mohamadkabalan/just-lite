@@ -71,3 +71,15 @@ Route::get('/contact-us', function () {
 
 Route::post('/contact/create', 'App\Http\Controllers\ContactController@store')
     ->name('contact.store');
+
+Route::get('/clear-cache', function() {
+    $output = [];
+    \Artisan::call('cache:clear', $output);
+    dd($output);
+});
+
+Route::get('/storage-link', function() {
+    $output = [];
+    \Artisan::call('storage:link', $output);
+    dd($output);
+});
