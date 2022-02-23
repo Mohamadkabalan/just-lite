@@ -22,8 +22,8 @@
                             <div class="carousel-item @if($key==0) active @endif">
                                 <img src=" {{ 'storage/'.str_replace('\\', '/', $result->image) }}" class="d-block w-100" alt="{{$result->title_en}}">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h2 class="text-white">@if($lang=='en') {{$result->title_en}} @else {{$result->title_ar}}  @endif</h2>
-                                    <h3 class="text-white">@if($lang=='en') {{$result->text_en}} @else {{$result->text_ar}}  @endif</h3>
+                                    <h2 class="banner-title">@if($lang=='en') {{$result->title_en}} @else {{$result->title_ar}}  @endif</h2>
+                                    <h3 class="banner-text">@if($lang=='en') {{$result->text_en}} @else {{$result->text_ar}}  @endif</h3>
                                 </div>
                             </div>
                         @endforeach
@@ -40,7 +40,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="qodef-m-info p-5">
-                    <h5 class="qodef-m-title">{{ __('translation.before-after')  }}	</h5>
+                    <h5 class="qodef-m-title">{!! __('translation.before-after') !!}   }}	</h5>
                     <p class="qodef-m-text">{{ __('translation.results-description')  }}</p>
                 </div>
             </div>

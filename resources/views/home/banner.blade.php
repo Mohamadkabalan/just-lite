@@ -27,8 +27,8 @@
             <div class="carousel-item @if($key==0) active @endif">
                 <img src=" {{ 'storage/'.str_replace('\\', '/', $banner->image) }}" class="d-block w-100" alt="{{$banner->title_en}}">
                 <div class="carousel-caption d-none d-md-block">
-                    <h2 class="text-white">@if($lang=='en') {{$banner->title_en}} @else {{$banner->title_ar}}  @endif</h2>
-                    <h3 class="text-white">@if($lang=='en') {{$banner->text_en}} @else {{$banner->text_ar}}  @endif</h3>
+                    <h2 class="banner-title" >@if($lang=='en') {{$banner->title_en}} @else {{$banner->title_ar}}  @endif</h2>
+                    <h3 class="banner-text">@if($lang=='en') {{$banner->text_en}} @else {{$banner->text_ar}}  @endif</h3>
                 </div>
             </div>
             @endforeach
