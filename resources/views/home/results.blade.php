@@ -40,7 +40,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="qodef-m-info p-5">
-                    <h5 class="qodef-m-title">{!! __('translation.before-after') !!}   }}	</h5>
+                    <h5 class="qodef-m-title">{!! __('translation.before-after') !!}  	</h5>
                     <p class="qodef-m-text">{{ __('translation.results-description')  }}</p>
                 </div>
             </div>
