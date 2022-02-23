@@ -53,6 +53,7 @@ return [
     "connect-with-us" => "Let's Connect With Us",
     "your-subject" => "Your Subject",
     "send-message" => "Send Message",
-
+    "pricing-plan" => "Pricing Plan",
+    "choose-your-best-plan" => "Choose Your Best Plan"
 
 ];

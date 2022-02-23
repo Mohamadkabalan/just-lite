@@ -52,6 +52,8 @@ return [
     "contact-info" => "معلومات الاتصال",
     "connect-with-us" => "تواصلو معنا",
     "your-subject" => "موضوعك",
-    "send-message" => "أرسل رسالة"
+    "send-message" => "أرسل رسالة",
+    "pricing-plan" => "خطة التسعير",
+    "choose-your-best-plan" => "اختر أفضل خطة لديك"
 
 ];
