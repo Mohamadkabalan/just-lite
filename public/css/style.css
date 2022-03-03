@@ -214,9 +214,11 @@ img {
 }
 
 .default-btn.two:hover::before {
-  background-color: var(--greenColor);
-}
 
+}
+.text-green{
+  color: var(--greenColor);
+}
 /*=================================
 banner Area
 ===================================*/
