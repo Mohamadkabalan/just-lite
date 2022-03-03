@@ -9,10 +9,10 @@
                             @php $infoDetails = \App\InfoDetail::where('info_id',$info->id)->get();  @endphp
                         <div class="col-lg-12">
                             <div class="content">
-                                <h2 class="text-green">@if($lang=='en') {{$info->title_en}} @else {{$info->title_ar}}  @endif</h2>
+                                <h3 class="text-green">@if($lang=='en') {{$info->title_en}} @else {{$info->title_ar}}  @endif</h3>
                                 <ul class="p-0">
                                     @foreach($infoDetails as $infoDetail)
-                                        <li><h3> @if($lang=='en') {{$infoDetail->list_en}} @else {{$info->list_ar}}  @endif</h3></li>
+                                        <li><h4> @if($lang=='en') {{$infoDetail->list_en}} @else {{$info->list_ar}}  @endif</h4></li>
                                     @endforeach
                                 </ul>
 
