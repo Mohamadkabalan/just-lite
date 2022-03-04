@@ -499,7 +499,7 @@ Navbar Area
 }
 
 .desktop-nav .navbar .navbar-nav .nav-item a {
-  font-size: 16px;
+  font-size: 24px;
   color: var(--bodyColor);
   position: relative;
   z-index: 1;
@@ -511,7 +511,24 @@ Navbar Area
   margin-left: 15px;
   margin-right: 15px;
 }
-
+.scroll-whatsapp {
+  position: fixed;
+  background-color: var(--greenColor);
+  color: #fff;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  line-height: 1;
+  font-size: 16px;
+  border-radius: 50%;
+  left: 15px;
+  bottom: 75px;
+  transition: background .5s;
+  z-index: 11;
+}
+.scroll-whatsapp svg:hover {
+  color: lightgray;
+}
 .desktop-nav .navbar .navbar-nav .nav-item a:hover, .desktop-nav .navbar .navbar-nav .nav-item a:focus, .desktop-nav .navbar .navbar-nav .nav-item a.active {
   color: var(--greenColor);
 }
