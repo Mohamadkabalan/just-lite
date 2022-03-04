@@ -26,7 +26,7 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>--}}
-    
+
     <!-- Banner Area -->
     <div class="banner-slider-area">
         <div class="banner-slider owl-carousel owl-theme">

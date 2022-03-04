@@ -12,7 +12,7 @@
                                 <h3 class="text-green">@if($lang=='en') {{$info->title_en}} @else {{$info->title_ar}}  @endif</h3>
                                 <ul class="p-0">
                                     @foreach($infoDetails as $infoDetail)
-                                        <li><h6> @if($lang=='en') {{$infoDetail->list_en}} @else {{$info->list_ar}}  @endif</h6></li>
+                                        <li><h6> @if($lang=='en') {{$infoDetail->list_en}} @else {{$infoDetail->list_ar}}  @endif</h6></li>
                                     @endforeach
                                 </ul>
 
