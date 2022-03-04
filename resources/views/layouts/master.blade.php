@@ -45,14 +45,14 @@
         @endif
         </title>
 
-        <link rel="alternate" hreflang="en" href="https://just-lite.me/">
-        <link rel="alternate" hreflang="ar" href="https://just-lite.me/">
-        <link rel="canonical" href="https://just-lite.me/">
+        <link rel="alternate" hreflang="en" href="https://just-lite.com/">
+        <link rel="alternate" hreflang="ar" href="https://just-lite.com/">
+        <link rel="canonical" href="https://just-lite.com/">
         <meta property="og:locale" content="en_US">
         <meta property="og:type" content="website">
         <meta property="og:title" content="Home - Just Lite">
         <meta property="og:description" content="Welcome to the first step toward your healthy life journey Hello, my name is Layla Hanna. I am a registered dietitian, personal trainer and certified sport dietitian. My goal is to help you achieve a healthy lifestyle to reach your goal without any restrictions or food deprivation.">
-        <meta property="og:url" content="https://just-lite.me/">
+        <meta property="og:url" content="https://just-lite.com/">
         <meta property="og:site_name" content="Just Lite">
         <meta property="article:modified_time" content="2021-10-21T09:37:54+00:00">
         <meta property="og:image" content="https://www.just-lite.com/images/just-lite.png">
