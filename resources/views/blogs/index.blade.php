@@ -40,25 +40,7 @@
             </div>
 
             <div id="data-content" class="data-content row pt-45 justify-content-center">
-                @foreach($data as $row)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="services-card">
-                            <a href="/blog-details/{{$row->id}}">
-                                <img src="@if(isset($row->image)) {{ asset( 'storage/'.str_replace('\\', '/', $row->image)) }} @else {{ asset('images/services/services-img1.jpg')  }}  @endif " alt="Images">
-                            </a>
-                            <div class="content">
-                                <h3>
-                                    <a href="/blog-details/{{$row->id}}">@if($lang=='en') {{$row->title_en}} @else {{$row->title_ar}}  @endif </a>
-                                </h3>
-                                <p>
-                                    @if($lang=='en') {{$row->text_en}} @else {{$row->text_ar}}  @endif
-                                </p>
-                                <a href="/blog-details/{{$row->id}}" class="learn-btn">{{ __('translation.learn-more') }}</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
+                   @include('blogs.blogs-content')
                 <div class="col-lg-12 col-md-12 text-center">
                     <div class="d-flex justify-content-center pagination-area">
                         {!! $data->links() !!}
@@ -75,10 +57,12 @@
     <script>
         $(document).ready(function(){
 
-            $(document).on('click', '.d-flex a', function(event){
+            $(document).on('click', '.page-link', function(event){
                 event.preventDefault();
                 var page = $(this).attr('href').split('page=')[1];
-                fetch_data(page);
+                if(page){
+                    fetch_data(page);
+                }
             });
 
             function fetch_data(page)

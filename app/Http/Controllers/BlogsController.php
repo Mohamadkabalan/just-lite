@@ -19,7 +19,7 @@ class BlogsController extends Controller
         if(request()->ajax())
         {
             $data = DB::table('blogs')->paginate(6);
-            return view('blogs.index', compact('data'))->render();
+            return view('blogs.blogs-content', compact('data'))->render();
         }
     }
     function blogDetails($id){
