@@ -14,12 +14,13 @@ class ServicesController extends Controller
         return view('services.index', compact('data'));
     }
 
+
     function fetch_data()
     {
         if(request()->ajax())
         {
             $data = DB::table('services')->paginate(6);
-            return view('services.index', compact('data'))->render();
+            return view('services.services-content', compact('data'))->render();
         }
     }
     function serviceDetails($id){
