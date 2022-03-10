@@ -41,11 +41,6 @@
 
             <div id="data-content" class="data-content row pt-45 justify-content-center">
                    @include('blogs.blogs-content')
-                <div class="col-lg-12 col-md-12 text-center">
-                    <div class="d-flex justify-content-center pagination-area">
-                        {!! $data->links() !!}
-                    </div>
-                </div>
             </div>
         </div>
     </div>
