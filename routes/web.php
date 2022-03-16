@@ -77,7 +77,16 @@ Route::get('/clear-cache', function() {
     \Artisan::call('cache:clear', $output);
     dd($output);
 });
-
+Route::get('/clear-route', function() {
+    $output = [];
+    \Artisan::call('route:clear', $output);
+    dd($output);
+});
+Route::get('/clear-config', function() {
+    $output = [];
+    \Artisan::call('config:clear', $output);
+    dd($output);
+});
 Route::get('/storage-link', function() {
     $output = [];
     \Artisan::call('storage:link', $output);
