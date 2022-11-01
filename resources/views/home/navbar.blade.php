@@ -41,11 +41,11 @@
                                 {{ __('translation.shop') }}
                             </a>
                         </li>--}}
-                        <li class="nav-item">
+                        {{--<li class="nav-item">
                             <a href="/services" class="nav-link  @if($page=='services')  active @endif">
                                 {{ __('translation.services') }}
                             </a>
-                        </li>
+                        </li>--}}
                         <li class="nav-item">
                             <a href="/blogs" class="nav-link  @if($page=='blogs')  active @endif">
                                 {{ __('translation.blogs') }}
