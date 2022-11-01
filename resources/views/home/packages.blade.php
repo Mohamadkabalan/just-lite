@@ -18,7 +18,9 @@
                         @if($lang=='en') {!! $package->features_en !!} @else {!! $package->features_ar !!}  @endif
                     </ul>
                     <div class="price-btn-area text-center">
-                        <a href="javascript:;" class="default-btn">{{ __('translation.book-now')  }}</a>
+                        <a class="default-btn bookModalButton" href="#bookModal" data-package="<?php echo $package->name_en; ?>" data-bs-toggle="modal" data-bs-target="#bookModal" >
+                            {{ __('translation.book-now')  }}
+                        </a>
                     </div>
                 </div>
             </div>

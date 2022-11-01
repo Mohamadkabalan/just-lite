@@ -14,7 +14,7 @@ class AppointmentController extends Controller
             $appointment->name=$data["name"];
             $appointment->email=$data["email"];
             $appointment->phone=$data["phone"];
-            /*        $appointment->appointment_date=$data["appointment_date"];*/
+            $appointment->appointment_date=$data["appointment_date"];
             $appointment->type_of_service=$data["type_of_service"];
             $appointment->message=$data["message"];
             $appointment->save();

@@ -191,6 +191,10 @@
 
     // Tabs Single Page
     $('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
+    $('.bookModalButton').on('click', function (g) {
+        const value=$(this).data('package');
+        $('#type_of_service').val(value);
+    });
     $('.tab ul.tabs li').on('click', function (g) {
         var tab = $(this).closest('.tab'), 
         index = $(this).closest('li').index();
@@ -306,6 +310,7 @@
         }
         $("#validator-newsletter").removeClass().addClass(msgClasses).text(msg);
     }
+
         
     // AJAX MailChimp
     $(".newsletter-form").ajaxChimp({

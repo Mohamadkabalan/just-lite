@@ -60,7 +60,7 @@
                     @if($page=='home')
                     <div class="others-options d-flex align-items-center">
                         <div class="optional-item">
-                            <a href="#appointment-area" class="default-btn two">{{ __('translation.book-an-appointment') }}</a>
+                            <a href="#pricing-area" class="default-btn two">{{ __('translation.book-an-appointment') }}</a>
                         </div>
                     </div>
                     @endif

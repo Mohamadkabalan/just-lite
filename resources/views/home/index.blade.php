@@ -22,7 +22,7 @@
     @include('home.info')
     @include('home.packages')
     {{--    @include('home.diet-plan-area')--}}
-    @include('home.appointment')
+    {{--@include('home.appointment')--}}
     @include('home.testimonial')
     @include('home.bad-habits')
     @include('home.results')
