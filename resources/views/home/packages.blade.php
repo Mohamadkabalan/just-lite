@@ -1,6 +1,6 @@
 @php $packages = \App\Package::all();  @endphp
 <!-- Pricing Area -->
-<div class="pricing-area pt-100 pb-70">
+<div id="pricing-area" class="pricing-area pt-100 pb-70">
     <div class="container">
         <div class="section-title text-center">
             <span>{{ __('translation.pricing-plan')  }}</span>
