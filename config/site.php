@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'url' => env('SITE_URL', 'https://just-lite.com'),
+    'url' => env('SITE_URL') ?: 'https://just-lite.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ return [
     |
     */
 
-    'notify_email' => env('NOTIFY_EMAIL', 'Layla.G.Hanna@hotmail.com'),
+    'notify_email' => env('NOTIFY_EMAIL') ?: 'Layla.G.Hanna@hotmail.com',
 
     /*
     |--------------------------------------------------------------------------
