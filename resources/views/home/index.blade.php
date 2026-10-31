@@ -15,7 +15,7 @@
 @include('partials.business-schema')
 
 @section('content-wrapper')
-    @include('home.navbar')
+    <h1 class="visually-hidden">{{ __('translation.meta-title') }}</h1>
     @include('home.banner')
     {{--@include('home.banner-bottom-area')--}}
     @include('home.about')

@@ -104,7 +104,7 @@
 
     </head>
 
-<body>
+<body data-slide-label="{{ __('translation.slide', ['number' => '%n']) }}">
 @if($gtmId && $consent === 'granted')
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $gtmId }}"
@@ -119,10 +119,14 @@
         </div>
     </div>
     <!-- Preloader End -->
-    @include('layouts.header.index')
-    <div id="app">
+    <a href="#main-content" class="skip-link visually-hidden-focusable">{{ __('translation.skip-to-content') }}</a>
+    <header class="site-header">
+        @include('layouts.header.index')
+        @include('home.navbar')
+    </header>
+    <main id="main-content" tabindex="-1">
         @yield('content-wrapper')
-    </div>
+    </main>
 
     @section('footer')
 

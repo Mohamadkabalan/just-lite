@@ -13,12 +13,11 @@
 @section('meta_description', __('privacy.description'))
 
 @section('content-wrapper')
-    @include('home.navbar')
     <!-- Inner Banner -->
     <div class="inner-banner inner-bg2">
         <div class="container">
             <div class="inner-title text-center">
-                <h3>{{ __('privacy.title') }}</h3>
+                <h1>{{ __('privacy.title') }}</h1>
                 <ul>
                     <li>
                         <a href="{{ localized_route('home') }}">{{ __('translation.home') }}</a>

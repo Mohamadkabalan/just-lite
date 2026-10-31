@@ -36,7 +36,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="banner-item-content">
-                                <h1>@if($lang=='en') {{$banner->title_en}} @else {{$banner->title_ar}}  @endif</h1>
+                                <h2>@if($lang=='en') {{$banner->title_en}} @else {{$banner->title_ar}}  @endif</h2>
                                 <p>@if($lang=='en') {{$banner->text_en}} @else {{$banner->text_ar}}  @endif</p>
                             </div>
                         </div>

@@ -1,5 +1,5 @@
 <!-- Top Header Start -->
-<header class="top-header top-header-bg">
+<div class="top-header top-header-bg">
     <div class="container">
         <div class="top-inner-bg">
             <div class="row align-items-center">
@@ -14,21 +14,7 @@
                         <div class="header-item">
                             <ul>
                                 <li class="title">{{ __('translation.follow-us') }}:</li>
-                                <li>
-                                    <a href="https://www.facebook.com/bylaylahanna/" target="_blank">
-                                        <i class='bx bxl-facebook'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/just_lite/?hl=en" target="_blank">
-                                        <i class='bx bxl-instagram'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.linkedin.com/in/layla-hanna-313892204/?originalSubdomain=lb" target="_blank">
-                                        <i class='bx bxl-linkedin' ></i>
-                                    </a>
-                                </li>
+                                @include('partials.social-links', ['order' => ['facebook', 'instagram', 'linkedin']])
                             </ul>
                         </div>
 
@@ -64,7 +50,7 @@
             </div>
         </div>
     </div>
-</header>
+</div>
 <!-- Top Header End -->
 
 @push('scripts')

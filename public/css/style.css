@@ -1204,7 +1204,8 @@ Main Banner Area
   position: relative;
 }
 
-.banner-item-content h1 {
+.banner-item-content h1,
+.banner-item-content h2 {
   font-size: 55px;
   color: var(--titleColor);
   line-height: 1.2;
@@ -1399,6 +1400,7 @@ Inner Banner Area
   z-index: 1;
 }
 
+.inner-banner .inner-title h1,
 .inner-banner .inner-title h3 {
   font-size: 45px;
   color: var(--whiteColor);
@@ -3291,6 +3293,7 @@ Services Area
   font-size: 32px;
 }
 
+.service-details-content h1,
 .service-details-content h2 {
   font-size: 29px;
 }

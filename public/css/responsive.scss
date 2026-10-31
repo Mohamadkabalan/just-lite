@@ -177,7 +177,7 @@
     }
     .banner-item-content {
         margin-bottom: 25px;
-        h1 {
+        h1, h2 {
             font-size: 30px;
             margin-bottom: 10px;
         }
@@ -223,7 +223,7 @@
         .inner-title {
             padding-top: 70px;
             padding-bottom: 70px;
-            h3 {
+            h1, h3 {
                 font-size: 30px;
             }
         }
@@ -1293,7 +1293,7 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
-        h1 {
+        h1, h2 {
             font-size: 30px;
             margin-bottom: 10px;
         }
@@ -1339,7 +1339,7 @@
         .inner-title {
             padding-top: 70px;
             padding-bottom: 70px;
-            h3 {
+            h1, h3 {
                 font-size: 30px;
             }
         }
@@ -1908,7 +1908,7 @@
     }
 
     .banner-item-content {
-        h1 {
+        h1, h2 {
             font-size: 40px;
             margin-bottom: 10px;
         }
@@ -2309,7 +2309,7 @@
     }
 
     .banner-item-content {
-        h1 {
+        h1, h2 {
             font-size: 45px;
         }
     }
@@ -2847,4 +2847,83 @@
 }
 .privacy-updated {
   font-style: italic;
+}
+
+/* Colour contrast (WCAG AA): text on green, and green text on light
+   backgrounds, use the deeper brand green #4a7a2a (5.1:1 with white). The
+   original #72ae44 (2.67:1) stays for icons, shapes and the footer, where it
+   sits on dark navy. */
+:root {
+  --greenText: #4a7a2a;
+}
+.top-inner-bg,
+.default-btn,
+.services-card .content .learn-btn,
+.work-card .content,
+.work-card:hover .content,
+.pricing-card::before,
+.pricing-card:hover .pricing-title h3 {
+  background-color: var(--greenText);
+}
+.section-title span,
+.text-green,
+.contact-info span,
+.pricing-card .pricing-title h3,
+.desktop-nav .navbar .navbar-nav .nav-item a:hover,
+.desktop-nav .navbar .navbar-nav .nav-item a:focus,
+.desktop-nav .navbar .navbar-nav .nav-item a.active {
+  color: var(--greenText);
+}
+
+/* Elements that were headings only for their look keep it (see the views). */
+.event-content .info-item {
+  font-family: var(--headerFonts);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--titleColor);
+  margin-bottom: .5rem;
+}
+.testimonials-item .content .testimonial-name {
+  font-family: var(--headerFonts);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--titleColor);
+  margin-bottom: 5px;
+}
+
+/* Keyboard focus is always visible (the theme removed outlines on buttons). */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--titleColor) !important;
+  outline-offset: 2px;
+}
+.top-inner-bg :focus-visible,
+.footer-area :focus-visible {
+  outline-color: var(--whiteColor) !important;
+}
+main:focus {
+  outline: none;
+}
+
+/* "Skip to content": the first thing keyboard users reach. */
+.skip-link:focus {
+  position: fixed !important;
+  top: 8px;
+  inset-inline-start: 8px;
+  z-index: 2000;
+  padding: 12px 18px;
+  background: var(--whiteColor);
+  color: var(--titleColor);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* The floating WhatsApp button sits over light page content. */
+.footer-area .scroll-whatsapp:focus-visible {
+  outline-color: var(--titleColor) !important;
 }

@@ -16,7 +16,6 @@
 @stop
 
 @section('content-wrapper')
-    @include('home.navbar')
 <!-- Service Details Area -->
 <div class="service-details-area pt-100 pb-70">
     <div class="container">
@@ -32,9 +31,7 @@
                             </div>
                         </div>
                     </div>
-                    <p>
-                        @if($lang=='en') {{$diet->title_en}}  @else {{$diet->title_ar}}  @endif
-                    </p>
+                    <h1>@if($lang=='en') {{$diet->title_en}} @else {{$diet->title_ar}} @endif</h1>
                     <p>
                         @if($lang=='en') {!! nl2br(e($diet->text_en)) !!}  @else {!! nl2br(e($diet->text_ar)) !!}  @endif
                     </p>

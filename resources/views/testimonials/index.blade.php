@@ -14,7 +14,7 @@
 @stop
 
 @section('content-wrapper')
-    @include('home.navbar')
+    <h1 class="visually-hidden">{{ __('translation.testimonials') }}</h1>
     @include('home.testimonial')
     <div class="work-area pt-100 pb-70">
         <div class="container">

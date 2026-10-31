@@ -99,6 +99,16 @@ return [
     "cookie-decline" => "Decline",
     "cookie-settings" => "Cookie settings",
     "map-title" => "Map: Just Lite, Mar Elias Street",
+
+    // Names for icon-only controls (screen readers).
+    "skip-to-content" => "Skip to content",
+    "open-menu" => "Menu",
+    "slide" => "Slide :number",
+    "previous" => "Previous",
+    "next" => "Next",
+    "play-video" => "Play the video",
+    "chat-whatsapp" => "Chat with us on WhatsApp",
+    "new-tab" => "(opens in a new tab)",
     "show-map" => "Show the map (Google Maps)",
     "open-map" => "Open in Google Maps",
 

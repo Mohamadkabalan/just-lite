@@ -9,6 +9,30 @@
 		meanScreenWidth: "991"
 	});
 
+    // Names for controls the plugins create without one (screen readers).
+    // The plugins rebuild them on resize, so this runs again then.
+    var menuLabel = $('.navbar-area').data('menu-label') || 'Menu';
+    var slideLabel = document.body.getAttribute('data-slide-label') || '%n';
+    function labelControls() {
+        $('.meanmenu-reveal').attr({ 'role': 'button', 'aria-label': menuLabel })
+            .attr('aria-expanded', $('.mean-nav > ul').is(':visible') ? 'true' : 'false');
+        $('.mean-nav').attr('aria-label', menuLabel);
+        $('.owl-carousel').each(function () {
+            $(this).find('.owl-dot').each(function (index) {
+                $(this).attr('aria-label', slideLabel.replace('%n', index + 1));
+            });
+        });
+    }
+    $(document).on('click', '.meanmenu-reveal', function () {
+        setTimeout(labelControls, 0);
+    });
+    $(document).on('initialized.owl.carousel refreshed.owl.carousel', '.owl-carousel', function () {
+        setTimeout(labelControls, 0);
+    });
+    $(window).on('load resize', function () {
+        setTimeout(labelControls, 50);
+    });
+
 	// Header Sticky
 	$(window).on('scroll',function() {
 		if ($(this).scrollTop() > 120){  

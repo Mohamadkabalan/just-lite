@@ -1082,7 +1082,7 @@ Main Banner Area
 }
 .banner-item-content {
     position: relative;
-    h1 {
+    h1, h2 {
         font-size: 55px;
         color: var(--titleColor);
         line-height: 1.2;
@@ -1196,7 +1196,7 @@ Main Banner Area
 .owl-item {
     &.active {
         .banner-item-content {
-            h1 {
+            h1, h2 {
                 animation: {
                     duration: 1s;
                     fill-mode: both;
@@ -1262,7 +1262,7 @@ Inner Banner Area
         padding-bottom: 140px;
         position: relative;
         z-index: 1;
-        h3 {
+        h1, h3 {
             font-size: 45px;
             color: var(--whiteColor);
             font-weight: 500;
@@ -2882,7 +2882,8 @@ Services Area
     h1 {
         font-size: 32px;
     }
-    h2 {
+    // The page title is the h1; it keeps the h2 size it had before.
+    h1, h2 {
         font-size: 29px;
     }
     h3 {

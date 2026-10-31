@@ -16,12 +16,11 @@
 @stop
 
 @section('content-wrapper')
-    @include('home.navbar')
     <!-- Inner Banner -->
     <div class="inner-banner inner-bg2">
         <div class="container">
             <div class="inner-title text-center">
-                <h3>{{ __('translation.contact-us') }}</h3>
+                <h1>{{ __('translation.contact-us') }}</h1>
                 <ul>
                     <li>
                         <a href="{{ localized_route('home') }}">{{ __('translation.home') }}</a>
@@ -63,7 +62,7 @@
                                 <div class="content">
                                     <i class='bx bx-message'></i>
                                     <h3>{{ __('translation.email') }}</h3>
-                                    <a href="mailto:Layla.G.Hanna@hotmail.com">Layla.G.Hanna@hotmail.com</a>
+                                    <a href="mailto:{{ config('site.email') }}">{{ config('site.email') }}</a>
                                 </div>
                             </li>
                         </ul>

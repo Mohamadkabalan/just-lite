@@ -17,7 +17,7 @@
                 @php $testimonialName = $lang == 'en' ? $testimonial->title_en : $testimonial->title_ar; @endphp
                 @if(filled($testimonialName))
                 <div class="content">
-                    <h3>{{ $testimonialName }}</h3>
+                    <p class="testimonial-name">{{ $testimonialName }}</p>
                 </div>
                 @endif
             </div>

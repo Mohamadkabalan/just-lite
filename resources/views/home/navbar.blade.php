@@ -1,11 +1,11 @@
 <!-- Start Navbar Area -->
-<div class="navbar-area">
+<div class="navbar-area" data-menu-label="{{ __('translation.open-menu') }}">
     <div class="mobile-responsive-nav">
         <div class="container">
             <div class="mobile-responsive-menu">
                 <div class="logo">
                     <a href="{{ localized_route('home') }}">
-                        <img src="{{ asset('images/logo.png') }}" alt="logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="Just Lite">
                     </a>
                 </div>
             </div>
@@ -15,9 +15,9 @@
     <!-- Menu For Desktop Device -->
     <div class="desktop-nav desktop-nav-one nav-area">
         <div class="container">
-            <nav class="navbar navbar-expand-md navbar-light ">
+            <nav class="navbar navbar-expand-md navbar-light" aria-label="{{ __('translation.open-menu') }}">
                 <a class="navbar-brand" href="{{ localized_route('home') }}">
-                    <img style="max-width: 160px;" src="{{ asset('images/logo.png') }}" alt="Logo">
+                    <img style="max-width: 160px;" src="{{ asset('images/logo.png') }}" alt="Just Lite">
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">

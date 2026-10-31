@@ -13,12 +13,11 @@
 @stop
 
 @section('content-wrapper')
-    @include('home.navbar')
     <!-- Inner Banner -->
     <div class="inner-banner inner-bg8">
         <div class="container">
             <div class="inner-title text-center">
-                <h3>{{ __('translation.services') }}</h3>
+                <h1>{{ __('translation.services') }}</h1>
                 <ul>
                     <li>
                         <a href="{{ localized_route('home') }}">{{ __('translation.home') }}</a>

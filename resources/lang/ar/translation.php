@@ -99,6 +99,16 @@ return [
     "cookie-decline" => "رفض",
     "cookie-settings" => "إعدادات ملفات تعريف الارتباط",
     "map-title" => "خريطة: Just Lite، شارع مار الياس",
+
+    // Names for icon-only controls (screen readers).
+    "skip-to-content" => "انتقل إلى المحتوى",
+    "open-menu" => "القائمة",
+    "slide" => "الشريحة :number",
+    "previous" => "السابق",
+    "next" => "التالي",
+    "play-video" => "تشغيل الفيديو",
+    "chat-whatsapp" => "تواصل معنا عبر واتساب",
+    "new-tab" => "(يفتح في علامة تبويب جديدة)",
     "show-map" => "عرض الخريطة (خرائط Google)",
     "open-map" => "فتح في خرائط Google",
 

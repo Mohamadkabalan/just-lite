@@ -50,8 +50,8 @@
 
             <div class="col-lg-6">
                 <div class="about-play-btn">
-                    <a href="{{ $about->video }}" class="play-btn">
-                        <i class='bx bxs-right-arrow'></i>
+                    <a href="{{ $about->video }}" class="play-btn" aria-label="{{ __('translation.play-video') }}">
+                        <i class='bx bxs-right-arrow' aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
