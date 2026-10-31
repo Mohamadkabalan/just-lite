@@ -27,11 +27,6 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::post('appointment/create',function($locale){
-    Session::put('locale',$locale);
-    return redirect()->back();
-})->name('switchLan');
-
 Route::post('/appointment/create', 'App\Http\Controllers\AppointmentController@store')
     ->name('appointment.store');
 
@@ -71,30 +66,3 @@ Route::get('/contact-us', function () {
 
 Route::post('/contact/create', 'App\Http\Controllers\ContactController@store')
     ->name('contact.store');
-
-Route::get('/clear-cache', function() {
-    $output = [];
-    \Artisan::call('cache:clear', $output);
-    dd($output);
-});
-Route::get('/clear-route', function() {
-    $output = [];
-    \Artisan::call('route:clear', $output);
-    dd($output);
-});
-Route::get('/clear-config', function() {
-    $output = [];
-    \Artisan::call('config:clear', $output);
-    dd($output);
-});
-Route::get('/storage-link', function() {
-    $output = [];
-    \Artisan::call('storage:link', $output);
-    dd($output);
-});
-
-Route::get('/migrate', function() {
-    $output = [];
-    \Artisan::call('migrate', $output);
-    dd($output);
-});
