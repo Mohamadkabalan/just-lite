@@ -70,6 +70,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Error Alerts
+    |--------------------------------------------------------------------------
+    |
+    | Where to email a short report when the site hits an error (the same
+    | error at most once an hour; the full details are in storage/logs).
+    | Usually the developer's address; empty turns the alerts off.
+    |
+    */
+
+    'error_email' => env('ERROR_EMAIL'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Data Retention
     |--------------------------------------------------------------------------
     |

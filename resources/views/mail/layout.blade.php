@@ -22,7 +22,11 @@
                         </tr>
                     @endforeach
                 </table>
+                @if($replyName)
                 <p style="margin:20px 0 0;color:#4e4e4e;font-size:13px;">Reply to this email to answer {{ $replyName }} directly. It is also saved in the admin.</p>
+                @else
+                <p style="margin:20px 0 0;color:#4e4e4e;font-size:13px;">The full details are in the server's log (storage/logs). The same error is reported at most once an hour.</p>
+                @endif
             </td>
         </tr>
     </table>
