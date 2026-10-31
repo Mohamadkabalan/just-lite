@@ -158,10 +158,15 @@
         .owl-dots {
             margin-top: 0 !important;
             margin-bottom: 0 !important;
-            position: inherit;
+            /* Same as rtl.css: the old "translateX(-50%), translateY(0)" was invalid
+               (comma), so in English the dots sat past the right edge and widened the page. */
+            position: absolute;
             top: auto;
+            bottom: -30px;
+            left: 0;
+            right: 0;
             display: inline-block;
-            transform: translateX(-50%), translateY(0);
+            transform: none;
             .owl-dot {
                 span {
                     margin: 7px;
@@ -1266,10 +1271,15 @@
         .owl-dots {
             margin-top: 0 !important;
             margin-bottom: 0 !important;
-            position: inherit;
+            /* Same as rtl.css: the old "translateX(-50%), translateY(0)" was invalid
+               (comma), so in English the dots sat past the right edge and widened the page. */
+            position: absolute;
             top: auto;
+            bottom: -30px;
+            left: 0;
+            right: 0;
             display: inline-block;
-            transform: translateX(-50%), translateY(0);
+            transform: none;
             .owl-dot {
                 span {
                     margin: 7px;

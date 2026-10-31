@@ -3438,7 +3438,9 @@ Pricing Area
         left: 0;
         right: 0;
         width: 100%;
-        height: 190px;
+        /* Was 190px: two-line package names ran past the curve, and white text
+           on the white card was cut off. */
+        height: 240px;
         transition: var(--transition);
         background-color: var(--greenColor);
         border-bottom-left-radius: 400px;
@@ -3525,7 +3527,7 @@ Pricing Area
             opacity: 0;
         }
         &::after {
-            height: 190px;
+            height: 240px;
             opacity: 1;
         }
         .pricing-title {
@@ -6593,3 +6595,32 @@ Animation CSS
     }
 }
 
+/* Touch targets: at least 44x44px for the footer social links and 24px tall
+   for slider dots (they were 20x26, 49x5 and 30x23px). ul.social-link beats rtl.css. */
+.footer-widget ul.social-link {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+.footer-widget ul.social-link li {
+  margin: 0;
+}
+.footer-widget ul.social-link li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+.testimonials-area .owl-carousel button.owl-dot {
+  padding: 10px 0 !important;
+}
+#carouselResults .carousel-indicators [data-bs-target] {
+  border-top-width: 12px;
+  border-bottom-width: 12px;
+}
+
+/* Long unbroken text (e.g. "Ingredients:Iceberg,Tomatoes,Onions,..." in a blog)
+   wraps instead of widening the page on phones. */
+body {
+  overflow-wrap: break-word;
+}
