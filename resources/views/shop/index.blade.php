@@ -1,4 +1,6 @@
-@php $lang=app()->getLocale();  @endphp
+@php
+$page="shop";
+$lang=app()->getLocale();  @endphp
 @extends('layouts.master')
 
 @section('page_title')

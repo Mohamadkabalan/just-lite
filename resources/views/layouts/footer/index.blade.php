@@ -118,11 +118,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/shop" target="_blank">
-                                    {{ __('translation.shop') }}
-                                </a>
-                            </li>
-                            <li>
                                 <a href="/contact-us" target="_blank">
                                     {{ __('translation.contact-us') }}
                                 </a>

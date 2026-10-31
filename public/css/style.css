@@ -3447,19 +3447,19 @@ Work Area
 }
 
 .work-card.work-bg1::before {
-  background-image: url(../images/work-img/work-img1.jpg);
+ /* background-image: url(../images/work-img/work-img1.jpg);*/
 }
 
 .work-card.work-bg2::before {
-  background-image: url(../images/work-img/work-img2.jpg);
+  /*background-image: url(../images/work-img/work-img2.jpg);*/
 }
 
 .work-card.work-bg3::before {
-  background-image: url(../images/work-img/work-img3.jpg);
+  /*background-image: url(../images/work-img/work-img3.jpg);*/
 }
 
 .work-card.work-bg4::before {
-  background-image: url(../images/work-img/work-img4.jpg);
+  /*background-image: url(../images/work-img/work-img4.jpg);*/
 }
 
 .work-card .content {

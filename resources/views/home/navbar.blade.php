@@ -4,7 +4,7 @@
         <div class="container">
             <div class="mobile-responsive-menu">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="/">
                         <img src="{{ asset('images/logo.png') }}" alt="logo">
                     </a>
                 </div>
