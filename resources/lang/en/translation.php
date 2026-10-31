@@ -37,7 +37,7 @@ return [
     "informations" => "Informations",
     "address" => "Address",
     "address-info" => "Mar Elias Street, North Lebanon, Lebanon",
-    "phone-info" => "+96179779100",
+    "phone-info" => "+96170779100",
     "copy-right" => "Copyright © 2022. All Rights Reserved by",
     "how-it-works" => "How It Works",
     "easy-steps-for-happy-life" => "4 Easy Steps For Happy Life",

@@ -28,6 +28,23 @@ class BugFixTest extends TestCase
         $this->withSession(['locale' => 'x y'])->get('/about')->assertOk();
     }
 
+    public function test_the_site_shows_one_phone_number(): void
+    {
+        $digits = ltrim(config('site.phone'), '+');
+        $ascii = fn (string $s) => strtr($s, ['٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4', '٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9']);
+
+        foreach (['ar', 'en'] as $locale) {
+            $this->assertSame($digits, preg_replace('/\D/', '', $ascii(trans('translation.phone-info', [], $locale))), "phone-info ({$locale})");
+
+            $html = $this->withSession(['locale' => $locale])->get('/contact-us')->assertOk()->getContent();
+            preg_match_all('/961\d{8}/', $ascii($html), $found);
+
+            $this->assertSame([$digits], array_values(array_unique($found[0])), "numbers on /contact-us ({$locale})");
+            $this->assertStringContainsString('tel:'.config('site.phone'), $html);
+            $this->assertStringContainsString('api.whatsapp.com/send?phone='.$digits, $html);
+        }
+    }
+
     public function test_detail_pages_return_404_for_unknown_ids(): void
     {
         foreach (['/blog-details/', '/service-details/', '/diet-plan/'] as $prefix) {

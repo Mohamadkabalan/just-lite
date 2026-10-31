@@ -46,7 +46,7 @@
                                 <div class="content">
                                     <i class='bx bx-phone-call'></i>
                                     <h3>{{ __('translation.phone') }}</h3>
-                                    <a href="tel:+96179779100">{{ __('translation.phone-info') }}</a>
+                                    <a href="tel:{{ config('site.phone') }}">{{ __('translation.phone-info') }}</a>
                                 </div>
                             </li>
 
