@@ -43,7 +43,10 @@
 
                         <div class="col-lg-6 pe-0">
                             <div class="banner-item-img">
-                                <img src=" {{ 'storage/'.str_replace('\\', '/', $banner->image) }}" alt="Banner Images">
+                                {{-- The originals are 1020px PNGs of about 1 MB; phones and tablets get Voyager's 510px copy. --}}
+                                <img src="{{ \App\Support\VoyagerImage::url($banner->image) }}"
+                                     srcset="{{ \App\Support\VoyagerImage::url($banner->image, 'medium') }} 510w, {{ \App\Support\VoyagerImage::url($banner->image) }} 1020w"
+                                     sizes="(max-width: 991px) 100vw, 620px" alt="Banner Images">
                             </div>
                         </div>
                     </div>

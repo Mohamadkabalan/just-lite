@@ -34,7 +34,7 @@
                         @if($lang=='en') {{$diet->title_en}}  @else {{$diet->title_ar}}  @endif
                     </p>
                     <p>
-                        @if($lang=='en') {{$diet->text_en}}  @else {{$diet->text_ar}}  @endif
+                        @if($lang=='en') {!! nl2br(e($diet->text_en)) !!}  @else {!! nl2br(e($diet->text_ar)) !!}  @endif
                     </p>
                 </div>
             </div>

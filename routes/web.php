@@ -40,10 +40,6 @@ Route::get('/testimonials', function () {
     return view('testimonials.index');
 });
 
-Route::get('/shop', function () {
-    return view('shop.index');
-});
-
 Route::get('/services', 'App\Http\Controllers\ServicesController@index')
     ->name('services.index');
 Route::get('/services/fetch_data', 'App\Http\Controllers\ServicesController@fetch_data')

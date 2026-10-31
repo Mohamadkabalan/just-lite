@@ -1,10 +1,12 @@
 @php $about =\App\About::first();  @endphp
 @if($about)
+@if($about->image)
 <style>
     .about-area::before {
-        background-image: url({{ 'storage/'.str_replace('\\', '/', $about->image) }});
+        background-image: url({{ \App\Support\VoyagerImage::url($about->image) }});
     }
 </style>
+@endif
 <!-- About Area -->
 <div class="about-area pt-100 pb-70">
     <div class="container">

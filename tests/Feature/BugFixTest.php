@@ -2,10 +2,14 @@
 
 namespace Tests\Feature;
 
+use App\About;
 use App\Appointment;
+use App\Blog;
 use App\Contact;
 use App\Service;
+use App\Support\VoyagerImage;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 /**
@@ -43,6 +47,64 @@ class BugFixTest extends TestCase
             $this->assertStringContainsString('tel:'.config('site.phone'), $html);
             $this->assertStringContainsString('api.whatsapp.com/send?phone='.$digits, $html);
         }
+    }
+
+    public function test_each_language_loads_its_own_bootstrap_build(): void
+    {
+        $blog = Blog::query()->orderBy('id')->firstOrFail();
+
+        foreach (['/', '/blog-details/'.$blog->id] as $url) {
+            $this->withSession(['locale' => 'ar'])->get($url)->assertOk()
+                ->assertSee('css/bootstrap.rtl.min.css', false)
+                ->assertDontSee('css/bootstrap.min.css', false)
+                ->assertDontSee('cdn.jsdelivr.net/npm/bootstrap', false);
+
+            $this->withSession(['locale' => 'en'])->get($url)->assertOk()
+                ->assertSee('css/bootstrap.min.css', false)
+                ->assertDontSee('css/bootstrap.rtl.min.css', false)
+                ->assertDontSee('cdn.jsdelivr.net/npm/bootstrap', false);
+        }
+    }
+
+    public function test_blog_text_keeps_its_line_breaks_and_stays_escaped(): void
+    {
+        $blog = new Blog;
+        $blog->title_en = 'Line break test';
+        $blog->text_en = "Ingredients:\n2 eggs <b>fresh</b>\n1 cup flour";
+        $blog->save();
+
+        $this->withSession(['locale' => 'en'])->get('/blog-details/'.$blog->id)->assertOk()
+            ->assertSee("Ingredients:<br />\n2 eggs &lt;b&gt;fresh&lt;/b&gt;<br />\n1 cup flour", false);
+    }
+
+    public function test_about_background_is_only_set_when_there_is_an_image(): void
+    {
+        $about = About::query()->firstOrFail();
+
+        $about->image = null;
+        $about->save();
+        $this->get('/about')->assertOk()->assertDontSee('.about-area::before', false);
+
+        $about->image = 'abouts\\May2023\\photo.jpg';
+        $about->save();
+        $this->get('/about')->assertOk()->assertSee('url('.asset('storage/abouts/May2023/photo.jpg').')', false);
+    }
+
+    public function test_voyager_image_uses_a_size_copy_only_when_it_exists(): void
+    {
+        Storage::fake(config('voyager.storage.disk'));
+        Storage::disk(config('voyager.storage.disk'))->put('banners/x.png', 'png');
+        Storage::disk(config('voyager.storage.disk'))->put('banners/x-medium.png', 'png');
+
+        $this->assertSame(asset('storage/banners/x-medium.png'), VoyagerImage::url('banners\\x.png', 'medium'));
+        $this->assertSame(asset('storage/banners/x.png'), VoyagerImage::url('banners\\x.png', 'small'));
+        $this->assertSame(asset('storage/banners/x.png'), VoyagerImage::url('banners\\x.png'));
+        $this->assertNull(VoyagerImage::url(null, 'medium'));
+    }
+
+    public function test_the_template_demo_shop_is_gone(): void
+    {
+        $this->get('/shop')->assertNotFound();
     }
 
     public function test_detail_pages_return_404_for_unknown_ids(): void

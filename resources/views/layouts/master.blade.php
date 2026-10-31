@@ -9,8 +9,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Bootstrap RTL CSS -->
+        <!-- Bootstrap CSS (5.1.3): the RTL build for Arabic, the LTR build otherwise -->
+        @if($lang == 'ar')
         <link rel="stylesheet" href="{{ asset('css/bootstrap.rtl.min.css') }}">
+        @else
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        @endif
         <!-- Animate Min CSS -->
         <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
         <!-- Flaticon CSS -->

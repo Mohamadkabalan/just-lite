@@ -9,7 +9,6 @@
 @endsection
 
 @section('head')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 @endsection
 
 @section('seo')
@@ -34,7 +33,7 @@
                         @endif
                         <h2>@if($lang=='en') {{ $blog->title_en }} @else {{ $blog->title_ar }} @endif</h2>
                         <div>
-                            @if($lang=='en') {{ $blog->text_en }} @else {{ $blog->text_ar }} @endif
+                            @if($lang=='en') {!! nl2br(e($blog->text_en)) !!} @else {!! nl2br(e($blog->text_ar)) !!} @endif
                         </div>
 
                     </div>

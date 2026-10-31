@@ -3,7 +3,7 @@
     <div class="col-lg-4 col-md-6">
         <div class="services-card">
             <a href="/blog-details/{{$row->id}}">
-                <img src="@if(isset($row->image)) {{ asset( 'storage/'.str_replace('\\', '/', $row->image)) }} @else {{ asset('images/services/services-img1.jpg')  }}  @endif " alt="Images">
+                <img src="{{ \App\Support\VoyagerImage::url($row->image, 'medium') ?? asset('images/services/services-img1.jpg') }}" loading="lazy" alt="Images">
             </a>
             <div class="content">
                 <h3>

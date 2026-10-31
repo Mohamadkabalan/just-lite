@@ -151,7 +151,7 @@ class SmokeTest extends TestCase
      */
     private function publicUrls(): array
     {
-        $urls = ['/', '/about', '/testimonials', '/shop', '/services', '/blogs', '/contact-us'];
+        $urls = ['/', '/about', '/testimonials', '/services', '/blogs', '/contact-us'];
 
         $details = [
             Blog::class => '/blog-details/',

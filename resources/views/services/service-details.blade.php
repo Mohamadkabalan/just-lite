@@ -9,7 +9,6 @@ $lang=app()->getLocale();
 @endsection
 
 @section('head')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 @endsection
 
 @section('seo')
@@ -38,7 +37,7 @@ $lang=app()->getLocale();
                         @endif
                         <h2>@if($lang=='en') {{ $service->title_en }} @else {{ $service->title_Ar }} @endif</h2>
                         <div>
-                            @if($lang=='en') {{ $service->text_en }} @else {{ $service->text_ar }} @endif
+                            @if($lang=='en') {!! nl2br(e($service->text_en)) !!} @else {!! nl2br(e($service->text_ar)) !!} @endif
                         </div>
 
                     </div>
