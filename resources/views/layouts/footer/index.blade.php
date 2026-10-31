@@ -1,50 +1,56 @@
 <!-- Modal Start -->
-<div class="modal fade fade-scale searchmodal" id="bookModal" tabindex="-1" role="dialog">
+<div class="modal fade fade-scale searchmodal" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="bookModalTitle">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-bs-dismiss="modal">
-                    <i class='bx bx-x'></i>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="{{ __('translation.close') }}">
+                    <i class='bx bx-x' aria-hidden="true"></i>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container">
                     <div class="appointment-form">
-                        <h2>{{ __('translation.make-an-appointment') }}</h2>
-                        <form id="appointment-form" method="POST" action="{{ localized_route('appointment.store') }}">
+                        <h2 id="bookModalTitle">{{ __('translation.make-an-appointment') }}</h2>
+                        <form id="appointment-form" method="POST" action="{{ localized_route('appointment.store') }}" data-ajax-form data-hide-on-success
+                              data-messages="{{ json_encode(['failed' => __('translation.form-failed'), 'tooMany' => __('translation.form-too-many'), 'check' => __('translation.form-check-fields')]) }}">
                             @csrf
-                            <div class="row">
+                            @include('partials.form-guard')
+                            <div class="row form-fields">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input type="text" name="name" class="form-control" required data-error="Please Enter Your Name" placeholder="{{ __('translation.name') }}*" >
+                                        <label for="booking-name" class="visually-hidden">{{ __('translation.name') }}</label>
+                                        <input type="text" id="booking-name" name="name" class="form-control" required autocomplete="name" placeholder="{{ __('translation.name') }}*">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" required data-error="Please Enter Your Email" placeholder="{{ __('translation.email') }}*">
+                                        <label for="booking-email" class="visually-hidden">{{ __('translation.email') }}</label>
+                                        <input type="email" id="booking-email" name="email" class="form-control" required autocomplete="email" placeholder="{{ __('translation.email') }}*">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" name="phone" class="form-control" required data-error="Please Enter Your Phone Number" placeholder="{{ __('translation.phone') }}*">
+                                        <label for="booking-phone" class="visually-hidden">{{ __('translation.phone') }}</label>
+                                        <input type="tel" id="booking-phone" name="phone" class="form-control" required autocomplete="tel" inputmode="tel" placeholder="{{ __('translation.phone') }}*">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <i class="flaticon-weekly-calendar-page-symbol"></i>
-                                        <input type="date" id="datetimepicker" class="form-control date" required data-error="Please Enter Date" placeholder="{{ __('translation.date') }}" name="appointment_date">
+                                        {{-- The browser's own date picker; it only offers today or later. --}}
+                                        <label for="booking-date" class="visually-hidden">{{ __('translation.date') }}</label>
+                                        <input type="date" id="booking-date" name="appointment_date" class="form-control date" required min="{{ now()->toDateString() }}">
                                     </div>
                                 </div>
 
-                                <input type="hidden" id="type_of_service" name="type_of_service" >
+                                <input type="hidden" id="type_of_service" name="type_of_service">
 
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="5" required data-error="Write your message" placeholder="{{ __('translation.your-message') }}"></textarea>
-                                        <div class="help-block with-errors"></div>
+                                        <label for="booking-message" class="visually-hidden">{{ __('translation.your-message') }}</label>
+                                        <textarea name="message" class="form-control" id="booking-message" cols="30" rows="5" required placeholder="{{ __('translation.your-message') }}*"></textarea>
                                     </div>
                                 </div>
 
@@ -54,6 +60,7 @@
                                     </button>
                                 </div>
                             </div>
+                            <p class="form-status mt-3" role="status" aria-live="polite"></p>
                         </form>
                     </div>
                 </div>
@@ -192,32 +199,4 @@
 
 
 
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $(document).on('submit','#appointment-form',function(e){
-                e.preventDefault();
-                var form = this;
-                var $button = $(form).find('[type=submit]').prop('disabled', true);
-                $.ajax({
-                    url: form.action,
-                    method: "POST",
-                    data : $(form).serialize(),
-                    success: function (data) {
-                        alert(data.message);
-                        if(data.status==200){
-                            form.reset();
-                        }
-                    },
-                    error: function (xhr) {
-                        var errors = xhr.responseJSON && xhr.responseJSON.errors;
-                        alert(errors ? Object.values(errors)[0][0] : 'Appointment not sent, please try again.');
-                    },
-                    complete: function () {
-                        $button.prop('disabled', false);
-                    }
-                });
-            });
-        });
-    </script>
-@endpush
+{{-- The booking form is sent by public/js/forms.js. --}}

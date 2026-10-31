@@ -2725,3 +2725,30 @@
     padding: 6px 4.5px 8px;
   }
 }
+
+/* Public forms (contact page, booking modal) */
+/* Hidden in place: an off-screen offset (left: -10000px) would add sideways scrolling on RTL pages. */
+.form-hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.contact-form .form-control,
+.appointment-form .form-control {
+  font-size: 16px; /* iPhones zoom into fields under 16px */
+}
+.contact-form .form-control.is-invalid,
+.appointment-form .form-control.is-invalid {
+  border: 1px solid #dc3545;
+}
+.field-error {
+  font-size: 14px;
+  margin-top: 6px;
+}
+.form-status:empty {
+  display: none;
+}

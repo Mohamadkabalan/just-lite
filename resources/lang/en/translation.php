@@ -74,4 +74,20 @@ return [
     "no-posts" => "No posts yet. Please check back soon.",
     "no-services" => "No services to show yet.",
 
+    // Contact form and booking modal.
+    "form-check-fields" => "Please check the highlighted fields.",
+    "form-failed" => "Sorry, something went wrong. Please try again or contact us on WhatsApp.",
+    "form-too-many" => "Too many attempts. Please wait a minute and try again.",
+    "form-expired" => "This form has expired. Please reload the page and try again.",
+    "form-too-fast" => "Please wait a few seconds before sending.",
+    "appointment-sent" => "Thank you! Your appointment request has been received. We will contact you soon to confirm.",
+    "message-sent" => "Thank you! Your message has been sent. We will get back to you soon.",
+    "enter-name" => "Please enter your name.",
+    "enter-email" => "Please enter a valid email address.",
+    "enter-phone" => "Please enter your phone number.",
+    "enter-subject" => "Please enter a subject.",
+    "enter-message" => "Please write your message.",
+    "choose-date" => "Please choose a date.",
+    "close" => "Close",
+
 ];

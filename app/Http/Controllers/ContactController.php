@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use App\Http\Requests\StoreContactRequest;
+use App\Mail\NewContactMessage;
+use App\Support\Notify;
 
 class ContactController extends Controller
 {
@@ -18,11 +20,13 @@ class ContactController extends Controller
             $contact->subject=$data["msg_subject"];
             $contact->message=$data["message"];
             $contact->save();
-            return response()->json(['status'=>200,'message'=>'Your message has been sent successfully']);
         }catch (\Exception $e){
             report($e);
-            return response()->json(['status'=>500,'message'=>'Message not sent ,Please contact our office']);
+            return response()->json(['status'=>500,'message'=>__('translation.form-failed')]);
         }
 
+        Notify::afterResponse(new NewContactMessage($contact));
+
+        return response()->json(['status'=>200,'message'=>__('translation.message-sent')]);
     }
 }

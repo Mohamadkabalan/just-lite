@@ -209,6 +209,7 @@ class BugFixTest extends TestCase
             'phone' => '0000000000',
             'appointment_date' => '12/31/2030',
             'message' => 'Booked from the modal without choosing a package.',
+            'form_started' => encrypt(now()->subMinute()->timestamp),
         ])->assertOk()->assertJson(['status' => 200]);
 
         $this->assertDatabaseHas((new Appointment)->getTable(), [

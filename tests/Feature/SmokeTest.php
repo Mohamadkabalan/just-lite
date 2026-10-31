@@ -66,6 +66,7 @@ class SmokeTest extends TestCase
             'phone_number' => '0000000000',
             'msg_subject' => 'Smoke test subject',
             'message' => 'Automated smoke test message.',
+            'form_started' => encrypt(now()->subMinute()->timestamp),
         ])->assertOk()->assertJson(['status' => 200]);
 
         $this->assertDatabaseHas((new Contact)->getTable(), [
@@ -83,6 +84,7 @@ class SmokeTest extends TestCase
             'appointment_date' => now()->addWeek()->format('Y-m-d'),
             'type_of_service' => 'Smoke test',
             'message' => 'Automated smoke test appointment.',
+            'form_started' => encrypt(now()->subMinute()->timestamp),
         ])->assertOk()->assertJson(['status' => 200]);
 
         $this->assertDatabaseHas((new Appointment)->getTable(), [

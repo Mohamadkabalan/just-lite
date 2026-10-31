@@ -73,40 +73,48 @@
                 <div class="col-lg-8">
                     <div class="contact-form">
                         <h3>{{ __('translation.connect-with-us') }}!</h3>
-                        <form id="contactForm" method="post" action="{{ localized_route('contact.store') }}">
+                        <form id="contactForm" method="post" action="{{ localized_route('contact.store') }}" data-ajax-form
+                              data-invalid-message="{{ __('translation.form-check-fields') }}"
+                              data-messages="{{ json_encode(['failed' => __('translation.form-failed'), 'tooMany' => __('translation.form-too-many'), 'check' => __('translation.form-check-fields')]) }}">
                             @csrf
+                            @include('partials.form-guard')
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" name="name" id="name" class="form-control" required data-error="Please Enter Your Name" placeholder="{{ __('translation.name') }}*">
+                                        <label for="name" class="visually-hidden">{{ __('translation.name') }}</label>
+                                        <input type="text" name="name" id="name" class="form-control" required autocomplete="name" data-error="{{ __('translation.enter-name') }}" placeholder="{{ __('translation.name') }}*">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="email" name="email" id="email" class="form-control" required data-error="Please Enter Your Email" placeholder="{{ __('translation.email') }}*">
+                                        <label for="email" class="visually-hidden">{{ __('translation.email') }}</label>
+                                        <input type="email" name="email" id="email" class="form-control" required autocomplete="email" data-error="{{ __('translation.enter-email') }}" placeholder="{{ __('translation.email') }}*">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" name="phone_number" id="phone_number" required data-error="Please Enter Your number" class="form-control" placeholder="{{ __('translation.phone') }}*">
+                                        <label for="phone_number" class="visually-hidden">{{ __('translation.phone') }}</label>
+                                        <input type="tel" name="phone_number" id="phone_number" required autocomplete="tel" inputmode="tel" data-error="{{ __('translation.enter-phone') }}" class="form-control" placeholder="{{ __('translation.phone') }}*">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" name="msg_subject" id="msg_subject" class="form-control" required data-error="Please Enter Your Subject" placeholder="{{ __('translation.your-subject') }}*">
+                                        <label for="msg_subject" class="visually-hidden">{{ __('translation.your-subject') }}</label>
+                                        <input type="text" name="msg_subject" id="msg_subject" class="form-control" required data-error="{{ __('translation.enter-subject') }}" placeholder="{{ __('translation.your-subject') }}*">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="5" required data-error="Write your message" placeholder="{{ __('translation.your-message') }}*"></textarea>
+                                        <label for="message" class="visually-hidden">{{ __('translation.your-message') }}</label>
+                                        <textarea name="message" class="form-control" id="message" cols="30" rows="5" required data-error="{{ __('translation.enter-message') }}" placeholder="{{ __('translation.your-message') }}*"></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -124,7 +132,7 @@
                                     <button type="submit" class="default-btn">
                                         {{ __('translation.send-message') }}
                                     </button>
-                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <p id="msgSubmit" class="form-status h4 mt-3" role="status" aria-live="polite"></p>
                                     {{--<div class="clearfix"></div>--}}
                                 </div>
                             </div>
@@ -145,33 +153,4 @@
     <!-- Map Area End -->
 @endsection
 
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $(document).on('submit','#contactForm',function(e){
-                e.preventDefault();
-                var form = this;
-                var $button = $(form).find('[type=submit]').prop('disabled', true);
-                $.ajax({
-                    url: form.action,
-                    method: "POST",
-                    data : $(form).serialize(),
-                    success: function (data) {
-                        $('#msgSubmit').removeClass().addClass(data.status==200 ? 'h4 text-success' : 'h4 text-danger').text(data.message);
-                        if(data.status==200){
-                            form.reset();
-                        }
-                    },
-                    error: function (xhr) {
-                        var errors = xhr.responseJSON && xhr.responseJSON.errors;
-                        var message = errors ? Object.values(errors)[0][0] : 'Message not sent, please try again.';
-                        $('#msgSubmit').removeClass().addClass('h4 text-danger').text(message);
-                    },
-                    complete: function () {
-                        $button.prop('disabled', false);
-                    }
-                });
-            });
-        });
-    </script>
-@endpush
+{{-- The contact form is sent by public/js/forms.js. --}}

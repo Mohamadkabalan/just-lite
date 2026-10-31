@@ -24,6 +24,9 @@ services:
       DB_DATABASE: ${DB_DATABASE:-u702536597_justlite_db}
       DB_USERNAME: ${DB_USERNAME:-justlite}
       DB_PASSWORD: ${DB_PASSWORD:-secret}
+      # The local copy never sends real email (booking notifications etc.):
+      # messages are written to storage/logs/laravel.log instead.
+      MAIL_MAILER: log
     volumes:
       - .:/var/www/html
       # vendor/ lives in a volume: installing it through a Windows bind mount is too slow.

@@ -25,8 +25,6 @@
         <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
 
         <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css')  }}">
-        <!-- Jquery Ui CSS -->
-        <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css')  }}">
         <!-- Magnific Popup CSS -->
         <link rel="stylesheet" href="{{ asset('css/magnific-popup.min.css')  }}">
         <!-- Odometer CSS -->
@@ -157,16 +155,14 @@
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <!-- Wow Min JS -->
     <script src="{{ asset('js/wow.min.js') }}"></script>
-    <!-- Jquery Ui JS -->
-    <script src="{{ asset('js/jquery-ui.min.js') }} "></script>
-    <!-- Ajaxchimp Min JS -->
-    <script src="{{ asset('js/ajaxchimp.min.js') }}"></script>
     <!-- Form Validator Min JS -->
     <script src="{{ asset('js/form-validator.min.js') }} "></script>
     <!-- Contact Form JS -->
     <script src="{{ asset('js/contact-form-script.js') }} "></script>
     <!-- Custom  JS -->
     <script src="{{ asset('js/custom.js') }} "></script>
+    <!-- Public forms (contact page, booking modal) -->
+    <script src="{{ asset('js/forms.js') }}"></script>
 
     @show
 
