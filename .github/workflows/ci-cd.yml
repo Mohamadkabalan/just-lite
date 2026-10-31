@@ -163,8 +163,28 @@ jobs:
           DEPLOY_SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
         run: |
           install -d -m 700 ~/.ssh
-          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+
+          # Rebuild the key from the secret, so damage from pasting it into
+          # GitHub (Windows line endings, lost line breaks, indentation) does
+          # not matter: keep the BEGIN/END type, strip all whitespace from the
+          # body and re-wrap it.
+          key=$(printf '%s' "$DEPLOY_SSH_KEY" | tr -d '\r')
+          type=$(printf '%s\n' "$key" | sed -n 's/.*-----BEGIN \([A-Z ]*PRIVATE KEY\)-----.*/\1/p' | head -n 1)
+          if [ -z "$type" ]; then
+            echo "::error::DEPLOY_SSH_KEY has no '-----BEGIN ... PRIVATE KEY-----' line. Paste the whole private key file (~/.ssh/just-lite-github-deploy on the server, not the .pub file)."
+            exit 1
+          fi
+          body=$(printf '%s\n' "$key" | sed -e "s/-----BEGIN $type-----//" -e "s/-----END $type-----//" | tr -d ' \t\n')
+          { echo "-----BEGIN $type-----"; printf '%s\n' "$body" | fold -w 70; echo "-----END $type-----"; } > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
+          if ! ssh-keygen -y -f ~/.ssh/deploy_key > /dev/null 2>&1; then
+            echo "::error::DEPLOY_SSH_KEY is not a valid private key (truncated or wrong file?). Paste the whole of ~/.ssh/just-lite-github-deploy from the server, BEGIN and END lines included."
+            exit 1
+          fi
+          # Compare with: ssh-keygen -lf ~/.ssh/just-lite-github-deploy.pub (on the server)
+          echo "Deploy key fingerprint: $(ssh-keygen -lf ~/.ssh/deploy_key | awk '{print $2}')"
+
+          DEPLOY_SSH_USER=$(printf '%s' "$DEPLOY_SSH_USER" | tr -d '[:space:]')
           printf '%s\n' "$DEPLOY_HOST_KEY" > ~/.ssh/known_hosts
           # The server pins this key to scripts/deploy.sh; the command below is
           # only the argument it receives.
