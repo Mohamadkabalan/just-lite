@@ -10,7 +10,7 @@
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "tcg/voyager": "^1.8"
+        "tcg/voyager": "1.8.0.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -64,14 +64,19 @@
                 "PKSA-3r5d-mb8f-1qw9": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13.",
                 "PKSA-mdq4-51ck-6kdq": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13.",
                 "PKSA-8qx3-n5y5-vvnd": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13.",
-                "PKSA-w7xr-vk7n-rstm": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13.",
-                "PKSA-9w8m-gdzm-cr6f": "Voyager CVE-2025-32931 (Compass artisan). No upstream fix; mitigated in-app. Re-check when switching to the fork.",
-                "PKSA-wzy2-y3ht-b6x2": "Voyager CVE-2024-55417 (media upload). No upstream fix; mitigated in-app. Re-check when switching to the fork.",
-                "PKSA-vmmx-4mdq-n6p6": "Voyager CVE-2024-55416 (Compass XSS). No upstream fix; mitigated in-app. Re-check when switching to the fork.",
-                "PKSA-w5gn-5kzr-c91d": "Voyager CVE-2024-55415 (Compass traversal). No upstream fix; mitigated in-app. Re-check when switching to the fork."
+                "PKSA-w7xr-vk7n-rstm": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13."
             }
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/voyager",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "minimum-stability": "stable",
     "prefer-stable": true
 }

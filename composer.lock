@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5fd42d8f066b1e337f02ee1c590545d2",
+    "content-hash": "69f8e7796ea515766b3f660dcee72720",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -6090,22 +6090,16 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v1.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thedevdojo/voyager.git",
-                "reference": "3b0c42d8cf966543ac89bc37017ebfd8260da0bc"
-            },
+            "version": "1.8.0.1",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thedevdojo/voyager/zipball/3b0c42d8cf966543ac89bc37017ebfd8260da0bc",
-                "reference": "3b0c42d8cf966543ac89bc37017ebfd8260da0bc",
-                "shasum": ""
+                "type": "path",
+                "url": "packages/voyager",
+                "reference": "c7b38f759d36713d460d2539bdbcd2f7a0502a57"
             },
             "require": {
                 "arrilot/laravel-widgets": "^3.7",
                 "ext-json": "*",
-                "illuminate/support": "11.*",
+                "illuminate/support": "^11.0|^12.0|^13.0",
                 "intervention/image": "^2.7",
                 "laravel/ui": ">=1.0",
                 "league/flysystem": "~1.1|~2.0|~3.0",
@@ -6133,7 +6127,18 @@
                     "TCG\\Voyager\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "TCG\\Voyager\\Tests\\": "tests/",
+                    "TCG\\Voyager\\Tests\\Database\\Factories\\": "tests/database/factories/",
+                    "Database\\Seeders\\": "vendor/orchestra/testbench-core/laravel/database/seeders"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -6154,22 +6159,10 @@
                 "issues": "https://github.com/the-control-group/voyager/issues",
                 "source": "https://github.com/the-control-group/voyager"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/emptynick",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/fletch3555",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/tnylea",
-                    "type": "github"
-                }
-            ],
-            "abandoned": true,
-            "time": "2024-09-24T16:51:41+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

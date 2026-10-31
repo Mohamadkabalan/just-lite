@@ -132,9 +132,12 @@ abstract class SchemaManager
     protected static function getColumnIndexes($table, $column)
     {
         $tableIndexes = static::getTableIndexes($table);
+        // PATCH 1.8.0.1: values() re-indexes the result. describeTable() reads
+        // $indexes[0] / $indexes[1], which broke for columns whose index is not
+        // the table's first one (e.g. users.email -> 500 in the BREAD builder).
         return collect($tableIndexes)->filter(function ($index) use ($column) {
             return in_array($column, $index['columns']);
-        })->toArray();
+        })->values()->toArray();
     }
 
     protected static function getTableForeignKeys($table)
