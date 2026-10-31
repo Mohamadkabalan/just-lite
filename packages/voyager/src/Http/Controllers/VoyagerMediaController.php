@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use TCG\Voyager\Events\MediaFileAdded;
 use TCG\Voyager\Facades\Voyager;
+use TCG\Voyager\Support\UploadGuard;
 
 class VoyagerMediaController extends Controller
 {
@@ -255,6 +256,16 @@ class VoyagerMediaController extends Controller
                         return Str::random($random[1]);
                     }, $name);
                 }
+            }
+
+            // PATCH 1.8.0.3 (CVE-2024-55417): the MIME check reads the content, but the
+            // file is stored under the client's name, so an image/PHP polyglot named
+            // x.php used to pass. The extension and the final name are checked too.
+            if (is_array($allowedMimeTypes) && !UploadGuard::extensionMatchesMimeTypes($extension, $allowedMimeTypes)) {
+                throw new Exception(__('voyager::generic.mimetype_not_allowed'));
+            }
+            if (UploadGuard::isScriptFileName($name.'.'.$extension)) {
+                throw new Exception(__('voyager::generic.mimetype_not_allowed'));
             }
 
             $file = $request->file->storeAs($request->upload_path, $name.'.'.$extension, $this->filesystem);

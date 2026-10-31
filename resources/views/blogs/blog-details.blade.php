@@ -5,7 +5,7 @@
 @extends('layouts.master')
 
 @section('page_title')
-    Blog - <?php echo $blog->title_en;  ?>
+    Blog - {{ $blog->title_en }}
 @endsection
 
 @section('head')

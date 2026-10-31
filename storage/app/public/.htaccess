@@ -1,0 +1,15 @@
+# Served at /storage. Everything here is uploaded through Voyager, so it is
+# data: never run or serve server-side scripts, even with a double extension
+# such as x.php.jpg (the root .htaccess uses AddHandler for .php).
+<FilesMatch "\.(php\d*|phtml|phar|pht|phps|pl|py|cgi|sh|asp|aspx|jsp|shtml)(\.|$)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+<IfModule mod_mime.c>
+    RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phar .pht
+</IfModule>

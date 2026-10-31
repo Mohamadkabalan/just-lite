@@ -5,6 +5,7 @@ namespace TCG\Voyager\Http\Controllers\ContentTypes;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use TCG\Voyager\Support\UploadGuard;
 
 class File extends BaseType
 {
@@ -23,6 +24,11 @@ class File extends BaseType
         $path = $this->generatePath();
 
         foreach ($files as $file) {
+            // PATCH 1.8.0.3 (CVE-2024-55417): never store server-side scripts.
+            if (UploadGuard::isScriptFileName($file->getClientOriginalName())) {
+                continue;
+            }
+
             $filename = $this->generateFileName($file, $path);
             $file->storeAs(
                 $path,

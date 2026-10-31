@@ -20,6 +20,7 @@ Version scheme: `1.8.0.N`, where N counts local patch releases.
 | 1.8.0.1 | `illuminate/support` constraint `11.*` → `^11.0\|^12.0\|^13.0` | Run on Laravel 12/13; verified with the app's smoke tests on PHP 8.3/8.4 |
 | 1.8.0.1 | `SchemaManager::getColumnIndexes()` returns a re-indexed list | Upstream bug from the DBAL removal: the BREAD builder 500s for tables such as `users` |
 | 1.8.0.2 | `SchemaManager::listTableNames()` passes the connection's database to `getTables()` | Laravel 12+ returns tables from every schema the DB user can see; the BREAD and Database screens must only list this app's tables |
+| 1.8.0.3 | New `Support\UploadGuard`; the media manager also requires the file extension to belong to an allowed MIME type and rejects names with a script extension anywhere (`x.php`, `x.php.jpg`, dotfiles); the `File` field type skips such files | CVE-2024-55417: the MIME check read the content, but files kept the client's extension, so an image/PHP polyglot named `x.php` was stored in the public disk and executed |
 
 ## Known upstream security advisories
 
@@ -32,6 +33,6 @@ matches them, so they are tracked here instead.
 | CVE-2025-32931 (critical) | Compass: admins can run OS commands via an artisan command | Open — Compass is only enabled when `APP_ENV=local`; code fix planned |
 | CVE-2024-55415 (high) | Compass: path traversal | Open — same as above |
 | CVE-2024-55416 (low) | Compass: reflected XSS | Open — same as above |
-| CVE-2024-55417 (medium) | Media manager upload: file-type check bypass (web shell) | Open — code fix planned |
+| CVE-2024-55417 (medium) | Media manager upload: file-type check bypass (web shell) | **Fixed in 1.8.0.3** — see the patch table; the app also ships `storage/app/public/.htaccess`, which refuses to serve scripts from `/storage` |
 
 Update this table when a fix lands.
