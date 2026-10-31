@@ -115,17 +115,95 @@ class SecurityTest extends TestCase
         }
     }
 
+    public function test_the_user_role_cannot_manage_users_but_keeps_its_inbox(): void
+    {
+        $admin = $this->admin();
+        $user = $this->userWithRole(DB::table('roles')->where('name', 'user')->value('id'), 'security-user@example.test');
+
+        $this->actingAs($user)->get('/admin/users')->assertForbidden();
+        $this->actingAs($user)->get("/admin/users/{$admin->id}/edit")->assertForbidden();
+
+        foreach (['/admin/contacts', '/admin/appointments', '/admin/blogs'] as $url) {
+            $this->actingAs($user)->get($url)->assertOk();
+        }
+    }
+
+    public function test_user_permissions_alone_cannot_change_other_users(): void
+    {
+        // A role that can manage users but not roles, as the "user" role could before.
+        $roleId = DB::table('roles')->insertGetId(['name' => 'security-editor', 'display_name' => 'Security editor']);
+        $keys = ['browse_admin', 'browse_users', 'read_users', 'edit_users', 'add_users', 'delete_users'];
+        foreach (DB::table('permissions')->whereIn('key', $keys)->pluck('id') as $permissionId) {
+            DB::table('permission_role')->insert(['permission_id' => $permissionId, 'role_id' => $roleId]);
+        }
+
+        $admin = $this->admin();
+        $adminRoleId = $admin->role_id;
+        $editor = $this->userWithRole($roleId, 'security-editor@example.test');
+
+        $this->actingAs($editor)->get("/admin/users/{$admin->id}/edit")->assertForbidden();
+        $this->actingAs($editor)->put("/admin/users/{$admin->id}", [
+            'name' => 'Taken over',
+            'email' => 'taken-over@example.test',
+            'password' => 'new-password-123',
+        ])->assertForbidden();
+        $this->actingAs($editor)->put("/admin/users/{$editor->id}", [
+            'name' => $editor->name,
+            'email' => $editor->email,
+            'role_id' => $adminRoleId,
+        ]);
+        $this->actingAs($editor)->post('/admin/users', [
+            'name' => 'New admin',
+            'email' => 'new-admin@example.test',
+            'password' => 'new-password-123',
+            'role_id' => $adminRoleId,
+        ])->assertForbidden();
+        $this->actingAs($editor)->delete("/admin/users/{$admin->id}")->assertForbidden();
+
+        $this->assertSame('Security Test Admin', $admin->fresh()->name);
+        $this->assertSame($roleId, (int) $editor->fresh()->role_id, 'Users must not change their own role.');
+        $this->assertDatabaseMissing('users', ['email' => 'new-admin@example.test']);
+
+        // Admins still manage users.
+        $this->actingAs($admin)->get("/admin/users/{$editor->id}/edit")->assertOk();
+    }
+
+    public function test_admin_passwords_need_twelve_characters(): void
+    {
+        $admin = $this->admin();
+        $roleId = DB::table('roles')->where('name', 'user')->value('id');
+
+        $this->actingAs($admin)->post('/admin/users', [
+            'name' => 'Short password',
+            'email' => 'short-password@example.test',
+            'password' => 'abc123',
+            'role_id' => $roleId,
+        ])->assertSessionHasErrors('password');
+        $this->assertDatabaseMissing('users', ['email' => 'short-password@example.test']);
+
+        $this->actingAs($admin)->put("/admin/users/{$admin->id}", [
+            'name' => $admin->name,
+            'email' => $admin->email,
+            'password' => 'short',
+        ])->assertSessionHasErrors('password');
+    }
+
     private function admin(): User
     {
-        $admin = new User;
-        $admin->forceFill([
-            'name' => 'Security Test Admin',
-            'email' => 'security-admin@example.test',
+        return $this->userWithRole(DB::table('roles')->where('name', 'admin')->value('id'), 'security-admin@example.test', 'Security Test Admin');
+    }
+
+    private function userWithRole(int $roleId, string $email, string $name = 'Security Test User'): User
+    {
+        $user = new User;
+        $user->forceFill([
+            'name' => $name,
+            'email' => $email,
             'password' => bcrypt(Str::random(40)),
-            'role_id' => DB::table('roles')->where('name', 'admin')->value('id'),
+            'role_id' => $roleId,
         ])->save();
 
-        return $admin;
+        return $user;
     }
 
     private function png(): string

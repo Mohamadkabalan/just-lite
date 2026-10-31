@@ -6,10 +6,13 @@ use App\About;
 use App\Appointment;
 use App\Blog;
 use App\Contact;
+use App\Models\User;
 use App\Service;
 use App\Support\VoyagerImage;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 /**
@@ -100,6 +103,32 @@ class BugFixTest extends TestCase
         $this->assertSame(asset('storage/banners/x.png'), VoyagerImage::url('banners\\x.png', 'small'));
         $this->assertSame(asset('storage/banners/x.png'), VoyagerImage::url('banners\\x.png'));
         $this->assertNull(VoyagerImage::url(null, 'medium'));
+    }
+
+    public function test_admin_forms_refuse_empty_content(): void
+    {
+        $admin = new User;
+        $admin->forceFill([
+            'name' => 'Bug Fix Admin',
+            'email' => 'bugfix-admin@example.test',
+            'password' => bcrypt(Str::random(40)),
+            'role_id' => DB::table('roles')->where('name', 'admin')->value('id'),
+        ])->save();
+
+        $before = Blog::count();
+        $this->actingAs($admin)->post('/admin/blogs', ['title_en' => '', 'title_ar' => ''])
+            ->assertSessionHasErrors(['title_en', 'title_ar', 'text_en', 'text_ar']);
+        $this->assertSame($before, Blog::count());
+
+        // Existing records still save without re-uploading their image.
+        $blog = Blog::query()->orderBy('id')->firstOrFail();
+        $this->actingAs($admin)->put("/admin/blogs/{$blog->id}", [
+            'title_en' => $blog->title_en.' (edited)',
+            'title_ar' => $blog->title_ar,
+            'text_en' => $blog->text_en,
+            'text_ar' => $blog->text_ar,
+        ])->assertSessionHasNoErrors();
+        $this->assertSame($blog->title_en.' (edited)', $blog->fresh()->title_en);
     }
 
     public function test_the_template_demo_shop_is_gone(): void
