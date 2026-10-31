@@ -11,3 +11,7 @@ docker-compose.override.yml
 npm-debug.log
 yarn-error.log
 error_log
+
+# Production database dumps (personal data, never commit)
+/docker/mariadb/initdb/*.sql
+/docker/mariadb/initdb/*.sql.gz
