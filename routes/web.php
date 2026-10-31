@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('locale/{locale}',function($locale){
+    abort_unless(in_array($locale, config('app.available_locales'), true), 404);
     Session::put('locale',$locale);
     return redirect()->back();
 })->name('switchLan');  //add name to router
@@ -28,6 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::post('/appointment/create', 'App\Http\Controllers\AppointmentController@store')
+    ->middleware('throttle:public-forms')
     ->name('appointment.store');
 
 Route::get('/about', function () {
@@ -65,4 +67,5 @@ Route::get('/contact-us', function () {
 });
 
 Route::post('/contact/create', 'App\Http\Controllers\ContactController@store')
+    ->middleware('throttle:public-forms')
     ->name('contact.store');

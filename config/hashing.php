@@ -29,7 +29,8 @@ return [
     */
 
     'bcrypt' => [
-        'rounds' => env('BCRYPT_ROUNDS', 10),
+        // Laravel's current default; older hashes are rehashed on the next login.
+        'rounds' => env('BCRYPT_ROUNDS', 12),
     ],
 
     /*

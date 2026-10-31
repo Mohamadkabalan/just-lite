@@ -82,8 +82,9 @@ return [
 
     'locale' => env('APP_Languages','ar'),
 
-
-
+    // Locales the site has content for (the *_ar / *_en columns and
+    // resources/lang). /locale/{locale} only accepts these.
+    'available_locales' => ['ar', 'en'],
 
     /*
     |--------------------------------------------------------------------------

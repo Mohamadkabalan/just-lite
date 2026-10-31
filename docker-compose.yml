@@ -1,0 +1,66 @@
+# Local copy of the production stack (Hostinger: LiteSpeed + PHP, MariaDB 11.8).
+#
+#   docker compose up -d --build
+#
+# Site:       http://localhost:8080        (admin: http://localhost:8080/admin)
+# phpMyAdmin: http://localhost:8081
+#
+# The database is created from docker/mariadb/initdb/*.sql the first time the
+# db volume is empty. To re-import: docker compose down -v && docker compose up -d
+name: just-lite
+
+services:
+  app:
+    build:
+      context: docker/app
+      args:
+        PHP_VERSION: ${PHP_VERSION:-8.3}
+    ports:
+      - "${APP_PORT:-8080}:80"
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: ${DB_DATABASE:-u702536597_justlite_db}
+      DB_USERNAME: ${DB_USERNAME:-justlite}
+      DB_PASSWORD: ${DB_PASSWORD:-secret}
+    volumes:
+      - .:/var/www/html
+      # vendor/ lives in a volume: installing it through a Windows bind mount is too slow.
+      - vendor:/var/www/html/vendor
+      # Stands in for the `storage:link` symlink (public/storage is a tracked folder).
+      - ./storage/app/public:/var/www/html/public/storage
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:11.8
+    environment:
+      MARIADB_DATABASE: ${DB_DATABASE:-u702536597_justlite_db}
+      MARIADB_USER: ${DB_USERNAME:-justlite}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-secret}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "${DB_FORWARD_PORT:-3307}:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./docker/mariadb/initdb:/docker-entrypoint-initdb.d:ro
+
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      UPLOAD_LIMIT: 256M
+    ports:
+      - "${PMA_PORT:-8081}:80"
+    depends_on:
+      - db
+
+volumes:
+  db-data:
+  vendor:
