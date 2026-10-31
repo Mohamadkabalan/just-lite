@@ -109,7 +109,15 @@ class SmokeTest extends TestCase
             'role_id' => $roleId,
         ])->save();
 
-        $urls = ['/admin', '/admin/settings', '/admin/media'];
+        $urls = ['/admin', '/admin/settings', '/admin/media', '/admin/profile', '/admin/database', '/admin/bread'];
+
+        foreach (DB::table('menus')->orderBy('id')->pluck('id') as $menuId) {
+            $urls[] = "/admin/menus/{$menuId}/builder";
+        }
+
+        foreach (DB::table('data_types')->orderBy('id')->pluck('name') as $table) {
+            $urls[] = "/admin/bread/{$table}/edit";
+        }
 
         foreach (DB::table('data_types')->orderBy('id')->get(['slug', 'model_name']) as $type) {
             $urls[] = "/admin/{$type->slug}";
