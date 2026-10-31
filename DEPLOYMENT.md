@@ -46,6 +46,11 @@ GitHub Actions run.
 
    Until both are set, the deploy job skips itself with a warning.
 
+   The deploy step rebuilds the key, so line endings and wrapping lost while
+   pasting do not matter, and prints its fingerprint. It must match
+   `ssh-keygen -lf ~/.ssh/just-lite-github-deploy.pub` on the server. If the
+   step says the key is invalid, paste the file again in full.
+
 3. Optional: in *Settings → Environments → production*, add yourself as a
    required reviewer to approve each deploy by hand.
 
