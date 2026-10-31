@@ -61,7 +61,7 @@ return [
         'authenticate_session' => Laravel\Sanctum\Http\Middleware\AuthenticateSession::class,
         // The app's own subclasses, so their $except lists keep applying.
         'encrypt_cookies' => App\Http\Middleware\EncryptCookies::class,
-        'validate_csrf_token' => App\Http\Middleware\VerifyCsrfToken::class,
+        'validate_csrf_token' => App\Http\Middleware\PreventRequestForgery::class,
     ],
 
 ];

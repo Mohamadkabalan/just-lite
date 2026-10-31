@@ -5,11 +5,11 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "guzzlehttp/guzzle": "^7.8",
-        "laravel/framework": "^12.0",
+        "laravel/framework": "^13.0",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9",
+        "laravel/tinker": "^3.0",
         "tcg/voyager": "1.8.0.2"
     },
     "require-dev": {
@@ -17,7 +17,7 @@
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
-        "phpunit/phpunit": "^11.0",
+        "phpunit/phpunit": "^12.0",
         "spatie/laravel-ignition": "^2.4"
     },
     "autoload": {
@@ -55,18 +55,7 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true,
-        "audit": {
-            "ignore": {
-                "PKSA-b41t-wbzk-9q51": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13.",
-                "PKSA-d5tc-s1qs-h781": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13.",
-                "PKSA-m5cs-t1y6-qpcs": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13.",
-                "PKSA-3r5d-mb8f-1qw9": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13.",
-                "PKSA-mdq4-51ck-6kdq": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13.",
-                "PKSA-8qx3-n5y5-vvnd": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13.",
-                "PKSA-w7xr-vk7n-rstm": "TEMPORARY: affects intermediate Laravel 9-12 steps only, never deployed. Remove at Laravel 13."
-            }
-        }
+        "sort-packages": true
     },
     "repositories": [
         {
