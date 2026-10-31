@@ -1,9 +1,8 @@
 @php $lang=app()->getLocale(); $page='about';  @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    About
-@endsection
+@section('page_title', __('translation.about-us'))
+@section('meta_description', __('translation.about-description'))
 
 @section('head')
 
@@ -15,6 +14,6 @@
 @stop
 
 @section('content-wrapper')
-    @include('home.navbar')
+    <h1 class="visually-hidden">{{ __('translation.about-us') }}</h1>
     @include('home.about')
 @endsection

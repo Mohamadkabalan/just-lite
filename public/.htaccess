@@ -9,6 +9,11 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
+    # The site lives at the domain root (the root .htaccess passes requests in
+    # here): send addresses typed with /public/ to the same page without it.
+    RewriteCond %{THE_REQUEST} \s/public[/?\s] [NC]
+    RewriteRule ^(.*)$ /$1 [L,R=301]
+
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$

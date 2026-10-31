@@ -1,6 +1,6 @@
 @php $lang=app()->getLocale(); @endphp
 <!DOCTYPE html>
-<html   @if($lang == 'ar') lang="ar" dir="rtl" @else lang="en"  @endif>
+<html lang="{{ $lang }}" dir="{{ $lang == 'ar' ? 'rtl' : 'ltr' }}">
 
     <head>
 
@@ -25,8 +25,6 @@
         <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
 
         <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css')  }}">
-        <!-- Jquery Ui CSS -->
-        <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css')  }}">
         <!-- Magnific Popup CSS -->
         <link rel="stylesheet" href="{{ asset('css/magnific-popup.min.css')  }}">
         <!-- Odometer CSS -->
@@ -43,23 +41,40 @@
         <link rel="stylesheet" href="{{ asset('css/rtl.css')  }}">
         @endif
 
-        <title>Just Lite |
-        @hasSection('page_title')
-        @yield('page_title')
-        @endif
-        </title>
+        @php
+            // Each page sets page_title and, where it has its own, meta_description and og_image.
+            // Section values arrive HTML-escaped; decode them so {{ }} escapes them exactly once.
+            $section = fn (string $name) => trim(html_entity_decode($__env->yieldContent($name), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+            $pageTitle = $section('page_title');
+            $title = $pageTitle !== '' ? $pageTitle.' | Just Lite' : __('translation.meta-title');
+            $description = $section('meta_description') ?: __('translation.meta-description');
+            $siteUrl = rtrim(config('site.url'), '/');
+            $ogImage = $siteUrl.parse_url($section('og_image') ?: '/images/just-lite.png', PHP_URL_PATH);
+            $canonical = \App\Support\SiteLocale::canonical();
+        @endphp
+        <title>{{ $title }}</title>
+        <meta name="description" content="{{ $description }}">
 
-        <link rel="alternate" hreflang="en" href="https://just-lite.com/">
-        <link rel="alternate" hreflang="ar" href="https://just-lite.com/">
-        <link rel="canonical" href="https://just-lite.com/">
-        <meta property="og:locale" content="en_US">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Home - Just Lite">
-        <meta property="og:description" content="Welcome to the first step toward your healthy life journey Hello, my name is Layla Hanna. I am a registered dietitian, personal trainer and certified sport dietitian. My goal is to help you achieve a healthy lifestyle to reach your goal without any restrictions or food deprivation.">
-        <meta property="og:url" content="https://just-lite.com/">
+        <link rel="canonical" href="{{ $canonical }}">
+        @foreach(config('app.available_locales') as $locale)
+        <link rel="alternate" hreflang="{{ $locale }}" href="{{ \App\Support\SiteLocale::canonical($locale) }}">
+        @endforeach
+        <link rel="alternate" hreflang="x-default" href="{{ \App\Support\SiteLocale::canonical(\App\Support\SiteLocale::DEFAULT) }}">
+
         <meta property="og:site_name" content="Just Lite">
-        <meta property="article:modified_time" content="2021-10-21T09:37:54+00:00">
-        <meta property="og:image" content="https://www.just-lite.com/images/just-lite.png">
+        <meta property="og:type" content="{{ trim($__env->yieldContent('og_type')) ?: 'website' }}">
+        <meta property="og:locale" content="{{ $lang == 'ar' ? 'ar_AR' : 'en_US' }}">
+        <meta property="og:locale:alternate" content="{{ $lang == 'ar' ? 'en_US' : 'ar_AR' }}">
+        <meta property="og:title" content="{{ $title }}">
+        <meta property="og:description" content="{{ $description }}">
+        <meta property="og:url" content="{{ $canonical }}">
+        <meta property="og:image" content="{{ $ogImage }}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ $title }}">
+        <meta name="twitter:description" content="{{ $description }}">
+        <meta name="twitter:image" content="{{ $ogImage }}">
+
+        @stack('structured-data')
 
         @yield('head')
 
@@ -72,21 +87,30 @@
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="{{ asset('images/favicon.png')  }}">
 
+        @php
+            // Analytics only with consent (cookie banner, public/js/consent.js).
+            $consent = request()->cookie('site_consent');
+            $gtmId = config('site.gtm_id');
+        @endphp
+        @if($gtmId && $consent === 'granted')
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-MNGKCWV');</script>
+            })(window,document,'script','dataLayer',@json($gtmId));</script>
         <!-- End Google Tag Manager -->
+        @endif
 
     </head>
 
-<body>
+<body data-slide-label="{{ __('translation.slide', ['number' => '%n']) }}">
+@if($gtmId && $consent === 'granted')
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNGKCWV"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $gtmId }}"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+@endif
     <!-- Preloader -->
     <div class="preloader">
         <div class="spinner">
@@ -95,34 +119,20 @@
         </div>
     </div>
     <!-- Preloader End -->
-    @include('layouts.header.index')
-    <div id="app">
+    <a href="#main-content" class="skip-link visually-hidden-focusable">{{ __('translation.skip-to-content') }}</a>
+    <header class="site-header">
+        @include('layouts.header.index')
+        @include('home.navbar')
+    </header>
+    <main id="main-content" tabindex="-1">
         @yield('content-wrapper')
-    </div>
+    </main>
 
     @section('footer')
 
     @include('layouts.footer.index')
 
-    <!-- Modal Start -->
-    <div class="modal fade fade-scale searchmodal" id="searchmodal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-bs-dismiss="modal">
-                        <i class='bx bx-x'></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="modal-search-form">
-                        <input type="search" class="search-field" placeholder="Search...">
-                        <button type="submit"><i class='bx bx-search-alt'></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal End -->
+    @include('partials.consent-banner')
 
     <!-- Jquery Min JS -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -140,16 +150,16 @@
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <!-- Wow Min JS -->
     <script src="{{ asset('js/wow.min.js') }}"></script>
-    <!-- Jquery Ui JS -->
-    <script src="{{ asset('js/jquery-ui.min.js') }} "></script>
-    <!-- Ajaxchimp Min JS -->
-    <script src="{{ asset('js/ajaxchimp.min.js') }}"></script>
     <!-- Form Validator Min JS -->
     <script src="{{ asset('js/form-validator.min.js') }} "></script>
     <!-- Contact Form JS -->
     <script src="{{ asset('js/contact-form-script.js') }} "></script>
     <!-- Custom  JS -->
     <script src="{{ asset('js/custom.js') }} "></script>
+    <!-- Public forms (contact page, booking modal) -->
+    <script src="{{ asset('js/forms.js') }}"></script>
+    <!-- Cookie consent: analytics and the Google map -->
+    <script src="{{ asset('js/consent.js') }}"></script>
 
     @show
 

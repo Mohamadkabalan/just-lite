@@ -33,7 +33,7 @@ class SmokeTest extends TestCase
 
         foreach (self::LOCALES as $locale) {
             foreach ($this->publicUrls() as $url) {
-                $status = $this->withSession(['locale' => $locale])->get($url)->status();
+                $status = $this->get($locale === 'en' ? rtrim('/en'.$url, '/') : $url)->status();
 
                 if ($status !== 200) {
                     $failures[] = "[{$locale}] {$url} -> {$status}";
@@ -46,17 +46,16 @@ class SmokeTest extends TestCase
 
     public function test_ajax_pagination_endpoints_render(): void
     {
-        foreach (['/services/fetch_data?page=1', '/blogs/fetch_data?page=1'] as $url) {
+        foreach (['/services/fetch_data?page=1', '/blogs/fetch_data?page=1', '/en/blogs/fetch_data?page=1'] as $url) {
             $this->get($url, ['X-Requested-With' => 'XMLHttpRequest'])->assertOk();
         }
     }
 
-    public function test_locale_switch_stores_locale_in_session(): void
+    public function test_old_language_links_open_the_same_page_in_that_language(): void
     {
-        $this->from('/about')
-            ->get('/locale/en')
-            ->assertRedirect('/about')
-            ->assertSessionHas('locale', 'en');
+        $this->from('/about')->get('/locale/en')->assertRedirect('/en/about')->assertSessionHas('locale', 'en');
+        $this->from('/en/blogs?page=2')->get('/locale/ar')->assertRedirect('/blogs?page=2')->assertSessionHas('locale', 'ar');
+        $this->from('/admin/blogs')->get('/locale/en')->assertRedirect('/admin/blogs')->assertSessionHas('locale', 'en');
     }
 
     public function test_contact_form_saves_the_message(): void
@@ -67,6 +66,7 @@ class SmokeTest extends TestCase
             'phone_number' => '0000000000',
             'msg_subject' => 'Smoke test subject',
             'message' => 'Automated smoke test message.',
+            'form_started' => encrypt(now()->subMinute()->timestamp),
         ])->assertOk()->assertJson(['status' => 200]);
 
         $this->assertDatabaseHas((new Contact)->getTable(), [
@@ -84,6 +84,7 @@ class SmokeTest extends TestCase
             'appointment_date' => now()->addWeek()->format('Y-m-d'),
             'type_of_service' => 'Smoke test',
             'message' => 'Automated smoke test appointment.',
+            'form_started' => encrypt(now()->subMinute()->timestamp),
         ])->assertOk()->assertJson(['status' => 200]);
 
         $this->assertDatabaseHas((new Appointment)->getTable(), [

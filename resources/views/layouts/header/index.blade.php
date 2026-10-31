@@ -1,5 +1,5 @@
 <!-- Top Header Start -->
-<header class="top-header top-header-bg">
+<div class="top-header top-header-bg">
     <div class="container">
         <div class="top-inner-bg">
             <div class="row align-items-center">
@@ -14,21 +14,7 @@
                         <div class="header-item">
                             <ul>
                                 <li class="title">{{ __('translation.follow-us') }}:</li>
-                                <li>
-                                    <a href="https://www.facebook.com/bylaylahanna/" target="_blank">
-                                        <i class='bx bxl-facebook'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/just_lite/?hl=en" target="_blank">
-                                        <i class='bx bxl-instagram'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.linkedin.com/in/layla-hanna-313892204/?originalSubdomain=lb" target="_blank">
-                                        <i class='bx bxl-linkedin' ></i>
-                                    </a>
-                                </li>
+                                @include('partials.social-links', ['order' => ['facebook', 'instagram', 'linkedin']])
                             </ul>
                         </div>
 
@@ -42,18 +28,18 @@
                         <div class="header-item">
                             <div class="header-language dropdown language-option">
                                 <button class="dropdown-toggle" type="button" id="language1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class='bx bx-world'></i>
-                                    <span class="lang-name"></span>
+                                    <i class='bx bx-world' aria-hidden="true"></i>
+                                    <span class="lang-name">{{ app()->getLocale() == 'en' ? 'English' : 'العربيّة' }}</span>
                                 </button>
                                 <div class="dropdown-menu language-dropdown-menu" aria-labelledby="language1">
 
-                                    <a  class="dropdown-item" href="{{route('switchLan','en')}}">
-                                        <img src="{{ asset('images/uk.png') }}" alt="flag">
+                                    <a class="dropdown-item @if(app()->getLocale() == 'en') selected @endif" href="{{ \App\Support\SiteLocale::switchUrl('en') }}" hreflang="en" lang="en">
+                                        <img src="{{ asset('images/uk.png') }}" alt="" width="20" height="20">
                                         English
                                     </a>
 
-                                    <a class="dropdown-item" href="{{route('switchLan','ar')}}">
-                                        <img src="{{ asset('images/uae.png')  }} " alt="flag">
+                                    <a class="dropdown-item @if(app()->getLocale() == 'ar') selected @endif" href="{{ \App\Support\SiteLocale::switchUrl('ar') }}" hreflang="ar" lang="ar">
+                                        <img src="{{ asset('images/uae.png') }}" alt="" width="20" height="20">
                                         العربيّة
                                     </a>
                                 </div>
@@ -64,7 +50,7 @@
             </div>
         </div>
     </div>
-</header>
+</div>
 <!-- Top Header End -->
 
 @push('scripts')

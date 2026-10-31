@@ -1,10 +1,37 @@
 (function($) {
     'use strict';
 
+    // Carousels run right-to-left only on the Arabic pages.
+    var isRtl = document.documentElement.dir === 'rtl';
+
     // Mean Menu
 	$('.mean-menu').meanmenu({
 		meanScreenWidth: "991"
 	});
+
+    // Names for controls the plugins create without one (screen readers).
+    // The plugins rebuild them on resize, so this runs again then.
+    var menuLabel = $('.navbar-area').data('menu-label') || 'Menu';
+    var slideLabel = document.body.getAttribute('data-slide-label') || '%n';
+    function labelControls() {
+        $('.meanmenu-reveal').attr({ 'role': 'button', 'aria-label': menuLabel })
+            .attr('aria-expanded', $('.mean-nav > ul').is(':visible') ? 'true' : 'false');
+        $('.mean-nav').attr('aria-label', menuLabel);
+        $('.owl-carousel').each(function () {
+            $(this).find('.owl-dot').each(function (index) {
+                $(this).attr('aria-label', slideLabel.replace('%n', index + 1));
+            });
+        });
+    }
+    $(document).on('click', '.meanmenu-reveal', function () {
+        setTimeout(labelControls, 0);
+    });
+    $(document).on('initialized.owl.carousel refreshed.owl.carousel', '.owl-carousel', function () {
+        setTimeout(labelControls, 0);
+    });
+    $(window).on('load resize', function () {
+        setTimeout(labelControls, 50);
+    });
 
 	// Header Sticky
 	$(window).on('scroll',function() {
@@ -16,17 +43,8 @@
 		}
 	});
 
-    // Language-switcher
-    $(".language-option").each(function() {
-        var each = $(this)
-        each.find(".lang-name").html(each.find(".language-dropdown-menu a:nth-child(1)").text());
-        var allOptions = $(".language-dropdown-menu").children('a');
-        each.find(".language-dropdown-menu").on("click", "a", function() {
-             allOptions.removeClass('selected');
-             $(this).addClass('selected');
-             $(this).closest(".language-option").find(".lang-name").html($(this).text());
-        });
-    })
+    // Language-switcher: the header prints the current language's name, so
+    // there is nothing to set here (it used to copy the first item, "English").
 
     // Testimonials Slider
     $('.testimonials-slider').owlCarousel({
@@ -34,7 +52,7 @@
         margin: 30,
         nav: false,
         dots: true,
-        rtl: true,
+        rtl: isRtl,
         items: 1,
         autoplay: true,
         autoHeight:true,
@@ -49,7 +67,7 @@
         margin: 0,
         autoHeight: true,
         nav: false,
-        rtl: true,
+        rtl: isRtl,
         items: 1,
         dots:  true,
         center: true,
@@ -63,7 +81,7 @@
         margin: 30,
         autoHeight: true,
         nav: true,
-        rtl: true,
+        rtl: isRtl,
         dots: false,
         autoplay: true,
         autoplayHoverPause: true,
@@ -90,7 +108,7 @@
         loop: true,
         margin: 30,
         autoHeight: true,
-        rtl: true,
+        rtl: isRtl,
         nav: true,
         items: 1,
         dots: false,
@@ -109,7 +127,7 @@
         margin: 30,
         autoHeight: true,
         nav: false,
-        rtl: true,
+        rtl: isRtl,
         dots: true,
         autoplay: true,
         autoplayHoverPause: true,
@@ -134,7 +152,7 @@
         loop: true,
         margin: 25,
         autoHeight: true,
-        rtl: true,
+        rtl: isRtl,
         nav: false,
         dots: false,
         autoplay: true,
@@ -173,7 +191,17 @@
         mainClass: 'mfp-fade',
         removalDelay: 160,
         preloader: false,
-        fixedContentPos: false
+        fixedContentPos: false,
+        // YouTube's privacy-enhanced player: no tracking cookies until the video plays.
+        iframe: {
+            patterns: {
+                youtube: {
+                    index: 'youtube.com/',
+                    id: 'v=',
+                    src: 'https://www.youtube-nocookie.com/embed/%id%?autoplay=1'
+                }
+            }
+        }
     });
 
     // Popup Video Two
@@ -186,8 +214,7 @@
         fixedContentPos: false
     });
 
-    // Datetimepicker
-    $('#datetimepicker').datepicker();
+    // Booking date: the native date input (see the booking modal); no jQuery UI.
 
     // Tabs Single Page
     $('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
@@ -248,75 +275,6 @@
             spinner.find("input").trigger("change");
         });
     }); 
-
-    // Count Time JS
-	function makeTimer() {
-		var endTime = new Date("October 30, 2021 17:00:00 PDT");			
-		var endTime = (Date.parse(endTime)) / 1000;
-		var now = new Date();
-		var now = (Date.parse(now) / 1000);
-		var timeLeft = endTime - now;
-		var days = Math.floor(timeLeft / 86400); 
-		var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-		var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
-		var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
-		if (hours < "10") { hours = "0" + hours; }
-		if (minutes < "10") { minutes = "0" + minutes; }
-		if (seconds < "10") { seconds = "0" + seconds; }
-		$("#days").html(days + "<span>Days</span>");
-		$("#hours").html(hours + "<span>Hours</span>");
-		$("#minutes").html(minutes + "<span>Minutes</span>");
-		$("#seconds").html(seconds + "<span>Seconds</span>");
-	}
-    setInterval(function() { makeTimer(); }, 300);
-
-    // Subscribe form
-    $(".newsletter-form").validator().on("submit", function (event) {
-        if (event.isDefaultPrevented()) {
-            // Handle The Invalid Form...
-            formErrorSub();
-            submitMSGSub(false, "Please enter your email correctly");
-        } else {
-            // Everything Looks Good!
-            event.preventDefault();
-        }
-    });
-    function callbackFunction (resp) {
-        if (resp.result === "success") {
-            formSuccessSub();
-        }
-        else {
-            formErrorSub();
-        }
-    }
-    function formSuccessSub(){
-        $(".newsletter-form")[0].reset();
-        submitMSGSub(true, "Thank you for subscribing!");
-        setTimeout(function() {
-            $("#validator-newsletter").addClass('hide');
-        }, 4000)
-    }
-    function formErrorSub(){
-        $(".newsletter-form").addClass("animated shake");
-        setTimeout(function() {
-            $(".newsletter-form").removeClass("animated shake");
-        }, 1000)
-    }
-    function submitMSGSub(valid, msg){
-        if(valid){
-            var msgClasses = "validation-success";
-        } else {
-            var msgClasses = "validation-danger";
-        }
-        $("#validator-newsletter").removeClass().addClass(msgClasses).text(msg);
-    }
-
-        
-    // AJAX MailChimp
-    $(".newsletter-form").ajaxChimp({
-        url: "https://envyTheme.us20.list-manage.com/subscribe/post?u=60e1ffe2e8a68ce1204cd39a5&amp;id=42d6d188d9", // Your url MailChimp
-        callback: callbackFunction
-    });
 
     // Back To Top
     $('body').append("<div class='go-top'><i class='bx bx-chevrons-up'></i></div>");

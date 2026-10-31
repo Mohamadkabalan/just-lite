@@ -1,9 +1,8 @@
 @php $lang=app()->getLocale(); $page='testimonials';  @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Testimonials
-@endsection
+@section('page_title', __('translation.testimonials'))
+@section('meta_description', __('translation.testimonials-description'))
 
 @section('head')
 
@@ -15,7 +14,7 @@
 @stop
 
 @section('content-wrapper')
-    @include('home.navbar')
+    <h1 class="visually-hidden">{{ __('translation.testimonials') }}</h1>
     @include('home.testimonial')
     <div class="work-area pt-100 pb-70">
         <div class="container">

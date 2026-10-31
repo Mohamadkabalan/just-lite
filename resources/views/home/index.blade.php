@@ -1,9 +1,7 @@
 @php $lang=app()->getLocale(); $page='home';  @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Home
-@endsection
+{{-- No page_title: the home page uses translation.meta-title. --}}
 
 @section('head')
 
@@ -14,8 +12,10 @@
 
 @stop
 
+@include('partials.business-schema')
+
 @section('content-wrapper')
-    @include('home.navbar')
+    <h1 class="visually-hidden">{{ __('translation.meta-title') }}</h1>
     @include('home.banner')
     {{--@include('home.banner-bottom-area')--}}
     @include('home.about')

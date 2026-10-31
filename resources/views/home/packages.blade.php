@@ -1,4 +1,5 @@
 @php $packages = \App\Package::all();  @endphp
+@if($packages->isNotEmpty())
 <!-- Pricing Area -->
 <div id="pricing-area" class="pricing-area pt-100 pb-70">
     <div class="container">
@@ -14,8 +15,12 @@
                         <h3>{{$package->price}} $</h3>
                         <span>@if($lang=='en') {{$package->name_en}} @else {{$package->name_ar}}  @endif</span>
                     </div>
+                    @php $features = \App\Support\PackageFeatures::split($lang == 'en' ? $package->features_en : $package->features_ar); @endphp
+                    @if($features['intro'] !== '')
+                        <p class="pricing-intro pt-4">{!! nl2br(e($features['intro'])) !!}</p>
+                    @endif
                     <ul class="pt-4">
-                        @if($lang=='en') {!! $package->features_en !!} @else {!! $package->features_ar !!}  @endif
+                        {!! $features['items'] !!}
                     </ul>
                     <div class="price-btn-area text-center">
                         <a class="default-btn bookModalButton" href="#bookModal" data-package="{{ $package->name_en }}" data-bs-toggle="modal" data-bs-target="#bookModal" >
@@ -33,3 +38,4 @@
     </div>
 </div>
 <!-- Pricing Area End -->
+@endif

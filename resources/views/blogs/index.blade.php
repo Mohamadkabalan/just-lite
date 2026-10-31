@@ -1,9 +1,8 @@
 @php $lang=app()->getLocale(); $page='blogs';  @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Blogs
-@endsection
+@section('page_title', __('translation.blogs').($data->currentPage() > 1 ? ' – '.__('translation.page', ['page' => $data->currentPage()]) : ''))
+@section('meta_description', __('translation.blogs-description'))
 
 @section('head')
 @endsection
@@ -14,15 +13,14 @@
 @stop
 
 @section('content-wrapper')
-    @include('home.navbar')
     <!-- Inner Banner -->
     <div class="inner-banner inner-bg8">
         <div class="container">
             <div class="inner-title text-center">
-                <h3>{{ __('translation.blogs') }}</h3>
+                <h1>{{ __('translation.blogs') }}</h1>
                 <ul>
                     <li>
-                        <a href="/">{{ __('translation.home') }}</a>
+                        <a href="{{ localized_route('home') }}">{{ __('translation.home') }}</a>
                     </li>
                     <li>{{ __('translation.blogs') }}</li>
                 </ul>
@@ -63,7 +61,7 @@
             function fetch_data(page)
             {
                 $.ajax({
-                    url:"/blogs/fetch_data?page="+page,
+                    url: @json(localized_route('blogs.fetch-data')) + "?page=" + page,
                     success:function(data)
                     {
                         $('#data-content').html(data);

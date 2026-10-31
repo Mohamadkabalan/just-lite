@@ -22,6 +22,8 @@ Version scheme: `1.8.0.N`, where N counts local patch releases.
 | 1.8.0.2 | `SchemaManager::listTableNames()` passes the connection's database to `getTables()` | Laravel 12+ returns tables from every schema the DB user can see; the BREAD and Database screens must only list this app's tables |
 | 1.8.0.3 | New `Support\UploadGuard`; the media manager also requires the file extension to belong to an allowed MIME type and rejects names with a script extension anywhere (`x.php`, `x.php.jpg`, dotfiles); the `File` field type skips such files | CVE-2024-55417: the MIME check read the content, but files kept the client's extension, so an image/PHP polyglot named `x.php` was stored in the public disk and executed |
 | 1.8.0.4 | `VoyagerCompassController::index()` always returns 404 and `MenuItemPolicy` always hides the Compass menu item | Compass (command runner, log viewer) has unfixed CVEs and was only blocked while `APP_ENV` was not `local`, so one wrong `.env` value gave admins remote code execution |
+| 1.8.0.5 | `UserPolicy`: editing, adding or deleting *other* users, and changing roles, also need `edit_roles` | Upstream let `edit_users` alone change anyone's role and password, so any role with user permissions could make itself admin |
+| 1.8.0.5 | `VoyagerUserController::store()`/`update()` require passwords of at least 12 characters (empty on update keeps the old one) | The users BREAD had no password rules |
 
 ## Known upstream security advisories
 

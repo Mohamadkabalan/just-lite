@@ -4,9 +4,11 @@ $lang=app()->getLocale();
 @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Services
-@endsection
+@section('page_title', $lang == 'en' ? $service->title_en : $service->title_Ar)
+@section('meta_description', \Illuminate\Support\Str::limit(trim(preg_replace('/\s+/u', ' ', strip_tags($lang == 'en' ? (string) $service->text_en : (string) $service->text_ar))), 155))
+@if($serviceImage = json_decode($service->images ?? '[]')[0] ?? null)
+@section('og_image', \App\Support\VoyagerImage::url($serviceImage))
+@endif
 
 @section('head')
 @endsection
@@ -17,7 +19,6 @@ $lang=app()->getLocale();
 @stop
 
 @section('content-wrapper')
-    @include('home.navbar')
     <!-- Service Details Area -->
     <div class="service-details-area pt-100 pb-70">
         <div class="container">
@@ -35,7 +36,7 @@ $lang=app()->getLocale();
                             @endforeach
                         </div>
                         @endif
-                        <h2>@if($lang=='en') {{ $service->title_en }} @else {{ $service->title_Ar }} @endif</h2>
+                        <h1>@if($lang=='en') {{ $service->title_en }} @else {{ $service->title_Ar }} @endif</h1>
                         <div>
                             @if($lang=='en') {!! nl2br(e($service->text_en)) !!} @else {!! nl2br(e($service->text_ar)) !!} @endif
                         </div>

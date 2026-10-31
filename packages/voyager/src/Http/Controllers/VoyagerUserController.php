@@ -31,6 +31,18 @@ class VoyagerUserController extends VoyagerBaseController
             ]);
         }
 
+        // PATCH 1.8.0.5: the BREAD has no password rules; an empty password keeps the old one.
+        $request->validate(['password' => ['nullable', 'string', 'min:12']]);
+
         return parent::update($request, $id);
+    }
+
+    // POST BRE(A)D
+    public function store(Request $request)
+    {
+        // PATCH 1.8.0.5: new users need a password of at least 12 characters.
+        $request->validate(['password' => ['required', 'string', 'min:12']]);
+
+        return parent::store($request);
     }
 }

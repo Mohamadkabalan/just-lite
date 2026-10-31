@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
 
 /**
  * Columns of the Voyager-managed `contacts` table (there is no migration).
@@ -18,5 +20,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Contact extends Model
 {
+    use Prunable;
 
+    /**
+     * Messages older than the retention period in the privacy policy
+     * (config site.retention_months), deleted by the scheduled model:prune.
+     *
+     * @return Builder<static>
+     */
+    public function prunable(): Builder
+    {
+        return static::query()->where('created_at', '<=', now()->subMonths((int) config('site.retention_months')));
+    }
 }

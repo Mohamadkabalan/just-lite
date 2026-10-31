@@ -1,9 +1,11 @@
-@php $lang=app()->getLocale(); $page='blogs';  @endphp
+@php $lang=app()->getLocale(); $page='diet-plan';  @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Blogs
-@endsection
+@section('page_title', ($lang == 'en' ? $diet->title_en : $diet->title_ar).' – '.__('translation.diet-plan'))
+@section('meta_description', \Illuminate\Support\Str::limit(trim(preg_replace('/\s+/u', ' ', strip_tags($lang == 'en' ? (string) $diet->text_en : (string) $diet->text_ar))), 155))
+@if($diet->image)
+@section('og_image', \App\Support\VoyagerImage::url($diet->image))
+@endif
 
 @section('head')
 @endsection
@@ -14,7 +16,6 @@
 @stop
 
 @section('content-wrapper')
-    @include('home.navbar')
 <!-- Service Details Area -->
 <div class="service-details-area pt-100 pb-70">
     <div class="container">
@@ -30,9 +31,7 @@
                             </div>
                         </div>
                     </div>
-                    <p>
-                        @if($lang=='en') {{$diet->title_en}}  @else {{$diet->title_ar}}  @endif
-                    </p>
+                    <h1>@if($lang=='en') {{$diet->title_en}} @else {{$diet->title_ar}} @endif</h1>
                     <p>
                         @if($lang=='en') {!! nl2br(e($diet->text_en)) !!}  @else {!! nl2br(e($diet->text_ar)) !!}  @endif
                     </p>

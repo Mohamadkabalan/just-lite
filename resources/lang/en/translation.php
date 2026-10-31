@@ -38,7 +38,7 @@ return [
     "address" => "Address",
     "address-info" => "Mar Elias Street, North Lebanon, Lebanon",
     "phone-info" => "+96170779100",
-    "copy-right" => "Copyright © 2022. All Rights Reserved by",
+    "copy-right" => "Copyright © :year. All Rights Reserved by",
     "how-it-works" => "How It Works",
     "easy-steps-for-happy-life" => "4 Easy Steps For Happy Life",
     "appointment" => "Appointment",
@@ -60,6 +60,56 @@ return [
     "bad-habits" => "Bad Habits",
     "results" => "Results",
     "before-after" => "Before &amp; After",
-    "results-description" => "Check out these amazing before-and-after weight loss pictures to give you the motivation you need to take the first step for a healthier you."
+    "results-description" => "Check out these amazing before-and-after weight loss pictures to give you the motivation you need to take the first step for a healthier you.",
+
+    // Search engines and link previews (titles are "{page} | Just Lite").
+    "meta-title" => "Just Lite | Dietitian Layla Hanna, Tripoli, Lebanon",
+    "meta-description" => "Just Lite by registered dietitian Layla Hanna in Tripoli, Lebanon: personalised nutrition programmes, consultations and healthy recipes, in clinic and online.",
+    "about-description" => "Meet Layla Hanna, registered dietitian and founder of Just Lite in Tripoli, Lebanon, and how her nutrition programmes work.",
+    "testimonials-description" => "What Just Lite clients say about their nutrition programmes with dietitian Layla Hanna, and how the programme works step by step.",
+    "services-description" => "Nutrition services at Just Lite: personalised diet plans, consultations and follow-up with dietitian Layla Hanna.",
+    "blogs-description" => "Healthy recipes and nutrition tips from dietitian Layla Hanna at Just Lite.",
+    "contact-description" => "Contact Just Lite in Tripoli, Lebanon: call or WhatsApp +961 70 779 100, email us, or send a message to book a consultation.",
+    "page" => "Page :page",
+    "no-posts" => "No posts yet. Please check back soon.",
+    "no-services" => "No services to show yet.",
+
+    // Contact form and booking modal.
+    "form-check-fields" => "Please check the highlighted fields.",
+    "form-failed" => "Sorry, something went wrong. Please try again or contact us on WhatsApp.",
+    "form-too-many" => "Too many attempts. Please wait a minute and try again.",
+    "form-expired" => "This form has expired. Please reload the page and try again.",
+    "form-too-fast" => "Please wait a few seconds before sending.",
+    "appointment-sent" => "Thank you! Your appointment request has been received. We will contact you soon to confirm.",
+    "message-sent" => "Thank you! Your message has been sent. We will get back to you soon.",
+    "enter-name" => "Please enter your name.",
+    "enter-email" => "Please enter a valid email address.",
+    "enter-phone" => "Please enter your phone number.",
+    "enter-subject" => "Please enter a subject.",
+    "enter-message" => "Please write your message.",
+    "choose-date" => "Please choose a date.",
+    "close" => "Close",
+    "form-privacy" => "We only use your details to reply to you. See our :link.",
+
+    // Cookie banner, privacy policy, map.
+    "privacy-policy" => "Privacy policy",
+    "cookie-title" => "Cookies",
+    "cookie-text" => "With your permission we use Google Analytics cookies to see how the site is used. The cookies the forms need are always on.",
+    "cookie-accept" => "Accept analytics",
+    "cookie-decline" => "Decline",
+    "cookie-settings" => "Cookie settings",
+    "map-title" => "Map: Just Lite, Mar Elias Street",
+
+    // Names for icon-only controls (screen readers).
+    "skip-to-content" => "Skip to content",
+    "open-menu" => "Menu",
+    "slide" => "Slide :number",
+    "previous" => "Previous",
+    "next" => "Next",
+    "play-video" => "Play the video",
+    "chat-whatsapp" => "Chat with us on WhatsApp",
+    "new-tab" => "(opens in a new tab)",
+    "show-map" => "Show the map (Google Maps)",
+    "open-map" => "Open in Google Maps",
 
 ];

@@ -1,4 +1,11 @@
 RewriteEngine on
+
+# Drop trailing slashes here, before the request is passed into public/, so the
+# redirect keeps the public address: /about/ -> /about (public/.htaccess would
+# send it to /public/about). public/.htaccess redirects /public/... itself.
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [L,R=301]
+
 RewriteCond %{REQUEST_URI} !^public
 RewriteRule ^(.*)$ public/$1 [L]
 

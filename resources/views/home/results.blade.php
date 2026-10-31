@@ -1,5 +1,5 @@
 @php $results = \App\Result::all();  @endphp
-@if($results)
+@if($results->isNotEmpty())
 <div class="faq-area pt-100 pb-70">
     <div class="container">
         <div class="row">
@@ -14,7 +14,7 @@
                 <div id="carouselResults" class="carousel slide" data-bs-ride="carousel" style="max-width: 500px">
                     <div class="carousel-indicators">
                         @foreach($results as $key => $result)
-                            <button type="button" data-bs-target="#carouselResults" data-bs-slide-to="{{$key}}" class="@if($key==0) active @endif" aria-current="@if($key==0) true @endif" aria-label="Slide {{ $key + 1  }}"></button>
+                            <button type="button" data-bs-target="#carouselResults" data-bs-slide-to="{{$key}}" class="@if($key==0) active @endif" aria-current="@if($key==0) true @endif" aria-label="{{ __('translation.slide', ['number' => $key + 1]) }}"></button>
                         @endforeach
                     </div>
                     <div class="carousel-inner">
@@ -30,17 +30,17 @@
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselResults" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        <span class="visually-hidden">{{ __('translation.previous') }}</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselResults" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                        <span class="visually-hidden">{{ __('translation.next') }}</span>
                     </button>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="qodef-m-info p-5">
-                    <h5 class="qodef-m-title">{!! __('translation.before-after') !!}  	</h5>
+                    <h3 class="h5 qodef-m-title">{!! __('translation.before-after') !!}</h3>
                     <p class="qodef-m-text">{{ __('translation.results-description')  }}</p>
                 </div>
             </div>

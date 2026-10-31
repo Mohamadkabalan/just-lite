@@ -6,10 +6,13 @@ use App\About;
 use App\Appointment;
 use App\Blog;
 use App\Contact;
+use App\Models\User;
 use App\Service;
 use App\Support\VoyagerImage;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 /**
@@ -40,7 +43,7 @@ class BugFixTest extends TestCase
         foreach (['ar', 'en'] as $locale) {
             $this->assertSame($digits, preg_replace('/\D/', '', $ascii(trans('translation.phone-info', [], $locale))), "phone-info ({$locale})");
 
-            $html = $this->withSession(['locale' => $locale])->get('/contact-us')->assertOk()->getContent();
+            $html = $this->get($locale === 'en' ? '/en/contact-us' : '/contact-us')->assertOk()->getContent();
             preg_match_all('/961\d{8}/', $ascii($html), $found);
 
             $this->assertSame([$digits], array_values(array_unique($found[0])), "numbers on /contact-us ({$locale})");
@@ -54,12 +57,12 @@ class BugFixTest extends TestCase
         $blog = Blog::query()->orderBy('id')->firstOrFail();
 
         foreach (['/', '/blog-details/'.$blog->id] as $url) {
-            $this->withSession(['locale' => 'ar'])->get($url)->assertOk()
+            $this->get($url)->assertOk()
                 ->assertSee('css/bootstrap.rtl.min.css', false)
                 ->assertDontSee('css/bootstrap.min.css', false)
                 ->assertDontSee('cdn.jsdelivr.net/npm/bootstrap', false);
 
-            $this->withSession(['locale' => 'en'])->get($url)->assertOk()
+            $this->get('/en'.rtrim($url, '/'))->assertOk()
                 ->assertSee('css/bootstrap.min.css', false)
                 ->assertDontSee('css/bootstrap.rtl.min.css', false)
                 ->assertDontSee('cdn.jsdelivr.net/npm/bootstrap', false);
@@ -73,21 +76,36 @@ class BugFixTest extends TestCase
         $blog->text_en = "Ingredients:\n2 eggs <b>fresh</b>\n1 cup flour";
         $blog->save();
 
-        $this->withSession(['locale' => 'en'])->get('/blog-details/'.$blog->id)->assertOk()
+        $this->get('/en/blog-details/'.$blog->id)->assertOk()
             ->assertSee("Ingredients:<br />\n2 eggs &lt;b&gt;fresh&lt;/b&gt;<br />\n1 cup flour", false);
     }
 
-    public function test_about_background_is_only_set_when_there_is_an_image(): void
+    public function test_about_background_shows_the_image_or_nothing(): void
     {
         $about = About::query()->firstOrFail();
 
+        // Without an image the theme's placeholder (images/about/about-bg.png) must not show.
         $about->image = null;
         $about->save();
-        $this->get('/about')->assertOk()->assertDontSee('.about-area::before', false);
+        $this->get('/about')->assertOk()->assertSee('background-image: none;', false)->assertDontSee('url(/storage/)', false);
 
         $about->image = 'abouts\\May2023\\photo.jpg';
         $about->save();
         $this->get('/about')->assertOk()->assertSee('url('.asset('storage/abouts/May2023/photo.jpg').')', false);
+    }
+
+    public function test_empty_sections_are_hidden_and_empty_lists_say_so(): void
+    {
+        \App\NutritionSpecialFeature::query()->delete();
+        $this->get('/en/about')->assertOk()->assertDontSee('Nutrition Special Feature');
+
+        // Testimonials without a name get no empty heading.
+        \App\Testimonial::query()->update(['title_en' => null]);
+        $this->assertDoesNotMatchRegularExpression('#<h3>\s*</h3>#', $this->get('/en/testimonials')->getContent());
+
+        Blog::query()->delete();
+        $this->get('/en/blogs')->assertOk()->assertSee(__('translation.no-posts', [], 'en'));
+        $this->get('/blogs')->assertOk()->assertSee(__('translation.no-posts', [], 'ar'));
     }
 
     public function test_voyager_image_uses_a_size_copy_only_when_it_exists(): void
@@ -100,6 +118,32 @@ class BugFixTest extends TestCase
         $this->assertSame(asset('storage/banners/x.png'), VoyagerImage::url('banners\\x.png', 'small'));
         $this->assertSame(asset('storage/banners/x.png'), VoyagerImage::url('banners\\x.png'));
         $this->assertNull(VoyagerImage::url(null, 'medium'));
+    }
+
+    public function test_admin_forms_refuse_empty_content(): void
+    {
+        $admin = new User;
+        $admin->forceFill([
+            'name' => 'Bug Fix Admin',
+            'email' => 'bugfix-admin@example.test',
+            'password' => bcrypt(Str::random(40)),
+            'role_id' => DB::table('roles')->where('name', 'admin')->value('id'),
+        ])->save();
+
+        $before = Blog::count();
+        $this->actingAs($admin)->post('/admin/blogs', ['title_en' => '', 'title_ar' => ''])
+            ->assertSessionHasErrors(['title_en', 'title_ar', 'text_en', 'text_ar']);
+        $this->assertSame($before, Blog::count());
+
+        // Existing records still save without re-uploading their image.
+        $blog = Blog::query()->orderBy('id')->firstOrFail();
+        $this->actingAs($admin)->put("/admin/blogs/{$blog->id}", [
+            'title_en' => $blog->title_en.' (edited)',
+            'title_ar' => $blog->title_ar,
+            'text_en' => $blog->text_en,
+            'text_ar' => $blog->text_ar,
+        ])->assertSessionHasNoErrors();
+        $this->assertSame($blog->title_en.' (edited)', $blog->fresh()->title_en);
     }
 
     public function test_the_template_demo_shop_is_gone(): void
@@ -124,8 +168,7 @@ class BugFixTest extends TestCase
     {
         $service = Service::query()->whereNotNull('title_Ar')->where('title_Ar', '!=', '')->firstOrFail();
 
-        $this->withSession(['locale' => 'ar'])
-            ->get('/service-details/'.$service->id)
+        $this->get('/service-details/'.$service->id)
             ->assertOk()
             ->assertSee($service->title_Ar);
     }
@@ -166,6 +209,7 @@ class BugFixTest extends TestCase
             'phone' => '0000000000',
             'appointment_date' => '12/31/2030',
             'message' => 'Booked from the modal without choosing a package.',
+            'form_started' => encrypt(now()->subMinute()->timestamp),
         ])->assertOk()->assertJson(['status' => 200]);
 
         $this->assertDatabaseHas((new Appointment)->getTable(), [
