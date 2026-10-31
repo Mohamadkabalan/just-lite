@@ -12,6 +12,7 @@ class EncryptCookies extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        // The cookie banner's choice ("granted"/"denied"), set by public/js/consent.js.
+        'site_consent',
     ];
 }

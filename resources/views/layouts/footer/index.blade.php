@@ -55,6 +55,7 @@
                                 </div>
 
                                 <div class="col-lg-12 col-md-12">
+                                    @include('partials.form-privacy')
                                     <button type="submit" class="default-btn">
                                         {{ __('translation.submit-now') }}
                                     </button>
@@ -181,9 +182,16 @@
     <div class="copyright-area">
         <div class="container">
             <div class="copy-right-text text-center">
-                <p>
-                    {{ __('translation.copy-right') }}
-                    <a href="http://itvision.me" target="_blank">ItVision</a>
+                @php
+                    $year = date('Y');
+                    $year = app()->getLocale() == 'ar' ? strtr($year, ['0' => '٠', '1' => '١', '2' => '٢', '3' => '٣', '4' => '٤', '5' => '٥', '6' => '٦', '7' => '٧', '8' => '٨', '9' => '٩']) : $year;
+                @endphp
+                {{-- "ItVision" is plain text: its old address (itvision.me) now redirects to an unrelated site. --}}
+                <p>{{ __('translation.copy-right', ['year' => $year]) }} ItVision</p>
+                <p class="footer-legal">
+                    <a href="{{ localized_route('privacy') }}">{{ __('translation.privacy-policy') }}</a>
+                    <span aria-hidden="true">·</span>
+                    <a href="#" data-consent-reset>{{ __('translation.cookie-settings') }}</a>
                 </p>
             </div>
         </div>

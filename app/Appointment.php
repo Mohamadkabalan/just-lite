@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
 
 /**
  * Columns of the Voyager-managed `appointments` table (there is no migration).
@@ -19,5 +21,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Appointment extends Model
 {
+    use Prunable;
 
+    /**
+     * Booking requests older than the retention period in the privacy policy
+     * (config site.retention_months), deleted by the scheduled model:prune.
+     *
+     * @return Builder<static>
+     */
+    public function prunable(): Builder
+    {
+        return static::query()->where('created_at', '<=', now()->subMonths((int) config('site.retention_months')));
+    }
 }

@@ -87,21 +87,30 @@
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="{{ asset('images/favicon.png')  }}">
 
+        @php
+            // Analytics only with consent (cookie banner, public/js/consent.js).
+            $consent = request()->cookie('site_consent');
+            $gtmId = config('site.gtm_id');
+        @endphp
+        @if($gtmId && $consent === 'granted')
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-MNGKCWV');</script>
+            })(window,document,'script','dataLayer',@json($gtmId));</script>
         <!-- End Google Tag Manager -->
+        @endif
 
     </head>
 
 <body>
+@if($gtmId && $consent === 'granted')
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNGKCWV"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $gtmId }}"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+@endif
     <!-- Preloader -->
     <div class="preloader">
         <div class="spinner">
@@ -119,25 +128,7 @@
 
     @include('layouts.footer.index')
 
-    <!-- Modal Start -->
-    <div class="modal fade fade-scale searchmodal" id="searchmodal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-bs-dismiss="modal">
-                        <i class='bx bx-x'></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="modal-search-form">
-                        <input type="search" class="search-field" placeholder="Search...">
-                        <button type="submit"><i class='bx bx-search-alt'></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal End -->
+    @include('partials.consent-banner')
 
     <!-- Jquery Min JS -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -163,6 +154,8 @@
     <script src="{{ asset('js/custom.js') }} "></script>
     <!-- Public forms (contact page, booking modal) -->
     <script src="{{ asset('js/forms.js') }}"></script>
+    <!-- Cookie consent: analytics and the Google map -->
+    <script src="{{ asset('js/consent.js') }}"></script>
 
     @show
 

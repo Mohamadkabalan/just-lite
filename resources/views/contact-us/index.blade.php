@@ -129,6 +129,7 @@
                                 </div>--}}
 
                                 <div class="col-lg-12 col-md-12">
+                                    @include('partials.form-privacy')
                                     <button type="submit" class="default-btn">
                                         {{ __('translation.send-message') }}
                                     </button>
@@ -147,7 +148,16 @@
     <!-- Map Area -->
     <div class="map-area">
         <div class="container-fluid m-0 p-0">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13160.043677475345!2d35.8095201!3d34.4518707!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb9018011838f2074!2sJust%20Lite%20L.D%20by%20Layla%20Hanna!5e0!3m2!1sen!2slb!4v1644612187566!5m2!1sen!2slb" allowfullscreen="" loading="lazy"></iframe>
+            {{-- Google Maps only loads when asked (or after accepting cookies): public/js/consent.js. --}}
+            <div class="map-placeholder"
+                 data-map-src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13160.043677475345!2d35.8095201!3d34.4518707!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb9018011838f2074!2sJust%20Lite%20L.D%20by%20Layla%20Hanna!5e0!3m2!1sen!2slb!4v1644612187566!5m2!1sen!2slb"
+                 data-map-title="{{ __('translation.map-title') }}">
+                <p>{{ __('translation.address-info') }}</p>
+                <div class="map-actions">
+                    <button type="button" class="default-btn" data-map-load>{{ __('translation.show-map') }}</button>
+                    <a class="default-btn two" href="https://www.google.com/maps/search/?api=1&amp;query=34.4518707,35.8095201" target="_blank" rel="noopener">{{ __('translation.open-map') }}</a>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Map Area End -->

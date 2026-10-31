@@ -2752,3 +2752,99 @@
 .form-status:empty {
   display: none;
 }
+
+/* Cookie banner (public/js/consent.js) */
+.consent-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1060;
+  background: var(--whiteColor);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+  padding: 16px 0;
+}
+.consent-banner[hidden] {
+  display: none;
+}
+.consent-banner .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+.consent-banner p {
+  margin: 0;
+  flex: 1 1 420px;
+  color: var(--titleColor);
+}
+.consent-banner p a {
+  text-decoration: underline;
+}
+.consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.consent-actions .default-btn {
+  min-height: 44px;
+  border: 0;
+}
+
+/* Contact page map: loads Google Maps only when asked */
+.map-placeholder {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 16px;
+  background: #f5faf2;
+  text-align: center;
+}
+.map-placeholder p {
+  margin: 0;
+  font-size: 18px;
+}
+.map-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.map-actions .default-btn {
+  min-height: 44px;
+  border: 0;
+}
+
+/* Privacy notice above the form buttons, footer legal links, policy page */
+.form-privacy {
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.form-privacy a,
+.footer-legal a {
+  text-decoration: underline;
+}
+.footer-legal {
+  margin-top: 6px;
+}
+.footer-legal a {
+  display: inline-block;
+  padding: 10px 4px;
+}
+.privacy-area h2 {
+  font-size: 24px;
+  margin: 30px 0 12px;
+}
+.privacy-area ul {
+  padding-inline-start: 22px;
+}
+.privacy-area li {
+  margin-bottom: 8px;
+}
+.privacy-updated {
+  font-style: italic;
+}

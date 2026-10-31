@@ -167,7 +167,17 @@
         mainClass: 'mfp-fade',
         removalDelay: 160,
         preloader: false,
-        fixedContentPos: false
+        fixedContentPos: false,
+        // YouTube's privacy-enhanced player: no tracking cookies until the video plays.
+        iframe: {
+            patterns: {
+                youtube: {
+                    index: 'youtube.com/',
+                    id: 'v=',
+                    src: 'https://www.youtube-nocookie.com/embed/%id%?autoplay=1'
+                }
+            }
+        }
     });
 
     // Popup Video Two

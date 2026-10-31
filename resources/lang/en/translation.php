@@ -38,7 +38,7 @@ return [
     "address" => "Address",
     "address-info" => "Mar Elias Street, North Lebanon, Lebanon",
     "phone-info" => "+96170779100",
-    "copy-right" => "Copyright © 2022. All Rights Reserved by",
+    "copy-right" => "Copyright © :year. All Rights Reserved by",
     "how-it-works" => "How It Works",
     "easy-steps-for-happy-life" => "4 Easy Steps For Happy Life",
     "appointment" => "Appointment",
@@ -89,5 +89,17 @@ return [
     "enter-message" => "Please write your message.",
     "choose-date" => "Please choose a date.",
     "close" => "Close",
+    "form-privacy" => "We only use your details to reply to you. See our :link.",
+
+    // Cookie banner, privacy policy, map.
+    "privacy-policy" => "Privacy policy",
+    "cookie-title" => "Cookies",
+    "cookie-text" => "With your permission we use Google Analytics cookies to see how the site is used. The cookies the forms need are always on.",
+    "cookie-accept" => "Accept analytics",
+    "cookie-decline" => "Decline",
+    "cookie-settings" => "Cookie settings",
+    "map-title" => "Map: Just Lite, Mar Elias Street",
+    "show-map" => "Show the map (Google Maps)",
+    "open-map" => "Open in Google Maps",
 
 ];

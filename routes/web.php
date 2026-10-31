@@ -80,6 +80,10 @@ $site = function () {
     Route::post('/contact/create', 'App\Http\Controllers\ContactController@store')
         ->middleware('throttle:public-forms')
         ->name('contact.store');
+
+    Route::get('/privacy-policy', function () {
+        return view('privacy.index');
+    })->name('privacy');
 };
 
 Route::middleware('site.locale')->group($site);

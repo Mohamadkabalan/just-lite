@@ -38,7 +38,7 @@ return [
     "address" => "العنوان",
     "address-info" => "شارع مار الياس ، شمال لبنان ، لبنان",
     "phone-info" => "٩٦١٧٠٧٧٩١٠٠+",
-    "copy-right" => "حقوق الطبع والنشر © ٢٠٢٢. جميع الحقوق محفوظة",
+    "copy-right" => "حقوق الطبع والنشر © :year. جميع الحقوق محفوظة",
     "how-it-works" => "كيف تعمل",
     "easy-steps-for-happy-life" => "٤ خطوات سهلة لحياة سعيدة",
     "appointment" => "موعد",
@@ -89,5 +89,17 @@ return [
     "enter-message" => "يرجى كتابة رسالتك.",
     "choose-date" => "يرجى اختيار التاريخ.",
     "close" => "إغلاق",
+    "form-privacy" => "نستخدم بياناتك فقط للرد عليك. اطّلع على :link.",
+
+    // Cookie banner, privacy policy, map.
+    "privacy-policy" => "سياسة الخصوصية",
+    "cookie-title" => "ملفات تعريف الارتباط",
+    "cookie-text" => "بإذنك، نستخدم ملفات تعريف الارتباط من Google Analytics لمعرفة كيفية استخدام الموقع. أما ملفات تعريف الارتباط التي تحتاجها النماذج فتبقى مفعّلة دائمًا.",
+    "cookie-accept" => "قبول التحليلات",
+    "cookie-decline" => "رفض",
+    "cookie-settings" => "إعدادات ملفات تعريف الارتباط",
+    "map-title" => "خريطة: Just Lite، شارع مار الياس",
+    "show-map" => "عرض الخريطة (خرائط Google)",
+    "open-map" => "فتح في خرائط Google",
 
 ];

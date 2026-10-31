@@ -52,6 +52,7 @@ class SitemapController extends Controller
             ['/testimonials', null],
             ['/blogs', $latestBlog],
             ['/contact-us', null],
+            ['/privacy-policy', null],
         ];
 
         foreach (Blog::query()->orderBy('id')->get(['id', 'updated_at']) as $blog) {
