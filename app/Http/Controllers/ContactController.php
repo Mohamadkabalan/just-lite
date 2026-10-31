@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Http\Requests\StoreContactRequest;
 
 class ContactController extends Controller
 {
 
-    public function store(){
+    public function store(StoreContactRequest $request){
         try {
-            $data=request()->all();
+            $data=$request->validated();
             $contact=new Contact();
             $contact->name=$data["name"];
             $contact->email=$data["email"];
@@ -19,6 +20,7 @@ class ContactController extends Controller
             $contact->save();
             return response()->json(['status'=>200,'message'=>'Your message has been sent successfully']);
         }catch (\Exception $e){
+            report($e);
             return response()->json(['status'=>500,'message'=>'Message not sent ,Please contact our office']);
         }
 

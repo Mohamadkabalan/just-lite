@@ -71,7 +71,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="footer-widget">
                         <div class="footer-logo">
-                            <a href="index.html">
+                            <a href="{{ url('/') }}">
                                 <img style="max-width: 160px;" src="{{ asset('images/logo.png') }}" alt="Images">
                             </a>
                         </div>
@@ -197,16 +197,24 @@
         $(document).ready(function() {
             $(document).on('submit','#appointment-form',function(e){
                 e.preventDefault();
+                var form = this;
+                var $button = $(form).find('[type=submit]').prop('disabled', true);
                 $.ajax({
                     url: "/appointment/create",
                     method: "POST",
-                    data : $('#appointment-form').serialize(),
+                    data : $(form).serialize(),
                     success: function (data) {
-                        console.log(data);
+                        alert(data.message);
                         if(data.status==200){
-                            alert(data.message);
-                            $('#appointment-form')[0].reset();
+                            form.reset();
                         }
+                    },
+                    error: function (xhr) {
+                        var errors = xhr.responseJSON && xhr.responseJSON.errors;
+                        alert(errors ? Object.values(errors)[0][0] : 'Appointment not sent, please try again.');
+                    },
+                    complete: function () {
+                        $button.prop('disabled', false);
                     }
                 });
             });

@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('locale/{locale}',function($locale){
+    abort_unless(in_array($locale, config('app.available_locales'), true), 404);
     Session::put('locale',$locale);
     return redirect()->back();
 })->name('switchLan');  //add name to router

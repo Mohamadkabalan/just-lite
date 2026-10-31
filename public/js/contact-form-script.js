@@ -3,47 +3,17 @@
 /*==============================================================*/
 (function ($) {
     "use strict"; // Start of use strict
+    // Client-side validation only. A valid form is sent to /contact/create by
+    // the handler in resources/views/contact-us/index.blade.php.
     $("#contactForm").validator().on("submit", function (event) {
         if (event.isDefaultPrevented()) {
             // handle the invalid form...
             formError();
             submitMSG(false, "Did you fill up the form properly?");
-        } else {
-            // everything looks good!
-            event.preventDefault();
-            submitForm();
+            // Keep the page's handler from sending an invalid form.
+            event.stopPropagation();
         }
     });
-
-
-    function submitForm(){
-        // Initiate Variables With Form Content
-        var name = $("#name").val();
-        var email = $("#email").val();
-        var msg_subject = $("#msg_subject").val();
-        var phone_number = $("#phone_number").val();
-        var message = $("#message").val();
-
-
-        $.ajax({
-            type: "POST",
-            url: "assets/php/form-process.php",
-            data: "name=" + name + "&email=" + email + "&msg_subject=" + msg_subject + "&phone_number=" + phone_number + "&message=" + message,
-            success : function(text){
-                if (text == "success"){
-                    formSuccess();
-                } else {
-                    formError();
-                    submitMSG(false,text);
-                }
-            }
-        });
-    }
-
-    function formSuccess(){
-        $("#contactForm")[0].reset();
-        submitMSG(true, "Message Submitted!")
-    }
 
     function formError(){
         $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){

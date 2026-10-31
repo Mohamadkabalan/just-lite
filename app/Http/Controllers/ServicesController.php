@@ -17,14 +17,13 @@ class ServicesController extends Controller
 
     function fetch_data()
     {
-        if(request()->ajax())
-        {
-            $data = DB::table('services')->paginate(6);
-            return view('services.services-content', compact('data'))->render();
-        }
+        abort_unless(request()->ajax(), 404);
+
+        $data = DB::table('services')->paginate(6);
+        return view('services.services-content', compact('data'))->render();
     }
     function serviceDetails($id){
-        $service =\App\Service::find($id);
+        $service =\App\Service::findOrFail($id);
         return view('services.service-details', compact('service'));
     }
 }

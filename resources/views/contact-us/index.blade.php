@@ -149,14 +149,25 @@
         $(document).ready(function() {
             $(document).on('submit','#contactForm',function(e){
                 e.preventDefault();
+                var form = this;
+                var $button = $(form).find('[type=submit]').prop('disabled', true);
                 $.ajax({
                     url: "/contact/create",
                     method: "POST",
-                    data : $('#contactForm').serialize(),
+                    data : $(form).serialize(),
                     success: function (data) {
+                        $('#msgSubmit').removeClass().addClass(data.status==200 ? 'h4 text-success' : 'h4 text-danger').text(data.message);
                         if(data.status==200){
-                            $('#contactForm')[0].reset();
+                            form.reset();
                         }
+                    },
+                    error: function (xhr) {
+                        var errors = xhr.responseJSON && xhr.responseJSON.errors;
+                        var message = errors ? Object.values(errors)[0][0] : 'Message not sent, please try again.';
+                        $('#msgSubmit').removeClass().addClass('h4 text-danger').text(message);
+                    },
+                    complete: function () {
+                        $button.prop('disabled', false);
                     }
                 });
             });

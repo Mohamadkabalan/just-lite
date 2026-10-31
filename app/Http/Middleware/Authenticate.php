@@ -14,8 +14,7 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
-        }
+        // Voyager's login is the only one; there is no route named "login".
+        return $request->expectsJson() ? null : route('voyager.login');
     }
 }

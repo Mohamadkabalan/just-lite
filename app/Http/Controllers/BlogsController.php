@@ -16,14 +16,13 @@ class BlogsController extends Controller
 
     function fetchData()
     {
-        if(request()->ajax())
-        {
-            $data = DB::table('blogs')->paginate(6);
-            return view('blogs.blogs-content', compact('data'))->render();
-        }
+        abort_unless(request()->ajax(), 404);
+
+        $data = DB::table('blogs')->paginate(6);
+        return view('blogs.blogs-content', compact('data'))->render();
     }
     function blogDetails($id){
-        $blog =\App\Blog::find($id);
+        $blog =\App\Blog::findOrFail($id);
         return view('blogs.blog-details', compact('blog'));
     }
 }

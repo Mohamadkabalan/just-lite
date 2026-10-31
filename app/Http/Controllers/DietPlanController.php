@@ -12,7 +12,7 @@ class DietPlanController extends Controller
 
     function fetchDiet($id)
     {
-        $diet =\App\WeeklyDietPlan::find($id);
+        $diet =\App\WeeklyDietPlan::findOrFail($id);
         return view('diet-plan.plan-details', compact('diet'));
     }
 }

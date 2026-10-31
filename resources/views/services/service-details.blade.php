@@ -1,7 +1,6 @@
 @php
 $page="services-details";
 $lang=app()->getLocale();
-$services=\App\Service::paginate(6);
 @endphp
 @extends('layouts.master')
 
@@ -37,7 +36,7 @@ $services=\App\Service::paginate(6);
                             @endforeach
                         </div>
                         @endif
-                        <h2>@if($lang=='en') {{ $service->title_en }} @else {{ $service->title_ar }} @endif</h2>
+                        <h2>@if($lang=='en') {{ $service->title_en }} @else {{ $service->title_Ar }} @endif</h2>
                         <div>
                             @if($lang=='en') {{ $service->text_en }} @else {{ $service->text_ar }} @endif
                         </div>

@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <div class="service-article-img">
-                                    <img src="{{ asset($diet->image) }}" alt="Meal Images">
+                                    <img src="{{ asset('storage/'.str_replace('\\', '/', $diet->image)) }}" alt="Meal Images">
                                 </div>
                             </div>
                         </div>

@@ -7,7 +7,7 @@
             </a>
             <div class="content">
                 <h3>
-                    <a href="service-details.html">@if($lang=='en') {{$row->title_en}} @else {{$row->title_Ar}}  @endif </a>
+                    <a href="/service-details/{{$row->id}}">@if($lang=='en') {{$row->title_en}} @else {{$row->title_Ar}}  @endif </a>
                 </h3>
                 <p>
                     @if($lang=='en') {{$row->text_en}} @else {{$row->text_ar}}  @endif

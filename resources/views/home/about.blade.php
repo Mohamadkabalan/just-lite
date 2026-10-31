@@ -1,4 +1,5 @@
-@php $about =\App\About::all()->first();  @endphp
+@php $about =\App\About::first();  @endphp
+@if($about)
 <style>
     .about-area::before {
         background-image: url({{ 'storage/'.str_replace('\\', '/', $about->image) }});
@@ -62,3 +63,4 @@
     </div>
 </div>
 <!-- About Area End -->
+@endif
