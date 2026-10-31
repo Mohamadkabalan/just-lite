@@ -1,0 +1,186 @@
+name: CI/CD
+
+# Every push (any branch): install, static analysis, migrations and the test
+# suite against a MariaDB copy of the site's schema and content, plus the Vite
+# build. On master, a passing run (push or manual) is then deployed to
+# Hostinger by scripts/deploy.sh (backup, migrate, caches, health check,
+# rollback on error). Setup: DEPLOYMENT.md.
+
+on:
+  push:
+    branches: ['**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+env:
+  PHP_VERSION: '8.4'
+
+jobs:
+  test:
+    name: Tests and static analysis
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    services:
+      mariadb:
+        # Same major version as the Hostinger server.
+        image: mariadb:11.8
+        env:
+          MARIADB_DATABASE: just_lite_ci
+          MARIADB_USER: just_lite
+          MARIADB_PASSWORD: just_lite
+          MARIADB_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=30
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: mbstring, pdo_mysql, gd, intl, zip, fileinfo, exif, bcmath
+          coverage: none
+          tools: composer:v2
+
+      - name: Validate composer.json
+        run: composer validate --no-check-publish
+
+      - name: Cache Composer downloads
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/composer/files
+          key: composer-${{ runner.os }}-${{ hashFiles('composer.lock') }}
+          restore-keys: composer-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Audit dependencies
+        run: composer audit --locked
+
+      - name: Create .env.testing
+        run: |
+          cat > .env.testing <<'EOF'
+          APP_NAME="Just Lite"
+          APP_ENV=testing
+          APP_KEY=
+          APP_DEBUG=true
+          APP_URL=http://localhost
+          APP_Languages=ar
+          Fallback_Languages=ar
+          LOG_CHANNEL=stderr
+          LOG_LEVEL=warning
+          DB_CONNECTION=mysql
+          DB_HOST=127.0.0.1
+          DB_PORT=3306
+          DB_DATABASE=just_lite_ci
+          DB_USERNAME=just_lite
+          DB_PASSWORD=just_lite
+          CACHE_DRIVER=array
+          SESSION_DRIVER=array
+          QUEUE_CONNECTION=sync
+          MAIL_MAILER=array
+          EOF
+          php artisan key:generate --env=testing --force
+
+      - name: Load the database fixture
+        run: |
+          docker exec -i ${{ job.services.mariadb.id }} \
+            mariadb --user=just_lite --password=just_lite just_lite_ci < tests/fixtures/ci-database.sql
+
+      - name: Run migrations
+        run: php artisan migrate --env=testing --force
+
+      - name: Larastan
+        run: vendor/bin/phpstan analyse --no-progress --memory-limit=1G
+
+      - name: Tests
+        run: php artisan test
+
+  assets:
+    name: Vite build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+  deploy:
+    name: Deploy to production
+    needs: [test, assets]
+    if: github.ref == 'refs/heads/master' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: https://just-lite.com
+    # One deploy at a time; a newer push waits instead of cancelling a deploy
+    # half way through.
+    concurrency:
+      group: production-deploy
+      cancel-in-progress: false
+    env:
+      DEPLOY_HOST: 153.92.7.176
+      DEPLOY_PORT: '65002'
+      # Pinned host key of the Hostinger server (ssh-keyscan -p 65002 153.92.7.176).
+      DEPLOY_HOST_KEY: '[153.92.7.176]:65002 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAm6Q57pESXIh1ibl2jgrVGitGhjs/2U1bjd6QV4P+9p'
+
+    steps:
+      - name: Check deploy credentials
+        id: credentials
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
+        run: |
+          if [ -z "$DEPLOY_SSH_KEY" ] || [ -z "$DEPLOY_SSH_USER" ]; then
+            echo "::warning::DEPLOY_SSH_KEY / DEPLOY_SSH_USER secrets are not set, so nothing was deployed. See DEPLOYMENT.md."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy over SSH
+        if: steps.credentials.outputs.ready == 'true'
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_HOST_KEY" > ~/.ssh/known_hosts
+          # The server pins this key to scripts/deploy.sh; the command below is
+          # only the argument it receives.
+          ssh -i ~/.ssh/deploy_key -p "$DEPLOY_PORT" \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes -o ServerAliveInterval=30 \
+            "$DEPLOY_SSH_USER@$DEPLOY_HOST" "deploy $GITHUB_SHA"
+
+      - name: Health check from outside
+        if: steps.credentials.outputs.ready == 'true'
+        run: |
+          for url in https://just-lite.com/ https://just-lite.com/admin/login; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 --retry 3 --retry-delay 5 "$url")
+            echo "$url -> $code"
+            [ "$code" = 200 ] || exit 1
+          done
+
+      - name: Remove the key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
