@@ -34,7 +34,7 @@
         <div class="container">
             <div class="section-title text-center">
                 <span>{{ __('translation.what-we-offer')  }}</span>
-                <h2></h2>
+                <h2>{{ __('translation.diet-services') }}</h2>
             </div>
 
             <div id="data-content" class="data-content row pt-45 justify-content-center">

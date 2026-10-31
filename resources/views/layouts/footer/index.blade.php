@@ -94,7 +94,7 @@
 
                 <div class="col-lg-3 col-sm-6">
                     <div class="footer-widget ps-5">
-                        <h3>{{ __('translation.useful-links') }}</h3>
+                        <h2>{{ __('translation.useful-links') }}</h2>
                         <ul class="footer-list">
                             <li>
                                 <a href="{{ localized_route('home') }}">
@@ -122,7 +122,7 @@
 
                 <div class="col-lg-5 col-sm-6">
                     <div class="footer-widget ps-5">
-                        <h3>{{ __('translation.informations') }}</h3>
+                        <h2>{{ __('translation.informations') }}</h2>
                         <ul class="footer-contact">
                             <li>
                                 {{ __('translation.phone') }}:
