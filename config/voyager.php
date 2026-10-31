@@ -218,7 +218,8 @@ return [
         'cache' => false,
     ],
 
-    // Activate compass when environment is NOT local
+    // No effect: Compass is disabled in every environment by the local Voyager
+    // patch 1.8.0.4 (packages/voyager/PATCHES.md).
     'compass_in_production' => false,
 
     'media' => [

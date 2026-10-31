@@ -90,6 +90,20 @@ class SecurityTest extends TestCase
         Storage::disk(config('voyager.storage.disk'))->assertExists('photo.final.PNG');
     }
 
+    public function test_compass_is_disabled_in_every_environment(): void
+    {
+        $admin = $this->admin();
+        $this->app['env'] = 'local';
+        config(['voyager.compass_in_production' => true]);
+
+        $this->actingAs($admin)->get('/admin/compass')->assertNotFound();
+        // Outside "testing" CSRF is enforced again, so send a matching token.
+        $this->actingAs($admin)->withSession(['_token' => 'test-token'])
+            ->post('/admin/compass', ['_token' => 'test-token', 'command' => 'about'])
+            ->assertNotFound();
+        $this->actingAs($admin)->get('/admin')->assertOk()->assertDontSee(route('voyager.compass.index'), false);
+    }
+
     public function test_upload_guard_recognises_script_file_names(): void
     {
         foreach (['x.php', 'x.PHP', 'x.php7', 'x.php.jpg', 'x.phtml', 'x.phar', '.htaccess', '.user.ini', 'a/b/x.php'] as $name) {

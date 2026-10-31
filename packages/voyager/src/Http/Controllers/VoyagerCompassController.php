@@ -18,6 +18,12 @@ class VoyagerCompassController extends Controller
 
     public function index(Request $request)
     {
+        // PATCH 1.8.0.4: Compass is disabled everywhere. Its command runner and log
+        // viewer have unfixed upstream CVEs (CVE-2025-32931, CVE-2024-55415,
+        // CVE-2024-55416), and APP_ENV alone should not decide whether admins can
+        // run commands on the server. The routes stay so menus built on them work.
+        abort(404);
+
         // Check permission
         $this->authorize('browse_compass');
         //Check if app is not local
