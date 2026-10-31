@@ -9,6 +9,20 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
+    # Browser caching for static files only (pages and Voyager's PHP-served
+    # admin assets are not files here). The site's CSS and JS URLs carry
+    # ?v=<file time> (asset_versioned), so a changed file is fetched at once.
+    <IfModule mod_expires.c>
+        <FilesMatch "\.(css|js|woff2?|ttf|eot)$">
+            ExpiresActive On
+            ExpiresDefault "access plus 1 year"
+        </FilesMatch>
+        <FilesMatch "\.(webp|png|jpe?g|gif|svg|ico)$">
+            ExpiresActive On
+            ExpiresDefault "access plus 1 month"
+        </FilesMatch>
+    </IfModule>
+
     # The site lives at the domain root (the root .htaccess passes requests in
     # here): send addresses typed with /public/ to the same page without it.
     RewriteCond %{THE_REQUEST} \s/public[/?\s] [NC]

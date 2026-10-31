@@ -294,9 +294,4 @@
         $(".preloader").fadeOut(500);
     });
 
-    //WOW JS
-    new WOW().init();
-    if ($(window).width() <= 991){ 
-        $(".wow").removeClass("wow");
-    }
 })($);
