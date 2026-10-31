@@ -16,17 +16,8 @@
 		}
 	});
 
-    // Language-switcher
-    $(".language-option").each(function() {
-        var each = $(this)
-        each.find(".lang-name").html(each.find(".language-dropdown-menu a:nth-child(1)").text());
-        var allOptions = $(".language-dropdown-menu").children('a');
-        each.find(".language-dropdown-menu").on("click", "a", function() {
-             allOptions.removeClass('selected');
-             $(this).addClass('selected');
-             $(this).closest(".language-option").find(".lang-name").html($(this).text());
-        });
-    })
+    // Language-switcher: the header prints the current language's name, so
+    // there is nothing to set here (it used to copy the first item, "English").
 
     // Testimonials Slider
     $('.testimonials-slider').owlCarousel({

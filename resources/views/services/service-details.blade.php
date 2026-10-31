@@ -4,9 +4,11 @@ $lang=app()->getLocale();
 @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Services
-@endsection
+@section('page_title', $lang == 'en' ? $service->title_en : $service->title_Ar)
+@section('meta_description', \Illuminate\Support\Str::limit(trim(preg_replace('/\s+/u', ' ', strip_tags($lang == 'en' ? (string) $service->text_en : (string) $service->text_ar))), 155))
+@if($serviceImage = json_decode($service->images ?? '[]')[0] ?? null)
+@section('og_image', \App\Support\VoyagerImage::url($serviceImage))
+@endif
 
 @section('head')
 @endsection

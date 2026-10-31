@@ -1,9 +1,10 @@
 @php $lang=app()->getLocale(); $page='contact-us';  @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Contact Us
-@endsection
+@section('page_title', __('translation.contact-us'))
+@section('meta_description', __('translation.contact-description'))
+
+@include('partials.business-schema')
 
 @section('head')
 
@@ -23,7 +24,7 @@
                 <h3>{{ __('translation.contact-us') }}</h3>
                 <ul>
                     <li>
-                        <a href="/">{{ __('translation.home') }}</a>
+                        <a href="{{ localized_route('home') }}">{{ __('translation.home') }}</a>
                     </li>
                     <li>{{ __('translation.contact-us') }}</li>
                 </ul>
@@ -72,7 +73,7 @@
                 <div class="col-lg-8">
                     <div class="contact-form">
                         <h3>{{ __('translation.connect-with-us') }}!</h3>
-                        <form id="contactForm" method="post">
+                        <form id="contactForm" method="post" action="{{ localized_route('contact.store') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
@@ -152,7 +153,7 @@
                 var form = this;
                 var $button = $(form).find('[type=submit]').prop('disabled', true);
                 $.ajax({
-                    url: "/contact/create",
+                    url: form.action,
                     method: "POST",
                     data : $(form).serialize(),
                     success: function (data) {

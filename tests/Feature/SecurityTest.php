@@ -49,8 +49,7 @@ class SecurityTest extends TestCase
         $blog->title_en = '<script>alert(1)</script>';
         $blog->save();
 
-        $this->withSession(['locale' => 'en'])
-            ->get('/blog-details/'.$blog->id)
+        $this->get('/en/blog-details/'.$blog->id)
             ->assertOk()
             ->assertDontSee('<script>alert(1)</script>', false)
             ->assertSee('&lt;script&gt;alert(1)&lt;/script&gt;', false);

@@ -2,17 +2,17 @@
 @foreach($data as $row)
     <div class="col-lg-4 col-md-6">
         <div class="services-card">
-            <a href="/blog-details/{{$row->id}}">
+            <a href="{{ localized_route('blogs.blog-details', $row->id) }}">
                 <img src="{{ \App\Support\VoyagerImage::url($row->image, 'medium') ?? asset('images/services/services-img1.jpg') }}" loading="lazy" alt="Images">
             </a>
             <div class="content">
                 <h3>
-                    <a href="/blog-details/{{$row->id}}">@if($lang=='en') {{$row->title_en}} @else {{$row->title_ar}}  @endif </a>
+                    <a href="{{ localized_route('blogs.blog-details', $row->id) }}">@if($lang=='en') {{$row->title_en}} @else {{$row->title_ar}}  @endif </a>
                 </h3>
                 <p>
                     @if($lang=='en') {{$row->text_en}} @else {{$row->text_ar}}  @endif
                 </p>
-                <a href="/blog-details/{{$row->id}}" class="learn-btn">{{ __('translation.learn-more') }}</a>
+                <a href="{{ localized_route('blogs.blog-details', $row->id) }}" class="learn-btn">{{ __('translation.learn-more') }}</a>
             </div>
         </div>
     </div>

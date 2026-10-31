@@ -1,9 +1,8 @@
 @php $lang=app()->getLocale(); $page='testimonials';  @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Testimonials
-@endsection
+@section('page_title', __('translation.testimonials'))
+@section('meta_description', __('translation.testimonials-description'))
 
 @section('head')
 

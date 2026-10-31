@@ -1,9 +1,11 @@
-@php $lang=app()->getLocale(); $page='blogs';  @endphp
+@php $lang=app()->getLocale(); $page='diet-plan';  @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Blogs
-@endsection
+@section('page_title', ($lang == 'en' ? $diet->title_en : $diet->title_ar).' – '.__('translation.diet-plan'))
+@section('meta_description', \Illuminate\Support\Str::limit(trim(preg_replace('/\s+/u', ' ', strip_tags($lang == 'en' ? (string) $diet->text_en : (string) $diet->text_ar))), 155))
+@if($diet->image)
+@section('og_image', \App\Support\VoyagerImage::url($diet->image))
+@endif
 
 @section('head')
 @endsection

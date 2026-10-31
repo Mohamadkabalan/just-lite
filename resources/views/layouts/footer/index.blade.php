@@ -11,7 +11,7 @@
                 <div class="container">
                     <div class="appointment-form">
                         <h2>{{ __('translation.make-an-appointment') }}</h2>
-                        <form id="appointment-form" method="POST" action="">
+                        <form id="appointment-form" method="POST" action="{{ localized_route('appointment.store') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12">
@@ -71,7 +71,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="footer-widget">
                         <div class="footer-logo">
-                            <a href="{{ url('/') }}">
+                            <a href="{{ localized_route('home') }}">
                                 <img style="max-width: 160px;" src="{{ asset('images/logo.png') }}" alt="Images">
                             </a>
                         </div>
@@ -103,22 +103,22 @@
                         <h3>{{ __('translation.useful-links') }}</h3>
                         <ul class="footer-list">
                             <li>
-                                <a href="/" target="_blank">
+                                <a href="{{ localized_route('home') }}">
                                     {{ __('translation.home') }}
                                 </a>
                             </li>
                             <li>
-                                <a href="/about" target="_blank">
+                                <a href="{{ localized_route('about') }}">
                                     {{ __('translation.about-us') }}
                                 </a>
                             </li>
                             <li>
-                                <a href="/testimonials" target="_blank">
+                                <a href="{{ localized_route('testimonials') }}">
                                     {{ __('translation.testimonials') }}
                                 </a>
                             </li>
                             <li>
-                                <a href="/contact-us" target="_blank">
+                                <a href="{{ localized_route('contact-us') }}">
                                     {{ __('translation.contact-us') }}
                                 </a>
                             </li>
@@ -200,7 +200,7 @@
                 var form = this;
                 var $button = $(form).find('[type=submit]').prop('disabled', true);
                 $.ajax({
-                    url: "/appointment/create",
+                    url: form.action,
                     method: "POST",
                     data : $(form).serialize(),
                     success: function (data) {

@@ -1,6 +1,6 @@
 @php $lang=app()->getLocale(); @endphp
 <!DOCTYPE html>
-<html   @if($lang == 'ar') lang="ar" dir="rtl" @else lang="en"  @endif>
+<html lang="{{ $lang }}" dir="{{ $lang == 'ar' ? 'rtl' : 'ltr' }}">
 
     <head>
 
@@ -43,23 +43,40 @@
         <link rel="stylesheet" href="{{ asset('css/rtl.css')  }}">
         @endif
 
-        <title>Just Lite |
-        @hasSection('page_title')
-        @yield('page_title')
-        @endif
-        </title>
+        @php
+            // Each page sets page_title and, where it has its own, meta_description and og_image.
+            // Section values arrive HTML-escaped; decode them so {{ }} escapes them exactly once.
+            $section = fn (string $name) => trim(html_entity_decode($__env->yieldContent($name), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+            $pageTitle = $section('page_title');
+            $title = $pageTitle !== '' ? $pageTitle.' | Just Lite' : __('translation.meta-title');
+            $description = $section('meta_description') ?: __('translation.meta-description');
+            $siteUrl = rtrim(config('site.url'), '/');
+            $ogImage = $siteUrl.parse_url($section('og_image') ?: '/images/just-lite.png', PHP_URL_PATH);
+            $canonical = \App\Support\SiteLocale::canonical();
+        @endphp
+        <title>{{ $title }}</title>
+        <meta name="description" content="{{ $description }}">
 
-        <link rel="alternate" hreflang="en" href="https://just-lite.com/">
-        <link rel="alternate" hreflang="ar" href="https://just-lite.com/">
-        <link rel="canonical" href="https://just-lite.com/">
-        <meta property="og:locale" content="en_US">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Home - Just Lite">
-        <meta property="og:description" content="Welcome to the first step toward your healthy life journey Hello, my name is Layla Hanna. I am a registered dietitian, personal trainer and certified sport dietitian. My goal is to help you achieve a healthy lifestyle to reach your goal without any restrictions or food deprivation.">
-        <meta property="og:url" content="https://just-lite.com/">
+        <link rel="canonical" href="{{ $canonical }}">
+        @foreach(config('app.available_locales') as $locale)
+        <link rel="alternate" hreflang="{{ $locale }}" href="{{ \App\Support\SiteLocale::canonical($locale) }}">
+        @endforeach
+        <link rel="alternate" hreflang="x-default" href="{{ \App\Support\SiteLocale::canonical(\App\Support\SiteLocale::DEFAULT) }}">
+
         <meta property="og:site_name" content="Just Lite">
-        <meta property="article:modified_time" content="2021-10-21T09:37:54+00:00">
-        <meta property="og:image" content="https://www.just-lite.com/images/just-lite.png">
+        <meta property="og:type" content="{{ trim($__env->yieldContent('og_type')) ?: 'website' }}">
+        <meta property="og:locale" content="{{ $lang == 'ar' ? 'ar_AR' : 'en_US' }}">
+        <meta property="og:locale:alternate" content="{{ $lang == 'ar' ? 'en_US' : 'ar_AR' }}">
+        <meta property="og:title" content="{{ $title }}">
+        <meta property="og:description" content="{{ $description }}">
+        <meta property="og:url" content="{{ $canonical }}">
+        <meta property="og:image" content="{{ $ogImage }}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ $title }}">
+        <meta name="twitter:description" content="{{ $description }}">
+        <meta name="twitter:image" content="{{ $ogImage }}">
+
+        @stack('structured-data')
 
         @yield('head')
 

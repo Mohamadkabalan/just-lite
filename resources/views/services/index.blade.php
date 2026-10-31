@@ -1,9 +1,8 @@
 @php $lang=app()->getLocale(); $page='services';  @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Services
-@endsection
+@section('page_title', __('translation.services').($data->currentPage() > 1 ? ' – '.__('translation.page', ['page' => $data->currentPage()]) : ''))
+@section('meta_description', __('translation.services-description'))
 
 @section('head')
 @endsection
@@ -22,7 +21,7 @@
                 <h3>{{ __('translation.services') }}</h3>
                 <ul>
                     <li>
-                        <a href="/">{{ __('translation.home')  }}</a>
+                        <a href="{{ localized_route('home') }}">{{ __('translation.home') }}</a>
                     </li>
                     <li>{{ __('translation.services')}}</li>
                 </ul>
@@ -64,7 +63,7 @@
             function fetch_data(page)
             {
                 $.ajax({
-                    url:"/services/fetch_data?page="+page,
+                    url: @json(localized_route('services.fetch-data')) + "?page=" + page,
                     success:function(data)
                     {
                         $('#data-content').html(data);

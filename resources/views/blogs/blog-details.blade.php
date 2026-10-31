@@ -4,9 +4,40 @@
 @endphp
 @extends('layouts.master')
 
-@section('page_title')
-    Blog - {{ $blog->title_en }}
-@endsection
+@php
+    $blogTitle = $lang == 'en' ? $blog->title_en : $blog->title_ar;
+    $blogImage = \App\Support\VoyagerImage::url($blog->image);
+@endphp
+@section('page_title', $blogTitle)
+@section('meta_description', \Illuminate\Support\Str::limit(trim(preg_replace('/\s+/u', ' ', strip_tags($lang == 'en' ? (string) $blog->text_en : (string) $blog->text_ar))), 155))
+@section('og_type', 'article')
+@if($blogImage)
+@section('og_image', $blogImage)
+@endif
+
+@push('structured-data')
+@php
+    $article = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BlogPosting',
+        'headline' => $blogTitle,
+        'inLanguage' => $lang,
+        'mainEntityOfPage' => \App\Support\SiteLocale::canonical(),
+        'author' => ['@type' => 'Person', 'name' => 'Layla Hanna'],
+        'publisher' => ['@type' => 'Organization', 'name' => 'Just Lite', 'logo' => ['@type' => 'ImageObject', 'url' => rtrim(config('site.url'), '/').'/images/logo.png']],
+    ];
+    if ($blogImage) {
+        $article['image'] = rtrim(config('site.url'), '/').parse_url($blogImage, PHP_URL_PATH);
+    }
+    if ($blog->created_at) {
+        $article['datePublished'] = $blog->created_at->toAtomString();
+    }
+    if ($blog->updated_at) {
+        $article['dateModified'] = $blog->updated_at->toAtomString();
+    }
+@endphp
+<script type="application/ld+json">{!! json_encode($article, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+@endpush
 
 @section('head')
 @endsection

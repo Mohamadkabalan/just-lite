@@ -43,7 +43,7 @@ class BugFixTest extends TestCase
         foreach (['ar', 'en'] as $locale) {
             $this->assertSame($digits, preg_replace('/\D/', '', $ascii(trans('translation.phone-info', [], $locale))), "phone-info ({$locale})");
 
-            $html = $this->withSession(['locale' => $locale])->get('/contact-us')->assertOk()->getContent();
+            $html = $this->get($locale === 'en' ? '/en/contact-us' : '/contact-us')->assertOk()->getContent();
             preg_match_all('/961\d{8}/', $ascii($html), $found);
 
             $this->assertSame([$digits], array_values(array_unique($found[0])), "numbers on /contact-us ({$locale})");
@@ -57,12 +57,12 @@ class BugFixTest extends TestCase
         $blog = Blog::query()->orderBy('id')->firstOrFail();
 
         foreach (['/', '/blog-details/'.$blog->id] as $url) {
-            $this->withSession(['locale' => 'ar'])->get($url)->assertOk()
+            $this->get($url)->assertOk()
                 ->assertSee('css/bootstrap.rtl.min.css', false)
                 ->assertDontSee('css/bootstrap.min.css', false)
                 ->assertDontSee('cdn.jsdelivr.net/npm/bootstrap', false);
 
-            $this->withSession(['locale' => 'en'])->get($url)->assertOk()
+            $this->get('/en'.rtrim($url, '/'))->assertOk()
                 ->assertSee('css/bootstrap.min.css', false)
                 ->assertDontSee('css/bootstrap.rtl.min.css', false)
                 ->assertDontSee('cdn.jsdelivr.net/npm/bootstrap', false);
@@ -76,7 +76,7 @@ class BugFixTest extends TestCase
         $blog->text_en = "Ingredients:\n2 eggs <b>fresh</b>\n1 cup flour";
         $blog->save();
 
-        $this->withSession(['locale' => 'en'])->get('/blog-details/'.$blog->id)->assertOk()
+        $this->get('/en/blog-details/'.$blog->id)->assertOk()
             ->assertSee("Ingredients:<br />\n2 eggs &lt;b&gt;fresh&lt;/b&gt;<br />\n1 cup flour", false);
     }
 
@@ -153,8 +153,7 @@ class BugFixTest extends TestCase
     {
         $service = Service::query()->whereNotNull('title_Ar')->where('title_Ar', '!=', '')->firstOrFail();
 
-        $this->withSession(['locale' => 'ar'])
-            ->get('/service-details/'.$service->id)
+        $this->get('/service-details/'.$service->id)
             ->assertOk()
             ->assertSee($service->title_Ar);
     }

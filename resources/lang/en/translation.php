@@ -60,6 +60,16 @@ return [
     "bad-habits" => "Bad Habits",
     "results" => "Results",
     "before-after" => "Before &amp; After",
-    "results-description" => "Check out these amazing before-and-after weight loss pictures to give you the motivation you need to take the first step for a healthier you."
+    "results-description" => "Check out these amazing before-and-after weight loss pictures to give you the motivation you need to take the first step for a healthier you.",
+
+    // Search engines and link previews (titles are "{page} | Just Lite").
+    "meta-title" => "Just Lite | Dietitian Layla Hanna, Tripoli, Lebanon",
+    "meta-description" => "Just Lite by registered dietitian Layla Hanna in Tripoli, Lebanon: personalised nutrition programmes, consultations and healthy recipes, in clinic and online.",
+    "about-description" => "Meet Layla Hanna, registered dietitian and founder of Just Lite in Tripoli, Lebanon, and how her nutrition programmes work.",
+    "testimonials-description" => "What Just Lite clients say about their nutrition programmes with dietitian Layla Hanna, and how the programme works step by step.",
+    "services-description" => "Nutrition services at Just Lite: personalised diet plans, consultations and follow-up with dietitian Layla Hanna.",
+    "blogs-description" => "Healthy recipes and nutrition tips from dietitian Layla Hanna at Just Lite.",
+    "contact-description" => "Contact Just Lite in Tripoli, Lebanon: call or WhatsApp +961 70 779 100, email us, or send a message to book a consultation.",
+    "page" => "Page :page",
 
 ];
