@@ -1,12 +1,11 @@
 @php $about =\App\About::first();  @endphp
 @if($about)
-@if($about->image)
+{{-- Without an uploaded image, hide the theme's default (a grey "1010 x 690" placeholder). --}}
 <style>
     .about-area::before {
-        background-image: url({{ \App\Support\VoyagerImage::url($about->image) }});
+        background-image: {{ $about->image ? 'url('.\App\Support\VoyagerImage::url($about->image).')' : 'none' }};
     }
 </style>
-@endif
 <!-- About Area -->
 <div class="about-area pt-100 pb-70">
     <div class="container">
@@ -21,12 +20,13 @@
                         </p>
                     </div>
 
+                    @php $nutritionSpecialFeatures =\App\NutritionSpecialFeature::all(); $avg=intval($nutritionSpecialFeatures->count() / 2); @endphp
+                    @if($nutritionSpecialFeatures->isNotEmpty())
                     <h3><span>{{ __('translation.nutrition-special-feature')  }}</span></h3>
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
                             <div class="about-list">
                                 <ul>
-                                    @php $nutritionSpecialFeatures =\App\NutritionSpecialFeature::all(); $avg=intval($nutritionSpecialFeatures->count() / 2); @endphp
                                     @for($i=0;$i <$avg;$i++)
                                     <li><i class='bx bx-chevrons-right'></i> @if($lang=='en') {{$nutritionSpecialFeatures[$i]->title_en}} @else {{$nutritionSpecialFeatures[$i]->title_ar}}  @endif</li>
                                     @endfor
@@ -44,6 +44,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
 

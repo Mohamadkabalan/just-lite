@@ -1,5 +1,5 @@
 @php $results = \App\Result::all();  @endphp
-@if($results)
+@if($results->isNotEmpty())
 <div class="faq-area pt-100 pb-70">
     <div class="container">
         <div class="row">

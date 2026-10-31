@@ -1,4 +1,5 @@
 @php $packages = \App\Package::all();  @endphp
+@if($packages->isNotEmpty())
 <!-- Pricing Area -->
 <div id="pricing-area" class="pricing-area pt-100 pb-70">
     <div class="container">
@@ -33,3 +34,4 @@
     </div>
 </div>
 <!-- Pricing Area End -->
+@endif

@@ -1,5 +1,5 @@
 @php $banners = \App\Banner::all();  @endphp
-@if($banners)
+@if($banners->isNotEmpty())
     {{--<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             @foreach($banners as $key => $banner)

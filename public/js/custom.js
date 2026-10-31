@@ -1,6 +1,9 @@
 (function($) {
     'use strict';
 
+    // Carousels run right-to-left only on the Arabic pages.
+    var isRtl = document.documentElement.dir === 'rtl';
+
     // Mean Menu
 	$('.mean-menu').meanmenu({
 		meanScreenWidth: "991"
@@ -25,7 +28,7 @@
         margin: 30,
         nav: false,
         dots: true,
-        rtl: true,
+        rtl: isRtl,
         items: 1,
         autoplay: true,
         autoHeight:true,
@@ -40,7 +43,7 @@
         margin: 0,
         autoHeight: true,
         nav: false,
-        rtl: true,
+        rtl: isRtl,
         items: 1,
         dots:  true,
         center: true,
@@ -54,7 +57,7 @@
         margin: 30,
         autoHeight: true,
         nav: true,
-        rtl: true,
+        rtl: isRtl,
         dots: false,
         autoplay: true,
         autoplayHoverPause: true,
@@ -81,7 +84,7 @@
         loop: true,
         margin: 30,
         autoHeight: true,
-        rtl: true,
+        rtl: isRtl,
         nav: true,
         items: 1,
         dots: false,
@@ -100,7 +103,7 @@
         margin: 30,
         autoHeight: true,
         nav: false,
-        rtl: true,
+        rtl: isRtl,
         dots: true,
         autoplay: true,
         autoplayHoverPause: true,
@@ -125,7 +128,7 @@
         loop: true,
         margin: 25,
         autoHeight: true,
-        rtl: true,
+        rtl: isRtl,
         nav: false,
         dots: false,
         autoplay: true,

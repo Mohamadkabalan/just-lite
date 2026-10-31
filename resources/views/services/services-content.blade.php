@@ -1,5 +1,5 @@
 @php $lang=app()->getLocale(); $page='services';  @endphp
-@foreach($data as $row)
+@forelse($data as $row)
     <div class="col-lg-4 col-md-6">
         <div class="services-card">
             <a href="{{ localized_route('services.service-details', $row->id) }}">
@@ -16,9 +16,13 @@
             </div>
         </div>
     </div>
-@endforeach
+@empty
+    <p class="col-12 text-center empty-state">{{ __('translation.no-services') }}</p>
+@endforelse
+@if($data->hasPages())
 <div class="col-lg-12 col-md-12 text-center">
     <div class="d-flex justify-content-center pagination-area">
         {!! $data->links() !!}
     </div>
 </div>
+@endif

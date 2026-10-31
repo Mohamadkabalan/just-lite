@@ -1,4 +1,5 @@
 @php $testimonials =\App\Testimonial::all();  @endphp
+@if($testimonials->isNotEmpty())
 <!-- Testimonials Area -->
 <div class="testimonials-area ptb-100">
     <div class="container">
@@ -13,12 +14,16 @@
                     @if($lang=='en') {{$testimonial->text_en}} @else {{$testimonial->text_ar}}  @endif
                 </p>
 
+                @php $testimonialName = $lang == 'en' ? $testimonial->title_en : $testimonial->title_ar; @endphp
+                @if(filled($testimonialName))
                 <div class="content">
-                    <h3>@if($lang=='en') {{$testimonial->title_en}} @else {{$testimonial->title_ar}}  @endif</h3>
+                    <h3>{{ $testimonialName }}</h3>
                 </div>
+                @endif
             </div>
             @endforeach
         </div>
     </div>
 </div>
 <!-- Testimonials Area End -->
+@endif

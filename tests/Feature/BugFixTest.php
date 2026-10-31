@@ -80,17 +80,32 @@ class BugFixTest extends TestCase
             ->assertSee("Ingredients:<br />\n2 eggs &lt;b&gt;fresh&lt;/b&gt;<br />\n1 cup flour", false);
     }
 
-    public function test_about_background_is_only_set_when_there_is_an_image(): void
+    public function test_about_background_shows_the_image_or_nothing(): void
     {
         $about = About::query()->firstOrFail();
 
+        // Without an image the theme's placeholder (images/about/about-bg.png) must not show.
         $about->image = null;
         $about->save();
-        $this->get('/about')->assertOk()->assertDontSee('.about-area::before', false);
+        $this->get('/about')->assertOk()->assertSee('background-image: none;', false)->assertDontSee('url(/storage/)', false);
 
         $about->image = 'abouts\\May2023\\photo.jpg';
         $about->save();
         $this->get('/about')->assertOk()->assertSee('url('.asset('storage/abouts/May2023/photo.jpg').')', false);
+    }
+
+    public function test_empty_sections_are_hidden_and_empty_lists_say_so(): void
+    {
+        \App\NutritionSpecialFeature::query()->delete();
+        $this->get('/en/about')->assertOk()->assertDontSee('Nutrition Special Feature');
+
+        // Testimonials without a name get no empty heading.
+        \App\Testimonial::query()->update(['title_en' => null]);
+        $this->assertDoesNotMatchRegularExpression('#<h3>\s*</h3>#', $this->get('/en/testimonials')->getContent());
+
+        Blog::query()->delete();
+        $this->get('/en/blogs')->assertOk()->assertSee(__('translation.no-posts', [], 'en'));
+        $this->get('/blogs')->assertOk()->assertSee(__('translation.no-posts', [], 'ar'));
     }
 
     public function test_voyager_image_uses_a_size_copy_only_when_it_exists(): void

@@ -1861,14 +1861,16 @@
         }
     }
 
-    /* Navbar Area */
+    /* Navbar Area: smaller links so the English menu fits on one line */
     .desktop-nav {
         .navbar {
             .navbar-nav {
                 .nav-item {
                     a {
-                        margin-left: 10px;
-                        margin-right: 10px;
+                        font-size: 19px;
+                        white-space: nowrap;
+                        margin-left: 8px;
+                        margin-right: 8px;
                     }
                 }
             }
@@ -1880,6 +1882,7 @@
             margin-right: 15px;
             .default-btn {
                 padding: 10px 20px;
+                white-space: nowrap;
             }
             .search-btn {
                 margin-left: 15px;
@@ -2680,4 +2683,45 @@
             font-size: 18px !important;
         }
     }
+}
+/* Touch targets: at least 44x44px on every screen without changing how the
+   icons look; the extra area is transparent padding. Placed last (and with
+   .top-header) so it wins over the per-width rules above and rtl.css. */
+.top-header .header-right .header-item ul li {
+  margin-left: 0;
+  margin-right: 0;
+}
+.top-header .header-right .header-item ul li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin: -7px 0;
+  vertical-align: middle;
+}
+.top-header .header-right .header-item ul li.title {
+  top: 0;
+  vertical-align: middle;
+}
+.top-header .header-language .dropdown-toggle {
+  min-height: 44px;
+}
+.inner-banner .inner-title ul li a {
+  display: inline-block;
+  padding: 10px 0;
+}
+.banner-slider-area .owl-dots button.owl-dot {
+  padding: 0 6px !important;
+}
+.empty-state {
+  padding: 40px 0;
+  font-size: 18px;
+}
+@media only screen and (max-width: 991px) {
+  .mobile-responsive-nav .mean-container a.meanmenu-reveal {
+    width: 35px;
+    height: 30px;
+    padding: 6px 4.5px 8px;
+  }
 }

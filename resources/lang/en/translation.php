@@ -71,5 +71,7 @@ return [
     "blogs-description" => "Healthy recipes and nutrition tips from dietitian Layla Hanna at Just Lite.",
     "contact-description" => "Contact Just Lite in Tripoli, Lebanon: call or WhatsApp +961 70 779 100, email us, or send a message to book a consultation.",
     "page" => "Page :page",
+    "no-posts" => "No posts yet. Please check back soon.",
+    "no-services" => "No services to show yet.",
 
 ];
