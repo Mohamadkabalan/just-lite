@@ -3,7 +3,7 @@
 # Production runs LiteSpeed, which reads Apache .htaccess files, with the
 # project root as the document root (the root .htaccess rewrites to public/).
 # Apache with mod_rewrite and AllowOverride All behaves the same way here.
-ARG PHP_VERSION=8.3
+ARG PHP_VERSION=8.4
 FROM php:${PHP_VERSION}-apache
 
 RUN apt-get update \

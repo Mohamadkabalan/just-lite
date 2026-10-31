@@ -70,12 +70,21 @@ rollback() {
 health_check() {
     [[ "$HEALTH_URLS" == none ]] && return 0
 
-    local url code
+    local url code body
+    body=$(mktemp)
     for url in $HEALTH_URLS; do
-        code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 --retry 2 --retry-delay 3 "$url" || true)
+        code=$(curl -s -o "$body" -w '%{http_code}' --max-time 30 --retry 2 --retry-delay 3 "$url" || true)
         log "Health check ${url} -> ${code}"
-        [[ "$code" == 200 ]] || return 1
+        [[ "$code" == 200 ]] || { rm -f "$body"; return 1; }
+        # A 200 alone is not enough: with a wrong PHP handler in .htaccess the
+        # web server can send PHP source as text. Expect a rendered HTML page.
+        if grep -q '<?php' "$body" || ! grep -qi '<html' "$body"; then
+            log "Health check ${url}: the response is not a rendered HTML page"
+            rm -f "$body"
+            return 1
+        fi
     done
+    rm -f "$body"
 }
 
 main() {

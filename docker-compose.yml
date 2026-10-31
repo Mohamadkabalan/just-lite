@@ -14,7 +14,7 @@ services:
     build:
       context: docker/app
       args:
-        PHP_VERSION: ${PHP_VERSION:-8.3}
+        PHP_VERSION: ${PHP_VERSION:-8.4}
     ports:
       - "${APP_PORT:-8080}:80"
     environment:
