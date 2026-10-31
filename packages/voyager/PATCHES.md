@@ -19,11 +19,12 @@ Version scheme: `1.8.0.N`, where N counts local patch releases.
 |---|---|---|
 | 1.8.0.1 | `illuminate/support` constraint `11.*` → `^11.0\|^12.0\|^13.0` | Run on Laravel 12/13; verified with the app's smoke tests on PHP 8.3/8.4 |
 | 1.8.0.1 | `SchemaManager::getColumnIndexes()` returns a re-indexed list | Upstream bug from the DBAL removal: the BREAD builder 500s for tables such as `users` |
+| 1.8.0.2 | `SchemaManager::listTableNames()` passes the connection's database to `getTables()` | Laravel 12+ returns tables from every schema the DB user can see; the BREAD and Database screens must only list this app's tables |
 
 ## Known upstream security advisories
 
 These affect every official release up to 1.8.0 and have **no upstream fix**.
-Because this package's version is now 1.8.0.1, `composer audit` no longer
+Because this package's version is now 1.8.0.x, `composer audit` no longer
 matches them, so they are tracked here instead.
 
 | CVE | Area | Status here |

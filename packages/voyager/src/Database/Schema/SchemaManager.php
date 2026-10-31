@@ -151,7 +151,9 @@ abstract class SchemaManager
 
         // Check if the connection supports the getTables method
         if (method_exists($connection->getSchemaBuilder(), 'getTables')) {
-            $tables = $connection->getSchemaBuilder()->getTables();
+            // PATCH 1.8.0.2: Laravel 12+ returns the tables of every schema the
+            // user can see unless one is given; only list this connection's.
+            $tables = $connection->getSchemaBuilder()->getTables($connection->getDatabaseName());
             return collect($tables)->pluck('name')->values()->all();
         }
 
