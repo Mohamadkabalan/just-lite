@@ -2927,3 +2927,9 @@ main:focus {
 .footer-area .scroll-whatsapp:focus-visible {
   outline-color: var(--titleColor) !important;
 }
+
+/* width/height attributes give images their aspect ratio while loading; this
+   never overrides a height the theme sets (zero specificity). */
+:where(img[width][height]) {
+  height: auto;
+}

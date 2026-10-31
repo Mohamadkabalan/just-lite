@@ -61,10 +61,10 @@
     </div>
 
     <div class="about-shape">
-        <img src="{{ asset('images/about/about-bg-shape.png')  }}" alt="About Images">
-        <img src="{{ asset('images/shape/shape1.png')  }}" alt="About Images">
-        <img src="{{ asset('images/shape/shape2.png')  }}" alt="About Images">
-        <img src="{{ asset('images/shape/shape3.png') }} " alt="About Images">
+        <img src="{{ asset('images/about/about-bg-shape.png') }}" alt="" width="542" height="318" loading="lazy">
+        <img src="{{ asset('images/shape/shape1.png') }}" alt="" width="52" height="62" loading="lazy">
+        <img src="{{ asset('images/shape/shape2.png') }}" alt="" width="46" height="42" loading="lazy">
+        <img src="{{ asset('images/shape/shape3.png') }}" alt="" width="26" height="30" loading="lazy">
     </div>
 </div>
 <!-- About Area End -->

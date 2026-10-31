@@ -57,7 +57,7 @@
                         @if(isset($blog->image))
                             <div class="service-preview-slider owl-carousel owl-theme">
                                     <div class="service-preview-item">
-                                        <img src="{{ asset( 'storage/'.str_replace('\\', '/', $blog->image))  }}" alt="Blog Images">
+                                        @include('partials.picture', ['path' => $blog->image, 'alt' => $blogTitle, 'fetchpriority' => 'high'])
                                     </div>
                             </div>
                         @endif
