@@ -1,11 +1,13 @@
 @php $about =\App\About::first();  @endphp
 @if($about)
-{{-- Without an uploaded image, hide the theme's default (a grey "1010 x 690" placeholder). --}}
+{{-- An image uploaded in the admin replaces the stylesheet's default photo (images/about/about-bg.jpg). --}}
+@if($about->image)
 <style>
     .about-area::before {
-        background-image: {{ $about->image ? 'url('.\App\Support\VoyagerImage::url($about->image).')' : 'none' }};
+        background-image: url({{ \App\Support\VoyagerImage::url($about->image) }});
     }
 </style>
+@endif
 <!-- About Area -->
 <div class="about-area pt-100 pb-70">
     <div class="container">

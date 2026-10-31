@@ -15,3 +15,8 @@ error_log
 # Production database dumps (personal data, never commit)
 /docker/mariadb/initdb/*.sql
 /docker/mariadb/initdb/*.sql.gz
+
+# Audit output: screenshots of the admin show client data, and the reports
+# describe security issues. Never commit them (this repository is public).
+/screenshots/
+/AUDIT_REPORT*.md

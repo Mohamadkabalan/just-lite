@@ -80,14 +80,19 @@ class BugFixTest extends TestCase
             ->assertSee("Ingredients:<br />\n2 eggs &lt;b&gt;fresh&lt;/b&gt;<br />\n1 cup flour", false);
     }
 
-    public function test_about_background_shows_the_image_or_nothing(): void
+    public function test_about_background_shows_the_upload_or_the_default_photo(): void
     {
         $about = About::query()->firstOrFail();
 
-        // Without an image the theme's placeholder (images/about/about-bg.png) must not show.
+        // The stylesheet's default is a real photo now, not the template's "1010 x 690" placeholder.
+        $css = (string) file_get_contents(public_path('css/style.css'));
+        $this->assertStringContainsString('url(../images/about/about-bg.jpg)', $css);
+        $this->assertFileDoesNotExist(public_path('images/about/about-bg.png'));
+
+        // Without an upload the page leaves the default alone.
         $about->image = null;
         $about->save();
-        $this->get('/about')->assertOk()->assertSee('background-image: none;', false)->assertDontSee('url(/storage/)', false);
+        $this->get('/about')->assertOk()->assertDontSee('.about-area::before', false)->assertDontSee('url(/storage/)', false);
 
         $about->image = 'abouts\\May2023\\photo.jpg';
         $about->save();
