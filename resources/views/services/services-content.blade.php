@@ -3,7 +3,7 @@
     <div class="col-lg-4 col-md-6">
         <div class="services-card">
             <a href="{{ localized_route('services.service-details', $row->id) }}">
-                <img src="{{ \App\Support\VoyagerImage::url(json_decode($row->images ?? '[]')[0] ?? null, 'medium') ?? asset('images/services/services-img1.jpg') }}" loading="lazy" alt="Images">
+                @include('partials.picture', ['path' => json_decode($row->images ?? '[]')[0] ?? null, 'size' => 'medium', 'alt' => $lang == 'en' ? $row->title_en : $row->title_Ar, 'fallback' => asset('images/services/services-img1.jpg'), 'loading' => 'lazy'])
             </a>
             <div class="content">
                 <h3>

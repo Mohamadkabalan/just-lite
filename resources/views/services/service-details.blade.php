@@ -31,7 +31,7 @@ $lang=app()->getLocale();
                             @foreach($images as $image)
 
                             <div class="service-preview-item">
-                                <img src="{{ asset( 'storage/'.str_replace('\\', '/', $image))  }}" alt="Blog Images">
+                                @include('partials.picture', ['path' => $image, 'alt' => $lang == 'en' ? $service->title_en : $service->title_Ar, 'loading' => $loop->first ? null : 'lazy'])
                             </div>
                             @endforeach
                         </div>

@@ -9,36 +9,33 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        {{-- CSS and JS use asset_versioned() (?v=file time): public/.htaccess lets
+             browsers cache them for a year, and a changed file gets a new URL. --}}
         <!-- Bootstrap CSS (5.1.3): the RTL build for Arabic, the LTR build otherwise -->
         @if($lang == 'ar')
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.rtl.min.css') }}">
+        <link rel="stylesheet" href="{{ asset_versioned('css/bootstrap.rtl.min.css') }}">
         @else
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset_versioned('css/bootstrap.min.css') }}">
         @endif
-        <!-- Animate Min CSS -->
-        <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
         <!-- Flaticon CSS -->
-        <link rel="stylesheet" href="{{ asset('fonts/flaticon.css')  }}">
+        <link rel="stylesheet" href="{{ asset_versioned('fonts/flaticon.css') }}">
         <!-- BoxIcons Min CSS -->
-        <link rel="stylesheet" href="{{ asset('css/boxicons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset_versioned('css/boxicons.min.css') }}">
         <!-- Owl Carousel Min CSS -->
-        <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-
-        <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css')  }}">
+        <link rel="stylesheet" href="{{ asset_versioned('css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset_versioned('css/owl.theme.default.min.css') }}">
         <!-- Magnific Popup CSS -->
-        <link rel="stylesheet" href="{{ asset('css/magnific-popup.min.css')  }}">
-        <!-- Odometer CSS -->
-        <link rel="stylesheet" href="{{ asset('css/odometer.min.css')  }}">
+        <link rel="stylesheet" href="{{ asset_versioned('css/magnific-popup.min.css') }}">
         <!-- Meanmenu CSS -->
-        <link rel="stylesheet" href="{{ asset('css/meanmenu.min.css')  }}">
+        <link rel="stylesheet" href="{{ asset_versioned('css/meanmenu.min.css') }}">
         <!-- Style CSS -->
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset_versioned('css/style.css') }}">
         <!-- Responsive CSS -->
-        <link rel="stylesheet" href="{{ asset('css/responsive.css')  }}">
+        <link rel="stylesheet" href="{{ asset_versioned('css/responsive.css') }}">
 
         @if(app()->getLocale() == 'ar')
         <!-- RTL CSS -->
-        <link rel="stylesheet" href="{{ asset('css/rtl.css')  }}">
+        <link rel="stylesheet" href="{{ asset_versioned('css/rtl.css') }}">
         @endif
 
         @php
@@ -135,31 +132,25 @@
     @include('partials.consent-banner')
 
     <!-- Jquery Min JS -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset_versioned('js/jquery.min.js') }}"></script>
     <!-- Bootstrap Bundle Min JS -->
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset_versioned('js/bootstrap.bundle.min.js') }}"></script>
     <!-- Magnific Popup JS -->
-    <script src="{{ asset('js/magnific-popup.min.js') }}"></script>
-    <!-- Odometer JS -->
-    <script src="{{ asset('js/odometer.min.js') }}"></script>
-    <!-- Appear Min JS -->
-    <script src="{{ asset('js/appear.min.js') }}"></script>
+    <script src="{{ asset_versioned('js/magnific-popup.min.js') }}"></script>
     <!-- Meanmenu JS -->
-    <script src="{{ asset('js/meanmenu.min.js') }}"></script>
+    <script src="{{ asset_versioned('js/meanmenu.min.js') }}"></script>
     <!-- Owl Carousel JS -->
-    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-    <!-- Wow Min JS -->
-    <script src="{{ asset('js/wow.min.js') }}"></script>
+    <script src="{{ asset_versioned('js/owl.carousel.min.js') }}"></script>
     <!-- Form Validator Min JS -->
-    <script src="{{ asset('js/form-validator.min.js') }} "></script>
+    <script src="{{ asset_versioned('js/form-validator.min.js') }}"></script>
     <!-- Contact Form JS -->
-    <script src="{{ asset('js/contact-form-script.js') }} "></script>
+    <script src="{{ asset_versioned('js/contact-form-script.js') }}"></script>
     <!-- Custom  JS -->
-    <script src="{{ asset('js/custom.js') }} "></script>
+    <script src="{{ asset_versioned('js/custom.js') }}"></script>
     <!-- Public forms (contact page, booking modal) -->
-    <script src="{{ asset('js/forms.js') }}"></script>
+    <script src="{{ asset_versioned('js/forms.js') }}"></script>
     <!-- Cookie consent: analytics and the Google map -->
-    <script src="{{ asset('js/consent.js') }}"></script>
+    <script src="{{ asset_versioned('js/consent.js') }}"></script>
 
     @show
 

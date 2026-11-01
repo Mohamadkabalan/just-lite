@@ -182,6 +182,10 @@ main() {
     step "Leaving maintenance mode"
     artisan up
 
+    # WebP copies of uploaded images; a failure here must not undo the deploy.
+    step "Optimising uploaded images"
+    artisan images:optimize || log "images:optimize failed; pages fall back to the original images."
+
     step "Checking the site"
     health_check
 

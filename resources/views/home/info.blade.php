@@ -24,9 +24,9 @@
             </div>
             <div class="col-lg-6">
                 <div class="event-img">
-                    <img src="{{ asset('images/event/event-img.jpg')  }}" alt="Images">
+                    <img src="{{ asset('images/event/event-img.jpg') }}" alt="" width="750" height="800" loading="lazy" decoding="async">
                     <div class="sub-img">
-                        <img src="{{ asset('images/event/event-sub-img.png')  }}" alt="Images">
+                        <img src="{{ asset('images/event/event-sub-img.png') }}" alt="" width="325" height="326" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>

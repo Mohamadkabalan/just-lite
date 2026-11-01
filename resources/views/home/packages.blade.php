@@ -34,7 +34,7 @@
     </div>
 
     <div class="pricing-shape">
-        <img src="{{ asset('images/shape/shape4.png') }}" alt="Pricing Shape">
+        <img src="{{ asset('images/shape/shape4.png') }}" alt="" width="172" height="230" loading="lazy">
     </div>
 </div>
 <!-- Pricing Area End -->

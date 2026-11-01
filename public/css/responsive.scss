@@ -2927,3 +2927,23 @@ main:focus {
 .footer-area .scroll-whatsapp:focus-visible {
   outline-color: var(--titleColor) !important;
 }
+
+/* width/height attributes give images their aspect ratio while loading; this
+   never overrides a height the theme sets (zero specificity). */
+:where(img[width][height]) {
+  height: auto;
+}
+
+/* The contact form shakes when sent incomplete (contact-form-script.js);
+   this replaces animate.css, which the site loaded only for this. */
+@keyframes form-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+.shake.animated {
+  animation: form-shake .5s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .shake.animated { animation: none; }
+}

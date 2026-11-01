@@ -19,12 +19,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
     <title>{{ $title }} | Just Lite</title>
-    <link rel="stylesheet" href="{{ asset($lang == 'ar' ? 'css/bootstrap.rtl.min.css' : 'css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/boxicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset_versioned($lang == 'ar' ? 'css/bootstrap.rtl.min.css' : 'css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset_versioned('css/boxicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset_versioned('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset_versioned('css/responsive.css') }}">
     @if($lang == 'ar')
-    <link rel="stylesheet" href="{{ asset('css/rtl.css') }}">
+    <link rel="stylesheet" href="{{ asset_versioned('css/rtl.css') }}">
     @endif
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <style>

@@ -25,6 +25,11 @@ class Kernel extends ConsoleKernel
             ->dailyAt('02:30')
             ->withoutOverlapping();
 
+        // WebP copies of images uploaded since the last run (also run by each deploy).
+        $schedule->command('images:optimize')
+            ->dailyAt('03:30')
+            ->withoutOverlapping();
+
         // Delete contact messages and bookings older than the privacy policy's
         // retention period (config site.retention_months).
         $schedule->command('model:prune', ['--model' => [Contact::class, Appointment::class]])

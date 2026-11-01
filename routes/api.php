@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Browsers post Content-Security-Policy violations here (no session or CSRF
+// token in the api group); 60 per minute per IP via the api limiter.
+Route::post('/csp-report', 'App\Http\Controllers\CspReportController')->name('csp-report');

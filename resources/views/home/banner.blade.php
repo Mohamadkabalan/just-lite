@@ -43,10 +43,25 @@
 
                         <div class="col-lg-6 pe-0">
                             <div class="banner-item-img">
-                                {{-- The originals are 1020px PNGs of about 1 MB; phones and tablets get Voyager's 510px copy. --}}
-                                <img src="{{ \App\Support\VoyagerImage::url($banner->image) }}"
-                                     srcset="{{ \App\Support\VoyagerImage::url($banner->image, 'medium') }} 510w, {{ \App\Support\VoyagerImage::url($banner->image) }} 1020w"
-                                     sizes="(max-width: 991px) 100vw, 620px" alt="Banner Images">
+                                {{-- The originals are 1020px PNGs of about 1 MB: browsers get the WebP copies
+                                     (about 55 KB, images:optimize), phones and tablets the 510px one. --}}
+                                @php
+                                    $bannerWebp = array_filter([
+                                        ($w = \App\Support\VoyagerImage::webp($banner->image, 'medium')) ? $w.' 510w' : null,
+                                        ($w = \App\Support\VoyagerImage::webp($banner->image)) ? $w.' 1020w' : null,
+                                    ]);
+                                    $bannerSize = \App\Support\VoyagerImage::size($banner->image);
+                                @endphp
+                                <picture>
+                                    @if($bannerWebp)
+                                    <source type="image/webp" srcset="{{ implode(', ', $bannerWebp) }}" sizes="(max-width: 991px) 100vw, 620px">
+                                    @endif
+                                    <img src="{{ \App\Support\VoyagerImage::url($banner->image) }}"
+                                         srcset="{{ \App\Support\VoyagerImage::url($banner->image, 'medium') }} 510w, {{ \App\Support\VoyagerImage::url($banner->image) }} 1020w"
+                                         sizes="(max-width: 991px) 100vw, 620px" alt=""
+                                         @if($bannerSize) width="{{ $bannerSize[0] }}" height="{{ $bannerSize[1] }}" @endif
+                                         @if($key == 0) fetchpriority="high" @endif decoding="async">
+                                </picture>
                             </div>
                         </div>
                     </div>

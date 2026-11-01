@@ -20,7 +20,7 @@
                     <div class="carousel-inner">
                         @foreach($results as $key => $result)
                             <div class="carousel-item @if($key==0) active @endif">
-                                <img src=" {{ 'storage/'.str_replace('\\', '/', $result->image) }}" class="d-block w-100" alt="{{$result->title_en}}">
+                                @include('partials.picture', ['path' => $result->image, 'alt' => $lang == 'en' ? $result->title_en : $result->title_ar, 'class' => 'd-block w-100', 'loading' => $key == 0 ? null : 'lazy'])
                                 <div class="carousel-caption d-none d-md-block">
 {{--                                    <h2 class="banner-title">@if($lang=='en') {{$result->title_en}} @else {{$result->title_ar}}  @endif</h2>
                                     <h3 class="banner-text">@if($lang=='en') {{$result->text_en}} @else {{$result->text_ar}}  @endif</h3>--}}

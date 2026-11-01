@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'url' => env('SITE_URL', 'https://just-lite.com'),
+    'url' => env('SITE_URL') ?: 'https://just-lite.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -66,7 +66,20 @@ return [
     |
     */
 
-    'notify_email' => env('NOTIFY_EMAIL', 'Layla.G.Hanna@hotmail.com'),
+    'notify_email' => env('NOTIFY_EMAIL') ?: 'Layla.G.Hanna@hotmail.com',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Error Alerts
+    |--------------------------------------------------------------------------
+    |
+    | Where to email a short report when the site hits an error (the same
+    | error at most once an hour; the full details are in storage/logs).
+    | Usually the developer's address; empty turns the alerts off.
+    |
+    */
+
+    'error_email' => env('ERROR_EMAIL'),
 
     /*
     |--------------------------------------------------------------------------

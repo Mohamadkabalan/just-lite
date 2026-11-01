@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <div class="service-article-img">
-                                    <img src="{{ asset('storage/'.str_replace('\\', '/', $diet->image)) }}" alt="Meal Images">
+                                    @include('partials.picture', ['path' => $diet->image, 'alt' => $lang == 'en' ? $diet->title_en : $diet->title_ar])
                                 </div>
                             </div>
                         </div>

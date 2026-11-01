@@ -34,8 +34,9 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+        // Email the developer (config site.error_email) about real errors.
         $this->reportable(function (Throwable $e) {
-            //
+            \App\Support\ErrorAlert::send($e);
         });
     }
 }
