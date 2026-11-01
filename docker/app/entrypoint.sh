@@ -22,9 +22,9 @@ until mariadb-admin ping -h"${DB_HOST:-db}" -u"${DB_USERNAME}" -p"${DB_PASSWORD}
     sleep 2
 done
 
-mkdir -p storage/app/public storage/framework/cache/data storage/framework/sessions \
+mkdir -p public/storage storage/framework/cache/data storage/framework/sessions \
     storage/framework/views storage/logs bootstrap/cache
-chown -R www-data:www-data storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache public/storage
 
 php artisan config:clear >/dev/null
 

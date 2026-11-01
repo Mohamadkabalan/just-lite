@@ -67,6 +67,19 @@ class ImageTest extends TestCase
             ->assertSee('<img src="'.asset('storage/blogs/test.png').'" alt="Picture test" width="400" height="300"', false);
     }
 
+    public function test_uploads_are_stored_in_the_folder_served_at_storage(): void
+    {
+        // Hostinger disables symlink(), so there is no storage:link: anything the
+        // disk writes elsewhere (uploads, WebP copies) would 404 on the site.
+        $disk = config('voyager.storage.disk');
+        $this->assertSame(public_path('storage'), config("filesystems.disks.$disk.root"));
+        $this->assertSame([], config('filesystems.links'));
+
+        // The served folder keeps uploads from running as scripts.
+        $this->assertFileExists(public_path('storage/.htaccess'));
+        $this->assertStringContainsString('Require all denied', (string) file_get_contents(public_path('storage/.htaccess')));
+    }
+
     private function png(int $width, int $height): string
     {
         $image = imagecreatetruecolor($width, $height);

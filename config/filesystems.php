@@ -35,9 +35,13 @@ return [
             'root' => storage_path('app'),
         ],
 
+        // Voyager uploads. The root is the folder the web server serves at /storage.
+        // Hostinger disables PHP's symlink(), so `storage:link` can't link
+        // public/storage to storage/app/public there, and a copy of that folder
+        // would leave new uploads and their WebP copies off the site.
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => public_path('storage'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
@@ -66,8 +70,7 @@ return [
     |
     */
 
-    'links' => [
-        public_path('storage') => storage_path('app/public'),
-    ],
+    // None: the public disk writes to public/storage directly (see above).
+    'links' => [],
 
 ];

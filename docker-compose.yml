@@ -28,11 +28,10 @@ services:
       # messages are written to storage/logs/laravel.log instead.
       MAIL_MAILER: log
     volumes:
+      # Uploads go to ./public/storage, as on the server (config/filesystems.php).
       - .:/var/www/html
       # vendor/ lives in a volume: installing it through a Windows bind mount is too slow.
       - vendor:/var/www/html/vendor
-      # Stands in for the `storage:link` symlink (public/storage is a tracked folder).
-      - ./storage/app/public:/var/www/html/public/storage
     depends_on:
       - db
 

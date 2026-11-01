@@ -74,6 +74,13 @@ GitHub Actions run.
 - **Config is cached.** After editing `.env` on the server, run
   `/opt/alt/php84/usr/bin/php artisan config:cache`.
 - The CLI `php` on the server is 8.4; Laravel 13 needs 8.3 or newer.
+- **Uploaded images live in `public/storage`**, the folder served at
+  `/storage`. The `public` disk (Voyager uploads, `images:optimize`) writes
+  there directly, because Hostinger disables PHP's `symlink()` and
+  `php artisan storage:link` can't work. Don't run `storage:link`, and don't
+  copy images into `storage/app/public`: nothing there is on the site.
+  (`storage/app/public` on the server is an old copy from before
+  2026-11-01; it can be deleted once `public/storage` is backed up.)
 
 ## Server settings (`.env`)
 
@@ -119,12 +126,12 @@ them. Check what will go with
 `php artisan model:prune --model="App\Contact" --model="App\Appointment" --pretend`.
 
 Backups on the same server don't survive losing the account: copy
-`~/db-backups` and `storage/app/public` (all uploaded images) somewhere else
+`~/db-backups` and `public/storage` (all uploaded images) somewhere else
 regularly, or check that Hostinger's own backups cover them.
 
 ## Checks after a deploy
 
-- Uploaded images: `storage/app/public/services/February2022`,
+- Uploaded images: `public/storage/services/February2022`,
   `weekly-diet-plans/February2022`, `testimonials/February2022` and
   `users/default.png` were missing from the 2026-10-31 copy. If they are
   missing on the server too, re-upload those images in the admin.
