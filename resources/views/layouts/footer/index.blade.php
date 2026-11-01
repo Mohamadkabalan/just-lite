@@ -172,7 +172,7 @@
                     $year = date('Y');
                     $year = app()->getLocale() == 'ar' ? strtr($year, ['0' => '٠', '1' => '١', '2' => '٢', '3' => '٣', '4' => '٤', '5' => '٥', '6' => '٦', '7' => '٧', '8' => '٨', '9' => '٩']) : $year;
                 @endphp
-                <p>{{ __('translation.copy-right', ['year' => $year]) }} webmeetsai.com</p>
+                <p>{{ __('translation.copy-right', ['year' => $year]) }} <a href="https://webmeetsai.com" target="_blank" rel="noopener" aria-label="webmeetsai.com {{ __('translation.new-tab') }}">webmeetsai.com</a></p>
                 <p class="footer-legal">
                     <a href="{{ localized_route('privacy') }}">{{ __('translation.privacy-policy') }}</a>
                     <span aria-hidden="true">·</span>
