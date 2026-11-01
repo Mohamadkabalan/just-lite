@@ -2480,6 +2480,21 @@ main:focus {
   outline-color: var(--titleColor) !important;
 }
 
+/* On phones the copyright lines span the full width, so at the end of the
+   page the floating WhatsApp button (55px tall, 75px above the bottom) and
+   the back-to-top button below it covered them. Leave room for both. */
+@media only screen and (max-width: 575px) {
+  .copyright-area {
+    padding-bottom: 140px;
+  }
+}
+
+/* The email address overflowed 320px screens. It wraps after the @ (<wbr> in
+   the footer); this only breaks it elsewhere if even that doesn't fit. */
+.footer-widget .footer-contact li span a {
+  overflow-wrap: anywhere;
+}
+
 /* width/height attributes give images their aspect ratio while loading; this
    never overrides a height the theme sets (zero specificity). */
 :where(img[width][height]) {

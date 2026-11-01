@@ -135,7 +135,8 @@
                             <li>
                                 {{ __('translation.email') }}:
                                 <span>
-                                    <a href="mailto:{{ config('site.email') }}">{{ config('site.email') }}</a>
+                                    {{-- <wbr>: on narrow phones the address wraps after the @. --}}
+                                    <a href="mailto:{{ config('site.email') }}">{!! str_replace('@', '@<wbr>', e(config('site.email'))) !!}</a>
                                 </span>
                             </li>
                             <li>
